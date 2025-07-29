@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <!-- Load Netlify Identity before the CMS so it can initialize correctly -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+  <!-- Mounting point for the CMS React app -->
 </head>
-<body></body>
+<body>
+  <div id="nc-root"></div>
+
+  <!-- The Netlify CMS SPA -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js" defer></script>
+</body>
 </html>
