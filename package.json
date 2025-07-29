@@ -1,0 +1,12 @@
+{
+  "name": "zuricaf-static-cms",
+  "version": "1.0.0",
+  "description": "Zuricaf static site with Eleventy and Netlify CMS",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0"
+  }
+}
