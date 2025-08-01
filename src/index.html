@@ -1,19 +1,21 @@
 ---
 layout: layouts/base.njk
-title: "{{ title }}"
+title: Zuricaf | Direct Ugandan Coffee & Climate‑Smart Varietie
 ---
 
 <!-- body start -->
-
 <!-- Navigation -->
 <header>
   <div class="wrapper" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
     <img src="images/zuricaf.png" alt="Zuricaf Logo" style="height:100px;width:auto;" />
     <nav>
       <ul>
-        {% for link in nav_links %}
-        <li><a href="{{ link.url }}">{{ link.text }}</a></li>
-        {% endfor %}
+        <li><a href="#services">Services</a></li>
+        <li><a href="#sustainability">Sustainability</a></li>
+        <li><a href="#slowfood">Slow Food</a></li>
+        <li><a href="#liberica">Liberica Project</a></li>
+        <li><a href="#calendar">Harvest Calendar</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -22,30 +24,77 @@ title: "{{ title }}"
 <!-- Hero / Cover Image -->
 <section class="wide-block" style="margin-top:0;">
   <div class="content wrapper">
-    <h1 style="font-size:2rem;margin-top:1rem;">{{ hero.heading }}</h1>
-    <p>{{ hero.subheading }}</p>
-    <a href="{{ hero.button_link }}" class="btn" style="margin-top:1rem;">{{ hero.button_text }}</a>
+    <h1 style="font-size:2rem;margin-top:1rem;">Direct specialty coffee from Uganda – clear &amp; transparent.</h1>
+    <p>FCA Hamburg/Bremen • FOB Mombasa • DDP Europe</p>
+    <a href="#cta" class="btn" style="margin-top:1rem;">Request offers</a>
   </div>
-  <img src="{{ hero.image }}" alt="Hero Image" />
+  <img src="images/hero.png" alt="Coffee cherries hand‑picked on Mount Elgon, Uganda" />
 </section>
 
 <!-- Services & Modules -->
 <section id="services" class="wrapper" style="padding-top:3rem;">
   <h2>Services &amp; Modules</h2>
   <div class="module-grid" style="margin-top:1.5rem;">
-    {% for service in services %}
-      <svg data-lucide="{{ service.icon }}"></svg>
-      <div>
-        <strong>{{ service.title }}</strong><br />{{ service.description }}
-      </div>
-    {% endfor %}
+    <svg data-lucide="shopping-cart"></svg>
+    <div>
+      <strong>Sourcing &amp; Network Access</strong><br />Exclusive lots from Uganda, certified cooperatives, storytelling collateral.
+    </div>
+
+    <svg data-lucide="coffee"></svg>
+    <div>
+      <strong>Quality Management &amp; Cupping</strong><br />SCA-cuppings, Q‑grader feedback, sample service.
+    </div>
+
+    <svg data-lucide="ship"></svg>
+    <div>
+      <strong>Logistics &amp; Transport Coordination</strong><br />From FOT Mbale to FCA Hamburg/Bremen or DDP Europe.
+    </div>
+
+    <svg data-lucide="euro"></svg>
+    <div>
+      <strong>Finance &amp; Administration</strong><br />Pre‑financing, document services, reporting.
+    </div>
   </div>
 </section>
 
 <!-- Green Coffee / Why Zuricaf? -->
 <section id="sustainability" class="wrapper" style="padding-top:3rem;">
   <h2>Green Coffee – Why Zuricaf?</h2>
-  {{ sustainability | markdownify }}
+  <p>We deliver sustainably grown green coffee directly from Uganda – without detours and with full transparency. Our network spans cooperatives in Mount&nbsp;Elgon, Rwenzori, Masaka, Luwero and West&nbsp;Nile.</p>
+
+  <h3 id="slowfood">Slow Food Coffee &amp; Biodiversity</h3>
+  <p>As part of the international <em>Slow Food</em> movement we stand for <strong>good, clean, fair</strong>.</p>
+
+  <h4>Goals</h4>
+  <ul>
+    <li>Organic, eco‑friendly farming to improve soil health.</li>
+    <li>Diversity of coffee varieties &amp; companion plants for resilient agro‑ecosystems.</li>
+    <li>Training &amp; fair trade practices to improve farmers’ livelihoods.</li>
+    <li>Higher cup quality through better farming and processing methods.</li>
+    <li>Social projects &amp; education as the backbone of a sustainable community.</li>
+  </ul>
+
+  <h4>Implementation &amp; Measurement</h4>
+  <ul>
+    <li><strong>Shade management:</strong> tree distribution to mitigate heat &amp; foster biodiversity.</li>
+    <li><strong>Continuous farmer trainings</strong> on best practices &amp; innovations.</li>
+    <li><strong>Monitoring &amp; evaluation:</strong> every project start and finish is documented by M&amp;E officers.</li>
+  </ul>
+
+  <h3>Golden Diversity – Species &amp; Variety Wealth</h3>
+  <p>A diverse mosaic of flora and fauna is essential for healthy agro‑ecosystems. Different species deliver key ecosystem services – from pollination to pest control. Studies like <em>Hooper &amp; Vitousek (1997)</em> show: the higher the diversity, the more climate‑resilient a system becomes.</p>
+
+  <p>Diversity also pays socially: parallel cultivation of different crops allows smallholders to harvest year‑round, stabilise income and differentiate from the bulk market.</p>
+
+  <h3>Trade&nbsp;for&nbsp;Aid – our values</h3>
+  <ul>
+    <li><strong>Direct trade:</strong> At least 70&nbsp;% of the FOB price remains with producers – full transparency.</li>
+    <li><strong>Investing in the future:</strong> 1&nbsp;% of every exported tonne flows into reforestation &amp; gender‑equity programmes.</li>
+    <li><strong>Holistic consulting:</strong> From lot selection to logistics – all from one source.</li>
+    <li><strong>Deep‑rooted network:</strong> long‑term partnerships with farming families, Canephora &amp; NGO projects in Uganda.</li>
+  </ul>
+
+  <p><strong>What’s behind the name “Zuricaf”?</strong> – <em>zuri</em> (Swahili for “beautiful”) + <em>CAF</em> (Coffee). In short: beautiful Ugandan coffee.</p>
 </section>
 
 <!-- Canephora- & Liberica Initiatives -->
@@ -60,6 +109,8 @@ title: "{{ title }}"
     <li>Premium positioning: unique flavour profile (bold, fruity, gently sweet).</li>
     <li>Climate action: agroforestry, efficient irrigation &amp; renewable energy.</li>
   </ul>
+
+  <p><strong>Status quo:</strong> exchange &amp; pilot phase – first micro‑lots expected in 2026; international trade not yet started.</p>
 </section>
 
 <!-- Harvest Calendar -->
@@ -81,10 +132,10 @@ title: "{{ title }}"
 
 <!-- Call-to-Action -->
 <section id="cta" class="wrapper" style="padding:3rem 1rem;text-align:center;">
-  <h2 style="margin-bottom:0.5rem;">{{ cta.heading }}</h2>
-  <p>{{ cta.subheading }}</p>
-  <a href="{{ cta.primary_link }}" class="btn" style="margin:0.5rem;">{{ cta.primary_text }}</a>
-  <a href="{{ cta.secondary_link }}" class="btn" style="margin:0.5rem;">{{ cta.secondary_text }}</a>
+  <h2 style="margin-bottom:0.5rem;">Order samples or book a 15‑min call</h2>
+  <p>We’ll get back to you within 24&nbsp;h.</p>
+  <a href="https://www.notion.so/sortengold/21380df8242180a5af99fecd66eb06df?pvs=106" class="btn" style="margin:0.5rem;">Request offers</a>
+  <a href="https://calendar.notion.so/meet/lorenzstckert/2c3zb4pm2" class="btn" style="margin:0.5rem;">Book a call</a>
 </section>
 
 <!-- Footer -->
@@ -95,5 +146,4 @@ title: "{{ title }}"
     <p><a href="https://www.linkedin.com/company/sortengold">LinkedIn</a> | <a href="https://www.instagram.com/sortengold">Instagram</a></p>
   </div>
 </footer>
-
 <!-- body end -->
