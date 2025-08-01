@@ -3,7 +3,7 @@ backend:
   branch: main
   local_backend: true
 
-media_folder: "src/images"
+media_folder: "images"
 public_folder: "/images"
 
 collections:
@@ -15,4 +15,4 @@ collections:
         name: "home"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "html", default: file }
+          - { label: "Body",  name: "body",  widget: "markdown", pattern: ["<!-- body start -->","<!-- body end -->"] }
