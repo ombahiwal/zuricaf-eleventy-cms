@@ -1,3 +1,10 @@
+
+{% if template %}
+  {% include template %}
+{% else %}
+  {{ content | safe }}
+{% endif %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

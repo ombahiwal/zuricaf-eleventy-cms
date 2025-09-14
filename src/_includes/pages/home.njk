@@ -1,0 +1,66 @@
+{# src/_includes/pages/home.njk #}
+<!-- Navigation stays as-is -->
+
+<!-- Hero -->
+<section class="wide-block" style="margin-top:0;">
+  <div class="content wrapper">
+    <h1>{{ hero.heading }}</h1>
+    {% if hero.subtext %}<p>{{ hero.subtext }}</p>{% endif %}
+    {% if hero.cta_label and hero.cta_href %}
+      <a href="{{ hero.cta_href }}" class="btn" style="margin-top:1rem;">{{ hero.cta_label }}</a>
+    {% endif %}
+  </div>
+
+  {% if hero.video %}
+    <video src="{{ hero.video }}" controls playsinline></video>
+  {% else %}
+    <img src="{{ hero.image }}" alt="Zuricaf hero">
+  {% endif %}
+</section>
+
+<!-- Services -->
+<section id="services" class="wrapper" style="padding-top:3rem;">
+  <h2>Services &amp; Modules</h2>
+  <div class="module-grid" style="margin-top:1.5rem;">
+    {% for item in services %}
+      {% if item.icon %}<svg data-lucide="{{ item.icon }}"></svg>{% else %}<div></div>{% endif %}
+      <div><strong>{{ item.title }}</strong><br />{{ item.desc }}</div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Sustainability -->
+<section id="sustainability" class="wrapper" style="padding-top:3rem;">
+  <h2>Green Coffee – Why Zuricaf?</h2>
+  {{ sustainability | safe }} {# markdown renders to HTML #}
+</section>
+
+<!-- Liberica -->
+<section id="liberica" class="wrapper" style="padding-top:3rem;">
+  <h2>Canephora &amp; Liberica Initiatives in Uganda</h2>
+  {{ liberica | safe }}
+</section>
+
+<!-- Calendar -->
+<section id="calendar" class="wrapper" style="padding-top:3rem;">
+  <h2>Uganda Harvest Calendar <span style="font-size:0.8rem;font-weight:400;">(indicative – can vary by micro-climate)</span></h2>
+  <table class="calendar">
+    <thead>
+      <tr><th>Region</th><th>Type</th><th>Main Crop</th><th>Fly Crop</th></tr>
+    </thead>
+    <tbody>
+      {% for row in calendar %}
+        <tr><td>{{ row.region }}</td><td>{{ row.type }}</td><td>{{ row.main }}</td><td>{{ row.fly }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="wrapper" style="padding:3rem 1rem;text-align:center;">
+  <h2 style="margin-bottom:0.5rem;">{{ cta.heading }}</h2>
+  <p>{{ cta.text }}</p>
+  {% for b in cta.buttons %}
+    <a href="{{ b.href }}" class="btn" style="margin:.5rem;">{{ b.label }}</a>
+  {% endfor %}
+</section>
