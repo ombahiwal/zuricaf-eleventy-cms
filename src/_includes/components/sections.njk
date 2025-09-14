@@ -1,0 +1,102 @@
+{# src/_includes/components/sections.njk #}
+{% macro wrap(id) %}<section{% if id %} id="{{ id }}"{% endif %} class="wrapper" style="padding-top:3rem;">{{ caller() }}</section>{% endmacro %}
+
+{% macro renderSection(s) %}
+  {# route to a renderer by type #}
+  {% if s.type == "text" %}
+    {% call wrap(s.id) %}
+      {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+      <div class="prose">{{ s.body | safe }}</div>
+    {% endcall %}
+
+  {% elif s.type == "image" %}
+    {% call wrap(s.id) %}
+      {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+      {% if s.src %}
+        <img src="{{ s.src }}" alt="{{ s.alt }}">
+      {% endif %}
+      {% if s.caption %}<p style="font-size:.9rem;opacity:.8;margin-top:.25rem;">{{ s.caption }}</p>{% endif %}
+    {% endcall %}
+
+  {% elif s.type == "image_text" %}
+    {% call wrap(s.id) %}
+      {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+      <div class="img-text-grid">
+        <div class="img">{% if s.src %}<img src="{{ s.src }}" alt="{{ s.alt }}">{% endif %}</div>
+        <div class="txt">{{ s.body | safe }}</div>
+      </div>
+    {% endcall %}
+
+  {% elif s.type == "gallery" %}
+    {% call wrap(s.id) %}
+      <div class="gallery">
+        {% for it in s.items or [] %}
+          <figure>
+            <img src="{{ it.src }}" alt="{{ it.alt }}">
+          </figure>
+        {% endfor %}
+      </div>
+    {% endcall %}
+
+  {% elif s.type == "video" %}
+    {% call wrap(s.id) %}
+      {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+      {% if s.url %}
+        {% if "youtube.com" in s.url or "youtu.be" in s.url or "vimeo.com" in s.url %}
+          <div class="video-embed">
+            <iframe src="{{ s.url | safe }}" allowfullscreen loading="lazy"></iframe>
+          </div>
+        {% else %}
+          <video src="{{ s.url }}" {% if s.poster %}poster="{{ s.poster }}"{% endif %} controls playsinline></video>
+        {% endif %}
+      {% endif %}
+    {% endcall %}
+
+  {% elif s.type == "services" %}
+    {% call wrap(s.id) %}
+      {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+      <div class="module-grid">
+        {% for item in s.items or [] %}
+          {% if item.icon %}<svg data-lucide="{{ item.icon }}"></svg>{% else %}<div></div>{% endif %}
+          <div><strong>{{ item.title }}</strong><br />{{ item.desc }}</div>
+        {% endfor %}
+      </div>
+    {% endcall %}
+
+  {% elif s.type == "table" %}
+    {% call wrap(s.id) %}
+      {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+      <div style="overflow-x:auto">
+        <table class="calendar">
+          {% if s.columns and s.columns.length %}
+            <thead><tr>{% for c in s.columns %}<th>{{ c.col }}</th>{% endfor %}</tr></thead>
+          {% endif %}
+          <tbody>
+            {% for r in s.rows or [] %}
+              <tr>
+                {% for c in r.cells or [] %}
+                  <td>{{ c.cell }}</td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endcall %}
+
+  {% elif s.type == "cta" %}
+    {% call wrap(s.id) %}
+      <div style="text-align:center">
+        <h2>{{ s.heading }}</h2>
+        <p>{{ s.text }}</p>
+        {% for b in s.buttons or [] %}
+          <a href="{{ b.href }}" class="btn" style="margin:.5rem;">{{ b.label }}</a>
+        {% endfor %}
+      </div>
+    {% endcall %}
+
+  {% elif s.type == "html" %}
+    {% call wrap(s.id) %}{{ s.html | safe }}{% endcall %}
+
+  {% endif %}
+{% endmacro %}
