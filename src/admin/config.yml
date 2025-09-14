@@ -106,7 +106,43 @@ collections:
                 fields:
                   - {label: "Label", name: "label", widget: "string"}
                   - {label: "URL", name: "href", widget: "string"}
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            summary: "{{fields.type}} — {{fields.heading | default('')}}"
+            types:
+              - label: "Text"
+                name: "text"
+                widget: "object"
+                fields:
+                  - { label: "Section ID (anchor)", name: "id", widget: "string", required: false }
+                  - { label: "Heading", name: "heading", widget: "string", required: false }
+                  - { label: "Body", name: "body", widget: "markdown" }
 
+              - label: "Image + Text"
+                name: "image_text"
+                widget: "object"
+                fields:
+                  - { label: "Section ID (anchor)", name: "id", widget: "string", required: false }
+                  - { label: "Heading", name: "heading", widget: "string", required: false }
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - { label: "Body", name: "body", widget: "markdown" }
+                  - { label: "Image on Right?", name: "image_right", widget: "boolean", default: false }
+
+              - label: "CTA"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Section ID (anchor)", name: "id", widget: "string", required: false }
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+                  - label: "Buttons"
+                    name: "buttons"
+                    widget: "list"
+                    fields:
+                      - { label: "Label", name: "label", widget: "string" }
+                      - { label: "URL", name: "href", widget: "string" }
   - name: "assets"
     label: "Standalone Assets"
     folder: "src/content/assets"

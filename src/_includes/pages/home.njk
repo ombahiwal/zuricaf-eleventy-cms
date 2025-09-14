@@ -70,7 +70,7 @@
     {% if s.type == "text" %}
       <section{% if s.id %} id="{{ s.id }}"{% endif %} class="wrapper" style="padding-top:3rem;">
         {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
-        <div class="prose">{{ s.body | safe }}</div>
+        <div class="prose">{{ s.body | markdown | safe }}</div>
       </section>
 
     {% elif s.type == "image_text" %}
@@ -78,7 +78,7 @@
         {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
         <div class="img-text-grid" style="{% if s.image_right %}--img-order:1{% endif %}">
           <div class="img">{% if s.src %}<img src="{{ s.src }}" alt="{{ s.alt }}">{% endif %}</div>
-          <div class="txt">{{ s.body | safe }}</div>
+          <div class="txt">{{ s.body | markdown | safe }}</div>
         </div>
       </section>
 
@@ -93,9 +93,9 @@
     {% endif %}
   {% endfor %}
 {% else %}
-  {# Fallback to legacy sections (Services, Sustainability, Liberica, Calendar, CTA) #}
-  {# ... keep your existing legacy rendering here ... #}
+  {# Fallback to your existing legacy sections here (leave your current code) #}
 {% endif %}
+
 
 
 
