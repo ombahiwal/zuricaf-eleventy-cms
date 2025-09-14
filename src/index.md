@@ -125,10 +125,6 @@ cta:
       href: https://www.notion.so/sortengold/21380df8242180a5af99fecd66eb06df?pvs=106
     - label: Book a call
       href: https://calendar.notion.so/meet/lorenzstckert/2c3zb4pm2
-sections:
-  - type: text
-    id: test
-    heading: test
-    body: t﻿est body
+sections: []
 template: pages/home.njk
 ---
