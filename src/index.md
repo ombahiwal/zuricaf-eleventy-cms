@@ -65,8 +65,6 @@ liberica: |
 
   **Status quo:** exchange & pilot phase — first micro-lots expected in 2026; international trade not yet started.
 
-
-
 calendar:
   - { region: "Mount Elgon (Bugisu)", type: "Arabica", main: "Oct – Mar", fly: "May – Jul" }
   - { region: "Rwenzori", type: "Arabica", main: "Sep – Dec", fly: "Mar – May" }

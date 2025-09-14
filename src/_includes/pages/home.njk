@@ -40,30 +40,6 @@
   {{ liberica | markdown | safe }}
 </section>
 
-<!-- Calendar -->
-<section id="calendar" class="wrapper" style="padding-top:3rem;">
-  <h2>Uganda Harvest Calendar <span style="font-size:0.8rem;font-weight:400;">(indicative – can vary by micro-climate)</span></h2>
-  <table class="calendar">
-    <thead>
-      <tr><th>Region</th><th>Type</th><th>Main Crop</th><th>Fly Crop</th></tr>
-    </thead>
-    <tbody>
-      {% for row in calendar %}
-        <tr><td>{{ row.region }}</td><td>{{ row.type }}</td><td>{{ row.main }}</td><td>{{ row.fly }}</td></tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</section>
-
-<!-- CTA -->
-<section id="cta" class="wrapper" style="padding:3rem 1rem;text-align:center;">
-  <h2 style="margin-bottom:0.5rem;">{{ cta.heading }}</h2>
-  <p>{{ cta.text }}</p>
-  {% for b in cta.buttons %}
-    <a href="{{ b.href }}" class="btn" style="margin:.5rem;">{{ b.label }}</a>
-  {% endfor %}
-</section>
-
 {# Render new Sections if present #}
 {% if sections and sections.length %}
   {% for s in sections %}
@@ -97,5 +73,32 @@
 {% endif %}
 
 
+
+
+
+
+<!-- Calendar -->
+<section id="calendar" class="wrapper" style="padding-top:3rem;">
+  <h2>Uganda Harvest Calendar <span style="font-size:0.8rem;font-weight:400;">(indicative – can vary by micro-climate)</span></h2>
+  <table class="calendar">
+    <thead>
+      <tr><th>Region</th><th>Type</th><th>Main Crop</th><th>Fly Crop</th></tr>
+    </thead>
+    <tbody>
+      {% for row in calendar %}
+        <tr><td>{{ row.region }}</td><td>{{ row.type }}</td><td>{{ row.main }}</td><td>{{ row.fly }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="wrapper" style="padding:3rem 1rem;text-align:center;">
+  <h2 style="margin-bottom:0.5rem;">{{ cta.heading }}</h2>
+  <p>{{ cta.text }}</p>
+  {% for b in cta.buttons %}
+    <a href="{{ b.href }}" class="btn" style="margin:.5rem;">{{ b.label }}</a>
+  {% endfor %}
+</section>
 
 
