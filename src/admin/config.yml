@@ -9,6 +9,21 @@ public_folder: "/images/uploads"       # how they are referenced by the site
 publish_mode: editorial_workflow        # optional: adds review flow
 
 collections:
+  - name: "globals"
+    label: "Globals"
+    files:
+      - name: "header"
+        label: "Header"
+        file: "src/_data/header.json"
+        fields:
+          - { label: "Logo", name: "logo", widget: "image", allow_multiple: false, media_folder: "src/images/uploads", public_folder: "/images/uploads" }
+          - { label: "Logo Alt Text", name: "logo_alt", widget: "string", required: false }
+          - label: "Links"
+            name: "links"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "href", widget: "string" }
   - name: "pages"
     label: "Pages"
     files:

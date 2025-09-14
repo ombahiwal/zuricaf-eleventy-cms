@@ -1,9 +1,4 @@
 
-{% if template %}
-  {% include template %}
-{% else %}
-  {{ content | safe }}
-{% endif %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,21 +38,48 @@
       height: auto;
       display: block;
     }
-
+  
+    .logo { height:72px; width:auto; }  
+    @media (max-width: 768px){ .logo { height:56px; } }
     /* Optional: hero/wide image gets a nice cap + cover on large screens */
     .wide-block > img {
       width: 100%;
       height: auto;
       object-fit: cover;
-      border-radius: .75rem;
     }
+    
 
   </style>
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+<header>
+  <div class="wrapper header-row" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+    <img
+      src="{{ header.logo | default('/images/zuricaf.png') }}"
+      alt="{{ header.logo_alt | default('Zuricaf Logo') }}"
+      class="logo"
+      style="height:100px;width:auto;" />
+  <div> <br/>
+    <nav id="site-nav" class="site-nav">
+      <ul>
+        {% for item in header.links or [] %}
+          <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    </div>
+  </div>
+</header>
+
 <body>
   {{ content | safe }}
   <script>lucide.createIcons();</script>
 </body>
+
+{% if template %}
+  {% include template %}
+{% else %}
+  {{ content | safe }}
+{% endif %}
 </html>

@@ -1,0 +1,12 @@
+{
+  "logo": "/images/zuricaf.png",
+  "logo_alt": "Zuricaf Logo",
+  "links": [
+    { "label": "Services", "href": "/#services" },
+    { "label": "Sustainability", "href": "/#sustainability" },
+    { "label": "Slow Food", "href": "/#slowfood" },
+    { "label": "Liberica Project", "href": "/#liberica" },
+    { "label": "Harvest Calendar", "href": "/#calendar" },
+    { "label": "Contact", "href": "/#contact" }
+  ]
+}
