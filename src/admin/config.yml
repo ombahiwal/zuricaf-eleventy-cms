@@ -24,6 +24,36 @@ collections:
             fields:
               - { label: "Label", name: "label", widget: "string" }
               - { label: "URL", name: "href", widget: "string" }
+      
+      # NEW: editable footer
+      - name: "footer"
+        label: "Footer"
+        file: "src/_data/footer.json"
+        fields:
+          - { label: "Main Line (address)", name: "text", widget: "string" }
+          - { label: "Company No.", name: "company_no", widget: "string", required: false }
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string", required: false }
+              - { label: "Phone", name: "phone", widget: "string", required: false }
+          - label: "Social Links"
+            name: "social"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "href", widget: "string" }
+          - label: "Footer Links"
+            name: "links"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "href", widget: "string" }
+          - { label: "Copyright", name: "copyright", widget: "string", required: false, hint: "You can use {{ year }} here" }
+
   - name: "pages"
     label: "Pages"
     files:

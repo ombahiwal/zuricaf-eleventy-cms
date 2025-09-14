@@ -31,14 +31,13 @@
 
 <!-- Sustainability -->
 <section id="sustainability" class="wrapper" style="padding-top:3rem;">
-  <h2>Green Coffee – Why Zuricaf?</h2>
-  {{ sustainability | safe }} {# markdown renders to HTML #}
+
+  {{ sustainability | markdown | safe }} {# markdown renders to HTML #}
 </section>
 
 <!-- Liberica -->
 <section id="liberica" class="wrapper" style="padding-top:3rem;">
-  <h2>Canephora &amp; Liberica Initiatives in Uganda</h2>
-  {{ liberica | safe }}
+  {{ liberica | markdown | safe }}
 </section>
 
 <!-- Calendar -->
@@ -64,3 +63,39 @@
     <a href="{{ b.href }}" class="btn" style="margin:.5rem;">{{ b.label }}</a>
   {% endfor %}
 </section>
+
+{# Render new Sections if present #}
+{% if sections and sections.length %}
+  {% for s in sections %}
+    {% if s.type == "text" %}
+      <section{% if s.id %} id="{{ s.id }}"{% endif %} class="wrapper" style="padding-top:3rem;">
+        {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+        <div class="prose">{{ s.body | safe }}</div>
+      </section>
+
+    {% elif s.type == "image_text" %}
+      <section{% if s.id %} id="{{ s.id }}"{% endif %} class="wrapper" style="padding-top:3rem;">
+        {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+        <div class="img-text-grid" style="{% if s.image_right %}--img-order:1{% endif %}">
+          <div class="img">{% if s.src %}<img src="{{ s.src }}" alt="{{ s.alt }}">{% endif %}</div>
+          <div class="txt">{{ s.body | safe }}</div>
+        </div>
+      </section>
+
+    {% elif s.type == "cta" %}
+      <section{% if s.id %} id="{{ s.id }}"{% endif %} class="wrapper" style="padding:3rem 1rem;text-align:center;">
+        <h2>{{ s.heading }}</h2>
+        <p>{{ s.text }}</p>
+        {% for b in s.buttons or [] %}
+          <a class="btn" href="{{ b.href }}" style="margin:.5rem;">{{ b.label }}</a>
+        {% endfor %}
+      </section>
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {# Fallback to legacy sections (Services, Sustainability, Liberica, Calendar, CTA) #}
+  {# ... keep your existing legacy rendering here ... #}
+{% endif %}
+
+
+

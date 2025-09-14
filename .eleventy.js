@@ -1,7 +1,10 @@
 const MarkdownIt = require("markdown-it");
-const md = new MarkdownIt();
+const md = new MarkdownIt({ html: true, linkify: true });
+
 
 module.exports = function(eleventyConfig) {
+  
+  eleventyConfig.addFilter("markdown", (content = "") => md.render(String(content)));
   // 1) Safely render any Markdown string; return empty string otherwise
   eleventyConfig.addFilter("markdownify", content => {
     if (typeof content !== "string") {

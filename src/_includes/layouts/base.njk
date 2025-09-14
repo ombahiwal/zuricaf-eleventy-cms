@@ -48,6 +48,23 @@
       object-fit: cover;
     }
     
+    .prose :where(p, ul, ol){ margin:.7rem 0; }
+.prose ul, .prose ol { padding-left:1.2rem; }
+.img-text-grid { display:grid; gap:1rem; align-items:start; }
+@media (min-width: 900px){ .img-text-grid { grid-template-columns:1.2fr 1fr; } .img-text-grid .img{ order:var(--img-order,0);} }
+img, picture, video { max-width:100%; height:auto; display:block; }
+
+  .site-footer {
+  background: #f7f7f7;
+  font-size: .9rem;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+.site-footer p { margin: .4rem 0; }
+.site-footer a { text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+
 
   </style>
   <!-- Lucide icons -->
@@ -85,4 +102,43 @@
 {% else %}
   {{ content | safe }}
 {% endif %}
+
+<footer id="contact" class="wrapper"
+        style="padding:2rem 1rem;text-align:center;font-size:0.9rem;background:#f7f7f7;margin-top:3rem;">
+  <p>
+    {{ footer.text }}
+    {% if footer.company_no %}<br />Company no.: {{ footer.company_no }}{% endif %}
+  </p>
+
+  {% if footer.contact and (footer.contact.email or footer.contact.phone) %}
+    <p>
+      {% if footer.contact.email %}<a href="mailto:{{ footer.contact.email }}">{{ footer.contact.email }}</a>{% endif %}
+      {% if footer.contact.email and footer.contact.phone %} | {% endif %}
+      {% if footer.contact.phone %}{{ footer.contact.phone }}{% endif %}
+    </p>
+  {% endif %}
+
+  {% if footer.social and footer.social.length %}
+    <p>
+      {% for s in footer.social %}
+        <a href="{{ s.href }}" target="_blank" rel="noopener">{{ s.label }}</a>{% if not loop.last %} | {% endif %}
+      {% endfor %}
+    </p>
+  {% endif %}
+
+  {% if footer.links and footer.links.length %}
+    <p>
+      {% for l in footer.links %}
+        <a href="{{ l.href }}">{{ l.label }}</a>{% if not loop.last %} | {% endif %}
+      {% endfor %}
+    </p>
+  {% endif %}
+
+<p style="opacity:.8;margin-top:.5rem;">
+  {{ (footer.copyright or '© Zuricaf [[year]]') | replace('[[year]]', site.year) }}
+</p>
+
+</footer>
+
+
 </html>

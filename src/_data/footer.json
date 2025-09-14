@@ -1,0 +1,14 @@
+{
+  "text": "tabme UG (haftungsbeschränkt) • Diesterwegstraße 40 • Bielefeld • DE-33604",
+  "company_no": "DE352137494",
+  "contact": { "email": "hallo@sortengold.de", "phone": "+41 44 123 45 67" },
+  "social": [
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/company/sortengold" },
+    { "label": "Instagram", "href": "https://www.instagram.com/sortengold" }
+  ],
+  "links": [
+    { "label": "Imprint", "href": "/imprint/" },
+    { "label": "Privacy", "href": "/privacy/" }
+  ],
+  "copyright": "© Zuricaf 2025"
+}
