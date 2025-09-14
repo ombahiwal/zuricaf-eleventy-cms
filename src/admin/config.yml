@@ -1,18 +1,72 @@
 backend:
   name: git-gateway
   branch: main
-  local_backend: true
+  local_backend: true          # for local dev with netlify-cms-proxy-server
 
-media_folder: "images"
-public_folder: "/images"
+media_folder: "src/images/uploads"     # where files are stored in repo
+public_folder: "/images/uploads"       # how they are referenced by the site
+
+publish_mode: editorial_workflow        # optional: adds review flow
 
 collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "src/index.html"
-        label: "Home Page"
-        name: "home"
+      - name: "home"
+        label: "Home"
+        file: "src/index.md"           # we'll convert homepage into Markdown + front matter
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body",  name: "body",  widget: "markdown", pattern: ["<!-- body start -->","<!-- body end -->"] }
+          - {label: "Page Title", name: "title", widget: "string", default: "Zuricaf | Direct Ugandan Coffee & Climate-Smart Varieties"}
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Subtext", name: "subtext", widget: "string", required: false}
+              - {label: "CTA Label", name: "cta_label", widget: "string", required: false}
+              - {label: "CTA Anchor/URL", name: "cta_href", widget: "string", required: false}
+              - {label: "Hero Image", name: "image", widget: "image", allow_multiple: false}
+              - {label: "Hero Video (optional URL)", name: "video", widget: "string", required: false}
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Icon (lucide name)", name: "icon", widget: "string", required: false}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "desc", widget: "text"}
+          - label: "Sustainability (rich text)"
+            name: "sustainability"
+            widget: "markdown"
+          - label: "Liberica Section (rich text)"
+            name: "liberica"
+            widget: "markdown"
+          - label: "Harvest Calendar"
+            name: "calendar"
+            widget: "list"
+            fields:
+              - {label: "Region", name: "region", widget: "string"}
+              - {label: "Type", name: "type", widget: "string"}
+              - {label: "Main Crop", name: "main", widget: "string"}
+              - {label: "Fly Crop", name: "fly", widget: "string"}
+          - label: "CTA Block"
+            name: "cta"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Text", name: "text", widget: "string"}
+              - label: "Buttons"
+                name: "buttons"
+                widget: "list"
+                fields:
+                  - {label: "Label", name: "label", widget: "string"}
+                  - {label: "URL", name: "href", widget: "string"}
+
+  - name: "assets"
+    label: "Standalone Assets"
+    folder: "src/content/assets"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body (optional)", name: "body", widget: "markdown", required: false}
+      - {label: "Image/Video", name: "file", widget: "file"}
