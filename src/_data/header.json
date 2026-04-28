@@ -7,6 +7,7 @@
     { "label": "Slow Food", "href": "/#slowfood" },
     { "label": "Liberica Project", "href": "/#liberica" },
     { "label": "Harvest Calendar", "href": "/#calendar" },
-    { "label": "Contact", "href": "/#contact" }
+    { "label": "Contact", "href": "/#contact" },
+    { "label": "Submit Lot", "href": "/lot-info/" }
   ]
 }

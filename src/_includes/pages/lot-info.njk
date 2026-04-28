@@ -1,0 +1,242 @@
+{# src/_includes/pages/lot-info.njk #}
+<main>
+<div class="wrapper" style="padding-top:2.5rem;padding-bottom:4rem;">
+
+  <h1 style="margin-bottom:.25rem;">Coffee lot information</h1>
+  <p style="color:#666;font-size:.95rem;margin:0 0 .5rem;">
+    German roaster delegation &middot; Uganda, May 2026
+  </p>
+  <p style="color:#555;font-size:.9rem;margin:0 0 2.5rem;max-width:560px;">
+    Please fill in one form per lot. Your data is shared only with the trade facilitation team (Lorenz Stöckert / zuricaf.com) and Dr. Ian Clarke (CPUA).
+  </p>
+
+  <form
+    name="coffee-lot-info"
+    method="POST"
+    netlify
+    netlify-honeypot="bot-field"
+    action="/lot-info/thanks/"
+    style="max-width:640px;"
+  >
+    <input type="hidden" name="form-name" value="coffee-lot-info">
+    <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+    <!-- ── FARM & CONTACT ─────────────────────────────── -->
+    <fieldset style="border:none;padding:0;margin:0 0 2rem;">
+      <legend style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:1.25rem;">Farm &amp; Contact</legend>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;">
+
+        <div>
+          <label class="field-label" for="farm_name">Farm name <span class="req">*</span></label>
+          <input id="farm_name" name="farm_name" type="text" required placeholder="e.g. Kyarusozi Coffee Farm" class="field-input">
+        </div>
+
+        <div>
+          <label class="field-label" for="region">Region / district <span class="req">*</span></label>
+          <input id="region" name="region" type="text" required placeholder="e.g. Fort Portal, Kapchorwa" class="field-input">
+        </div>
+
+        <div>
+          <label class="field-label" for="contact_name">Contact name <span class="req">*</span></label>
+          <input id="contact_name" name="contact_name" type="text" required placeholder="Full name" class="field-input">
+        </div>
+
+        <div>
+          <label class="field-label" for="phone">WhatsApp / phone <span class="req">*</span></label>
+          <input id="phone" name="phone" type="tel" required placeholder="+256 …" class="field-input">
+        </div>
+
+      </div>
+
+      <div style="margin-top:1rem;">
+        <label class="field-label" for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="Optional" class="field-input">
+      </div>
+
+      <div style="margin-top:1rem;">
+        <label class="field-label" for="social_link">Farm website or social media link
+          <span class="field-hint">Instagram, Facebook, or any page with farm information</span>
+        </label>
+        <input id="social_link" name="social_link" type="url" placeholder="https://…" class="field-input">
+      </div>
+    </fieldset>
+
+    <hr style="border:none;border-top:1px solid #eaeaea;margin:0 0 2rem;">
+
+    <!-- ── LOT DETAILS ────────────────────────────────── -->
+    <fieldset style="border:none;padding:0;margin:0 0 2rem;">
+      <legend style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:1.25rem;">Lot Details</legend>
+
+      <div>
+        <label class="field-label" for="altitude">Altitude (masl)</label>
+        <input id="altitude" name="altitude" type="number" min="0" max="3000" placeholder="e.g. 1600" class="field-input" style="max-width:200px;">
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;margin-top:1rem;">
+
+        <div>
+          <label class="field-label" for="variety">Variety / species <span class="req">*</span>
+            <span class="field-hint">SL14, SL28, Nyasaland, Robusta, Excelsa, other</span>
+          </label>
+          <input id="variety" name="variety" type="text" required placeholder="List all varieties" class="field-input">
+        </div>
+
+        <div>
+          <label class="field-label" for="processing">Processing method <span class="req">*</span></label>
+          <select id="processing" name="processing" required class="field-select">
+            <option value="" disabled selected>&mdash; select &mdash;</option>
+            <option>Washed / Fully Washed</option>
+            <option>Natural / Dry Process</option>
+            <option>Honey / Pulped Natural</option>
+            <option>Semi-washed</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="field-label" for="quantity">Available quantity (60 kg bags) <span class="req">*</span></label>
+          <input id="quantity" name="quantity" type="number" min="1" required placeholder="e.g. 20" class="field-input">
+        </div>
+
+        <div>
+          <label class="field-label" for="status">Current status</label>
+          <select id="status" name="status" class="field-select">
+            <option value="" disabled selected>&mdash; select &mdash;</option>
+            <option>Ready to ship</option>
+            <option>Currently drying</option>
+            <option>Currently processing</option>
+            <option>Still on the tree</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+      </div>
+    </fieldset>
+
+    <hr style="border:none;border-top:1px solid #eaeaea;margin:0 0 2rem;">
+
+    <!-- ── PRICING ─────────────────────────────────────── -->
+    <fieldset style="border:none;padding:0;margin:0 0 2rem;">
+      <legend style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:1.25rem;">Pricing</legend>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;">
+
+        <div>
+          <label class="field-label" for="price">Price expectation (USD/kg) <span class="req">*</span>
+            <span class="field-hint">FOB Entebbe or Mombasa</span>
+          </label>
+          <input id="price" name="price" type="text" required placeholder="e.g. 4.50" class="field-input">
+        </div>
+
+        <div>
+          <label class="field-label" for="min_order">Minimum order (bags)</label>
+          <input id="min_order" name="min_order" type="number" min="1" placeholder="e.g. 5" class="field-input">
+        </div>
+
+      </div>
+    </fieldset>
+
+    <hr style="border:none;border-top:1px solid #eaeaea;margin:0 0 2rem;">
+
+    <!-- ── QUALITY & CERTIFICATIONS ───────────────────── -->
+    <fieldset style="border:none;padding:0;margin:0 0 2.5rem;">
+      <legend style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:1.25rem;">Quality &amp; Certifications</legend>
+
+      <div>
+        <label class="field-label" for="cupping_score">Cupping score (if available)
+          <span class="field-hint">SCA score &mdash; leave blank if not scored yet</span>
+        </label>
+        <input id="cupping_score" name="cupping_score" type="text" placeholder="e.g. 84.5" class="field-input" style="max-width:200px;">
+      </div>
+
+      <div style="margin-top:1.25rem;">
+        <span class="field-label">Certifications</span>
+        <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem;">
+          <label class="check-label"><input type="checkbox" name="cert_slowfood" value="Slow Food Coffee Presidio"> Slow Food Coffee Presidio</label>
+          <label class="check-label"><input type="checkbox" name="cert_organic" value="Organic (certified)"> Organic (certified)</label>
+          <label class="check-label"><input type="checkbox" name="cert_rainforest" value="Rainforest Alliance / UTZ"> Rainforest Alliance / UTZ</label>
+          <label class="check-label"><input type="checkbox" name="cert_fairtrade" value="Fair Trade"> Fair Trade</label>
+          <label class="check-label"><input type="checkbox" name="cert_none" value="None currently"> None currently</label>
+        </div>
+      </div>
+
+      <div style="margin-top:1.25rem;">
+        <label class="field-label" for="material_link">Additional material
+          <span class="field-hint">Link to existing cupping notes, farm profile PDF, or photos</span>
+        </label>
+        <input id="material_link" name="material_link" type="url" placeholder="https://… (Google Drive, Dropbox, etc.)" class="field-input">
+      </div>
+
+      <div style="margin-top:1.25rem;">
+        <label class="field-label" for="notes">Notes</label>
+        <textarea id="notes" name="notes" rows="4" placeholder="Anything else we should know — harvest timing, special lots, packaging preferences, etc." class="field-input" style="resize:vertical;"></textarea>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="btn">Submit lot information &nbsp;↗</button>
+
+    <p style="font-size:.8rem;color:#888;margin-top:1.25rem;max-width:500px;">
+      Your pricing data is confidential and will not be shared with other farmers. It is used solely to calculate indicative landed prices for the German roasters.
+    </p>
+
+  </form>
+</div>
+</main>
+
+<style>
+  .field-label {
+    display: block;
+    font-size: .88rem;
+    font-weight: 600;
+    margin-bottom: .35rem;
+    color: #333;
+  }
+  .field-hint {
+    display: block;
+    font-weight: 400;
+    font-size: .8rem;
+    color: #888;
+    margin-top: .1rem;
+  }
+  .req { color: var(--accent); }
+  .field-input,
+  .field-select {
+    width: 100%;
+    padding: .55rem .75rem;
+    border: 1px solid #d0d0d0;
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: .95rem;
+    color: #333;
+    background: #fff;
+    transition: border-color .15s;
+  }
+  .field-input:focus,
+  .field-select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(226,125,96,.15);
+  }
+  .field-select { appearance: auto; cursor: pointer; }
+  textarea.field-input { min-height: 100px; }
+  .check-label {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .92rem;
+    cursor: pointer;
+  }
+  .check-label input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  @media (max-width: 560px) {
+    div[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
