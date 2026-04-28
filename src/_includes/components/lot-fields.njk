@@ -1,0 +1,106 @@
+{# Reusable lot fields — pass n as the lot number string #}
+<div>
+  <!-- LOT DETAILS -->
+  <p class="section-label" style="margin-bottom:1rem;">Lot Details</p>
+
+  <div>
+    <label class="field-label" for="altitude_{{ n }}">Altitude (masl)</label>
+    <input id="altitude_{{ n }}" name="lot_{{ n }}_altitude" type="number" min="0" max="3000"
+      placeholder="e.g. 1600" class="field-input" style="max-width:180px;">
+  </div>
+
+  <div class="field-grid-2" style="margin-top:1rem;">
+    <div>
+      <label class="field-label" for="variety_{{ n }}">Variety / species <span class="req">*</span>
+        <span class="field-hint">SL14, SL28, Nyasaland, Robusta, Excelsa, other</span>
+      </label>
+      <input id="variety_{{ n }}" name="lot_{{ n }}_variety" type="text"
+        {% if n == "1" %}required{% endif %}
+        placeholder="List all varieties" class="field-input">
+    </div>
+    <div>
+      <label class="field-label" for="processing_{{ n }}">Processing method <span class="req">*</span></label>
+      <select id="processing_{{ n }}" name="lot_{{ n }}_processing"
+        {% if n == "1" %}required{% endif %} class="field-select">
+        <option value="" disabled selected>&mdash; select &mdash;</option>
+        <option>Washed / Fully Washed</option>
+        <option>Natural / Dry Process</option>
+        <option>Honey / Pulped Natural</option>
+        <option>Semi-washed</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div>
+      <label class="field-label" for="quantity_{{ n }}">Available quantity (60 kg bags) <span class="req">*</span></label>
+      <input id="quantity_{{ n }}" name="lot_{{ n }}_quantity" type="number" min="1"
+        {% if n == "1" %}required{% endif %}
+        placeholder="e.g. 20" class="field-input">
+    </div>
+    <div>
+      <label class="field-label" for="status_{{ n }}">Current status</label>
+      <select id="status_{{ n }}" name="lot_{{ n }}_status" class="field-select">
+        <option value="" disabled selected>&mdash; select &mdash;</option>
+        <option>Ready to ship</option>
+        <option>Currently drying</option>
+        <option>Currently processing</option>
+        <option>Still on the tree</option>
+        <option>Other</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <p class="section-label" style="margin:1.5rem 0 1rem;">Pricing</p>
+  <div class="field-grid-2">
+    <div>
+      <label class="field-label" for="price_{{ n }}">Price expectation (USD/kg) <span class="req">*</span>
+        <span class="field-hint">FOB Entebbe or Mombasa</span>
+      </label>
+      <input id="price_{{ n }}" name="lot_{{ n }}_price" type="text"
+        {% if n == "1" %}required{% endif %}
+        placeholder="e.g. 4.50" class="field-input">
+    </div>
+    <div>
+      <label class="field-label" for="min_order_{{ n }}">Minimum order (bags)</label>
+      <input id="min_order_{{ n }}" name="lot_{{ n }}_min_order" type="number" min="1"
+        placeholder="e.g. 5" class="field-input">
+    </div>
+  </div>
+
+  <!-- QUALITY -->
+  <p class="section-label" style="margin:1.5rem 0 1rem;">Quality &amp; Certifications</p>
+
+  <div>
+    <label class="field-label" for="cupping_{{ n }}">Cupping score (if available)
+      <span class="field-hint">SCA score — leave blank if not scored yet</span>
+    </label>
+    <input id="cupping_{{ n }}" name="lot_{{ n }}_cupping_score" type="text"
+      placeholder="e.g. 84.5" class="field-input" style="max-width:180px;">
+  </div>
+
+  <div style="margin-top:1rem;">
+    <span class="field-label">Certifications</span>
+    <div style="display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem;">
+      <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_slowfood" value="Slow Food Coffee Presidio"> Slow Food Coffee Presidio</label>
+      <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_organic" value="Organic (certified)"> Organic (certified)</label>
+      <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_rainforest" value="Rainforest Alliance / UTZ"> Rainforest Alliance / UTZ</label>
+      <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_fairtrade" value="Fair Trade"> Fair Trade</label>
+      <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_none" value="None"> None currently</label>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem;">
+    <label class="field-label" for="material_{{ n }}">Additional material
+      <span class="field-hint">Link to cupping notes, farm profile PDF, or photos</span>
+    </label>
+    <input id="material_{{ n }}" name="lot_{{ n }}_material" type="url"
+      placeholder="https://… (Google Drive, Dropbox, etc.)" class="field-input">
+  </div>
+
+  <div style="margin-top:1rem;">
+    <label class="field-label" for="notes_{{ n }}">Notes</label>
+    <textarea id="notes_{{ n }}" name="lot_{{ n }}_notes" rows="3"
+      placeholder="Harvest timing, special characteristics, packaging preferences, etc."
+      class="field-input"></textarea>
+  </div>
+</div>

@@ -64,9 +64,9 @@ sustainability: |
 
   ### Trade for Aid – our values
   - **Direct trade:** At least 70% of the FOB price remains with producers — full transparency.
-  - **Investing in the future:** 1% of every exported tonne flows into reforestation & gender-equity programmes.
+  - **Slow Food commitment:** We actively support the Slow Food Coffee Presidio Uganda — promoting good, clean and fair practices from farm to cup.
   - **Holistic consulting:** From lot selection to logistics — all from one source.
-  - **Deep-rooted network:** long-term partnerships with farming families, Canephora & NGO projects in Uganda.
+  - **Deep-rooted network:** Long-term partnerships with farming families, cooperatives, and NGO projects across Uganda.
 
   **What’s behind the name “Zuricaf”?** — *zuri* (Swahili for “beautiful”) + *CAF* (Coffee). In short: beautiful Ugandan coffee.
 

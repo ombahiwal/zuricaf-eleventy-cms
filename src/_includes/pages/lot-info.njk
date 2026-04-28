@@ -1,13 +1,121 @@
 {# src/_includes/pages/lot-info.njk #}
+
+{# ── Lot fields macro ─────────────────────────────────── #}
+{% macro lotFields(n, required) %}
+<div>
+  <p class="section-label" style="margin-bottom:1rem;">Lot Details</p>
+
+  <div>
+    <label class="field-label" for="altitude_{{ n }}">Altitude (masl)</label>
+    <input id="altitude_{{ n }}" name="lot_{{ n }}_altitude" type="number" min="0" max="3000"
+      placeholder="e.g. 1600" class="field-input" style="max-width:180px;">
+  </div>
+
+  <div class="field-grid-2" style="margin-top:1rem;">
+    <div>
+      <label class="field-label" for="variety_{{ n }}">Variety / species{% if required %} <span class="req">*</span>{% endif %}
+        <span class="field-hint">SL14, SL28, Nyasaland, Robusta, Excelsa, other</span>
+      </label>
+      <input id="variety_{{ n }}" name="lot_{{ n }}_variety" type="text"
+        {% if required %}required{% endif %}
+        placeholder="List all varieties" class="field-input">
+    </div>
+    <div>
+      <label class="field-label" for="processing_{{ n }}">Processing method{% if required %} <span class="req">*</span>{% endif %}</label>
+      <select id="processing_{{ n }}" name="lot_{{ n }}_processing"
+        {% if required %}required{% endif %} class="field-select">
+        <option value="" disabled selected>&mdash; select &mdash;</option>
+        <option>Washed / Fully Washed</option>
+        <option>Natural / Dry Process</option>
+        <option>Honey / Pulped Natural</option>
+        <option>Semi-washed</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div>
+      <label class="field-label" for="quantity_{{ n }}">Available quantity (60 kg bags){% if required %} <span class="req">*</span>{% endif %}</label>
+      <input id="quantity_{{ n }}" name="lot_{{ n }}_quantity" type="number" min="1"
+        {% if required %}required{% endif %}
+        placeholder="e.g. 20" class="field-input">
+    </div>
+    <div>
+      <label class="field-label" for="status_{{ n }}">Current status</label>
+      <select id="status_{{ n }}" name="lot_{{ n }}_status" class="field-select">
+        <option value="" disabled selected>&mdash; select &mdash;</option>
+        <option>Ready to ship</option>
+        <option>Currently drying</option>
+        <option>Currently processing</option>
+        <option>Still on the tree</option>
+        <option>Other</option>
+      </select>
+    </div>
+  </div>
+
+  <p class="section-label" style="margin:1.5rem 0 1rem;">Pricing</p>
+  <div class="field-grid-2">
+    <div>
+      <label class="field-label" for="price_{{ n }}">Price expectation (USD/kg){% if required %} <span class="req">*</span>{% endif %}
+        <span class="field-hint">FOB Entebbe or Mombasa</span>
+      </label>
+      <input id="price_{{ n }}" name="lot_{{ n }}_price" type="text"
+        {% if required %}required{% endif %}
+        placeholder="e.g. 4.50" class="field-input">
+    </div>
+    <div>
+      <label class="field-label" for="min_order_{{ n }}">Minimum order (bags)</label>
+      <input id="min_order_{{ n }}" name="lot_{{ n }}_min_order" type="number" min="1"
+        placeholder="e.g. 5" class="field-input">
+    </div>
+  </div>
+
+  <p class="section-label" style="margin:1.5rem 0 1rem;">Quality &amp; Certifications</p>
+
+  <div>
+    <label class="field-label" for="cupping_{{ n }}">Cupping score (if available)
+      <span class="field-hint">SCA score — leave blank if not scored yet</span>
+    </label>
+    <input id="cupping_{{ n }}" name="lot_{{ n }}_cupping_score" type="text"
+      placeholder="e.g. 84.5" class="field-input" style="max-width:180px;">
+  </div>
+
+  <div style="margin-top:1rem;">
+    <span class="field-label">Certifications</span>
+    <div style="display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem;">
+      <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_slowfood" value="Slow Food Coffee Presidio"> Slow Food Coffee Presidio</label>
+      <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_organic" value="Organic (certified)"> Organic (certified)</label>
+      <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_rainforest" value="Rainforest Alliance / UTZ"> Rainforest Alliance / UTZ</label>
+      <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_fairtrade" value="Fair Trade"> Fair Trade</label>
+      <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_none" value="None"> None currently</label>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem;">
+    <label class="field-label" for="material_{{ n }}">Additional material
+      <span class="field-hint">Link to cupping notes, farm profile PDF, or photos</span>
+    </label>
+    <input id="material_{{ n }}" name="lot_{{ n }}_material" type="url"
+      placeholder="https://… (Google Drive, Dropbox, etc.)" class="field-input">
+  </div>
+
+  <div style="margin-top:1rem;">
+    <label class="field-label" for="notes_{{ n }}">Notes</label>
+    <textarea id="notes_{{ n }}" name="lot_{{ n }}_notes" rows="3"
+      placeholder="Harvest timing, special characteristics, packaging preferences, etc."
+      class="field-input"></textarea>
+  </div>
+</div>
+{% endmacro %}
+
+{# ── Page ─────────────────────────────────────────────── #}
 <main>
 <div class="wrapper" style="padding-top:2.5rem;padding-bottom:4rem;">
 
   <h1 style="margin-bottom:.25rem;">Coffee lot information</h1>
-  <p style="color:#666;font-size:.95rem;margin:0 0 .5rem;">
+  <p style="color:var(--fg-light);font-size:.95rem;margin:0 0 .5rem;">
     German roaster delegation &middot; Uganda, May 2026
   </p>
-  <p style="color:#555;font-size:.9rem;margin:0 0 2.5rem;max-width:560px;">
-    Please fill in one form per lot. Your data is shared only with the trade facilitation team (Lorenz Stöckert / zuricaf.com) and Dr. Ian Clarke (CPUA).
+  <p style="color:var(--fg-mid);font-size:.9rem;margin:0 0 2.5rem;max-width:560px;">
+    Please fill in one form per <strong>farm</strong>. You can add multiple lots below. Your data is shared only with the trade facilitation team (Lorenz Stöckert / zuricaf.com) and Dr. Ian Clarke (CPUA).
   </p>
 
   <form
@@ -16,56 +124,51 @@
     netlify
     netlify-honeypot="bot-field"
     action="/lot-info/thanks/"
-    style="max-width:640px;"
+    style="max-width:680px;"
+    id="lot-form"
   >
     <input type="hidden" name="form-name" value="coffee-lot-info">
     <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
 
-    <!-- ── FARMER ORGANIZATION ───────────────────────── -->
+    <!-- ── FARMER ORGANISATION ────────────────────────── -->
     <div style="margin-bottom:2rem;">
       <label class="field-label" for="farmer_org">Farmer organisation <span class="req">*</span>
-        <span class="field-hint">Select the cooperative or organisation you are submitting through</span>
+        <span class="field-hint">e.g. CPUA, Slow Food Uganda, NUCAFE, or Independent</span>
       </label>
       <input id="farmer_org" name="farmer_org" type="text" required
-        placeholder="e.g. CPUA, Slow Food Uganda, NUCAFE, Independent …"
+        placeholder="e.g. CPUA – Commercial Coffee Producers of Uganda"
         class="field-input">
     </div>
 
-    <hr style="border:none;border-top:1px solid #eaeaea;margin:0 0 2rem;">
+    <hr class="form-divider">
 
     <!-- ── FARM & CONTACT ─────────────────────────────── -->
-    <fieldset style="border:none;padding:0;margin:0 0 2rem;">
-      <legend style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:1.25rem;">Farm &amp; Contact</legend>
+    <fieldset class="form-section">
+      <legend class="section-label">Farm &amp; Contact</legend>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;">
-
+      <div class="field-grid-2">
         <div>
           <label class="field-label" for="farm_name">Farm name <span class="req">*</span></label>
           <input id="farm_name" name="farm_name" type="text" required placeholder="e.g. Kyarusozi Coffee Farm" class="field-input">
         </div>
-
         <div>
           <label class="field-label" for="region">Region / district <span class="req">*</span></label>
           <input id="region" name="region" type="text" required placeholder="e.g. Fort Portal, Kapchorwa" class="field-input">
         </div>
-
         <div>
           <label class="field-label" for="contact_name">Contact name <span class="req">*</span></label>
           <input id="contact_name" name="contact_name" type="text" required placeholder="Full name" class="field-input">
         </div>
-
         <div>
           <label class="field-label" for="phone">WhatsApp / phone <span class="req">*</span></label>
           <input id="phone" name="phone" type="tel" required placeholder="+256 …" class="field-input">
         </div>
-
       </div>
 
       <div style="margin-top:1rem;">
         <label class="field-label" for="email">Email</label>
         <input id="email" name="email" type="email" placeholder="Optional" class="field-input">
       </div>
-
       <div style="margin-top:1rem;">
         <label class="field-label" for="social_link">Farm website or social media link
           <span class="field-hint">Instagram, Facebook, or any page with farm information</span>
@@ -74,121 +177,63 @@
       </div>
     </fieldset>
 
-    <hr style="border:none;border-top:1px solid #eaeaea;margin:0 0 2rem;">
+    <hr class="form-divider">
 
-    <!-- ── LOT DETAILS ────────────────────────────────── -->
-    <fieldset style="border:none;padding:0;margin:0 0 2rem;">
-      <legend style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:1.25rem;">Lot Details</legend>
+    <!-- ── LOTS ───────────────────────────────────────── -->
+    <div id="lots-container">
 
-      <div>
-        <label class="field-label" for="altitude">Altitude (masl)</label>
-        <input id="altitude" name="altitude" type="number" min="0" max="3000" placeholder="e.g. 1600" class="field-input" style="max-width:200px;">
+      <div class="lot-block" id="lot-1">
+        <div class="lot-header">
+          <span class="lot-badge">Lot 1</span>
+        </div>
+        {{ lotFields("1", true) }}
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;margin-top:1rem;">
-
-        <div>
-          <label class="field-label" for="variety">Variety / species <span class="req">*</span>
-            <span class="field-hint">SL14, SL28, Nyasaland, Robusta, Excelsa, other</span>
-          </label>
-          <input id="variety" name="variety" type="text" required placeholder="List all varieties" class="field-input">
+      <div class="lot-block lot-extra" id="lot-2" style="display:none;">
+        <div class="lot-header">
+          <span class="lot-badge">Lot 2</span>
+          <button type="button" class="lot-remove" onclick="removeLot(2)">Remove</button>
         </div>
-
-        <div>
-          <label class="field-label" for="processing">Processing method <span class="req">*</span></label>
-          <select id="processing" name="processing" required class="field-select">
-            <option value="" disabled selected>&mdash; select &mdash;</option>
-            <option>Washed / Fully Washed</option>
-            <option>Natural / Dry Process</option>
-            <option>Honey / Pulped Natural</option>
-            <option>Semi-washed</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="field-label" for="quantity">Available quantity (60 kg bags) <span class="req">*</span></label>
-          <input id="quantity" name="quantity" type="number" min="1" required placeholder="e.g. 20" class="field-input">
-        </div>
-
-        <div>
-          <label class="field-label" for="status">Current status</label>
-          <select id="status" name="status" class="field-select">
-            <option value="" disabled selected>&mdash; select &mdash;</option>
-            <option>Ready to ship</option>
-            <option>Currently drying</option>
-            <option>Currently processing</option>
-            <option>Still on the tree</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-      </div>
-    </fieldset>
-
-    <hr style="border:none;border-top:1px solid #eaeaea;margin:0 0 2rem;">
-
-    <!-- ── PRICING ─────────────────────────────────────── -->
-    <fieldset style="border:none;padding:0;margin:0 0 2rem;">
-      <legend style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:1.25rem;">Pricing</legend>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;">
-
-        <div>
-          <label class="field-label" for="price">Price expectation (USD/kg) <span class="req">*</span>
-            <span class="field-hint">FOB Entebbe or Mombasa</span>
-          </label>
-          <input id="price" name="price" type="text" required placeholder="e.g. 4.50" class="field-input">
-        </div>
-
-        <div>
-          <label class="field-label" for="min_order">Minimum order (bags)</label>
-          <input id="min_order" name="min_order" type="number" min="1" placeholder="e.g. 5" class="field-input">
-        </div>
-
-      </div>
-    </fieldset>
-
-    <hr style="border:none;border-top:1px solid #eaeaea;margin:0 0 2rem;">
-
-    <!-- ── QUALITY & CERTIFICATIONS ───────────────────── -->
-    <fieldset style="border:none;padding:0;margin:0 0 2.5rem;">
-      <legend style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:1.25rem;">Quality &amp; Certifications</legend>
-
-      <div>
-        <label class="field-label" for="cupping_score">Cupping score (if available)
-          <span class="field-hint">SCA score &mdash; leave blank if not scored yet</span>
-        </label>
-        <input id="cupping_score" name="cupping_score" type="text" placeholder="e.g. 84.5" class="field-input" style="max-width:200px;">
+        {{ lotFields("2", false) }}
       </div>
 
-      <div style="margin-top:1.25rem;">
-        <span class="field-label">Certifications</span>
-        <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem;">
-          <label class="check-label"><input type="checkbox" name="cert_slowfood" value="Slow Food Coffee Presidio"> Slow Food Coffee Presidio</label>
-          <label class="check-label"><input type="checkbox" name="cert_organic" value="Organic (certified)"> Organic (certified)</label>
-          <label class="check-label"><input type="checkbox" name="cert_rainforest" value="Rainforest Alliance / UTZ"> Rainforest Alliance / UTZ</label>
-          <label class="check-label"><input type="checkbox" name="cert_fairtrade" value="Fair Trade"> Fair Trade</label>
-          <label class="check-label"><input type="checkbox" name="cert_none" value="None currently"> None currently</label>
+      <div class="lot-block lot-extra" id="lot-3" style="display:none;">
+        <div class="lot-header">
+          <span class="lot-badge">Lot 3</span>
+          <button type="button" class="lot-remove" onclick="removeLot(3)">Remove</button>
         </div>
+        {{ lotFields("3", false) }}
       </div>
 
-      <div style="margin-top:1.25rem;">
-        <label class="field-label" for="material_link">Additional material
-          <span class="field-hint">Link to existing cupping notes, farm profile PDF, or photos</span>
-        </label>
-        <input id="material_link" name="material_link" type="url" placeholder="https://… (Google Drive, Dropbox, etc.)" class="field-input">
+      <div class="lot-block lot-extra" id="lot-4" style="display:none;">
+        <div class="lot-header">
+          <span class="lot-badge">Lot 4</span>
+          <button type="button" class="lot-remove" onclick="removeLot(4)">Remove</button>
+        </div>
+        {{ lotFields("4", false) }}
       </div>
 
-      <div style="margin-top:1.25rem;">
-        <label class="field-label" for="notes">Notes</label>
-        <textarea id="notes" name="notes" rows="4" placeholder="Anything else we should know — harvest timing, special lots, packaging preferences, etc." class="field-input" style="resize:vertical;"></textarea>
+      <div class="lot-block lot-extra" id="lot-5" style="display:none;">
+        <div class="lot-header">
+          <span class="lot-badge">Lot 5</span>
+          <button type="button" class="lot-remove" onclick="removeLot(5)">Remove</button>
+        </div>
+        {{ lotFields("5", false) }}
       </div>
-    </fieldset>
+
+    </div>
+
+    <button type="button" id="add-lot-btn" onclick="addLot()"
+      style="display:flex;align-items:center;gap:.5rem;background:none;border:1.5px dashed var(--border);border-radius:var(--radius);padding:.65rem 1.2rem;font-family:inherit;font-size:.88rem;font-weight:600;color:var(--fg-mid);cursor:pointer;width:100%;justify-content:center;margin-bottom:2.5rem;transition:border-color .15s,color .15s;"
+      id="add-lot-btn">
+      + &nbsp;Add another lot
+    </button>
+
+    <hr class="form-divider">
 
     <button type="submit" class="btn">Submit lot information &nbsp;↗</button>
 
-    <p style="font-size:.8rem;color:#888;margin-top:1.25rem;max-width:500px;">
+    <p style="font-size:.8rem;color:var(--fg-light);margin-top:1.25rem;max-width:500px;">
       Your pricing data is confidential and will not be shared with other farmers. It is used solely to calculate indicative landed prices for the German roasters.
     </p>
 
@@ -197,58 +242,70 @@
 </main>
 
 <style>
-  .field-label {
-    display: block;
-    font-size: .88rem;
-    font-weight: 600;
-    margin-bottom: .35rem;
-    color: #333;
+  .form-divider { border:none;border-top:1px solid var(--border);margin:0 0 2rem; }
+  .form-section  { border:none;padding:0;margin:0 0 2rem; }
+  .field-grid-2  { display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem; }
+  .field-label   { display:block;font-size:.88rem;font-weight:600;margin-bottom:.35rem;color:var(--fg); }
+  .field-hint    { display:block;font-weight:400;font-size:.8rem;color:var(--fg-light);margin-top:.1rem; }
+  .req           { color:var(--accent); }
+  .field-input, .field-select {
+    width:100%;padding:.55rem .75rem;border:1px solid var(--border);border-radius:var(--radius);
+    font-family:inherit;font-size:.95rem;color:var(--fg);background:#fff;transition:border-color .15s;
   }
-  .field-hint {
-    display: block;
-    font-weight: 400;
-    font-size: .8rem;
-    color: #888;
-    margin-top: .1rem;
+  .field-input:focus, .field-select:focus {
+    outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,89,58,.12);
   }
-  .req { color: var(--accent); }
-  .field-input,
-  .field-select {
-    width: 100%;
-    padding: .55rem .75rem;
-    border: 1px solid #d0d0d0;
-    border-radius: var(--radius);
-    font-family: inherit;
-    font-size: .95rem;
-    color: #333;
-    background: #fff;
-    transition: border-color .15s;
+  textarea.field-input { min-height:90px;resize:vertical; }
+  .check-label   { display:flex;align-items:center;gap:.5rem;font-size:.92rem;cursor:pointer; }
+  .check-label input[type="checkbox"] { width:15px;height:15px;accent-color:var(--accent);flex-shrink:0; }
+  .lot-block {
+    background:var(--bg-warm);border:1px solid var(--border);border-radius:var(--radius);
+    padding:1.5rem;margin-bottom:1.25rem;
   }
-  .field-input:focus,
-  .field-select:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(226,125,96,.15);
-  }
-  .field-select { appearance: auto; cursor: pointer; }
-  textarea.field-input { min-height: 100px; }
-  .check-label {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    font-size: .92rem;
-    cursor: pointer;
-  }
-  .check-label input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
-    accent-color: var(--accent);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  @media (max-width: 560px) {
-    div[style*="grid-template-columns:1fr 1fr"] {
-      grid-template-columns: 1fr !important;
+  .lot-header { display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem; }
+  .lot-badge  { font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent); }
+  .lot-remove { background:none;border:none;font-family:inherit;font-size:.8rem;color:var(--fg-light);cursor:pointer;padding:.2rem .4rem;border-radius:4px;transition:color .15s; }
+  .lot-remove:hover { color:var(--accent); }
+  #add-lot-btn:hover { border-color:var(--accent);color:var(--accent); }
+  @media (max-width:560px) { .field-grid-2 { grid-template-columns:1fr; } }
+</style>
+
+<script>
+  var visibleLots = 1;
+  var MAX_LOTS = 5;
+
+  function addLot() {
+    if (visibleLots >= MAX_LOTS) return;
+    visibleLots++;
+    var block = document.getElementById('lot-' + visibleLots);
+    if (block) {
+      block.style.display = '';
+      block.querySelectorAll('input,select,textarea').forEach(function(el) { el.disabled = false; });
+    }
+    if (visibleLots >= MAX_LOTS) {
+      document.getElementById('add-lot-btn').style.display = 'none';
     }
   }
-</style>
+
+  function removeLot(n) {
+    var block = document.getElementById('lot-' + n);
+    if (block) {
+      block.style.display = 'none';
+      block.querySelectorAll('input,select,textarea').forEach(function(el) {
+        el.disabled = true;
+        if (el.type !== 'checkbox') el.value = '';
+        if (el.type === 'checkbox') el.checked = false;
+      });
+    }
+    visibleLots = Math.max(1, visibleLots - 1);
+    document.getElementById('add-lot-btn').style.display = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.lot-extra').forEach(function(block) {
+      block.querySelectorAll('input,select,textarea').forEach(function(el) {
+        el.disabled = true;
+      });
+    });
+  });
+</script>
