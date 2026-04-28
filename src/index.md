@@ -5,7 +5,7 @@ template: pages/home.njk
 
 hero:
   heading: "Direct specialty coffee from Uganda – clear & transparent."
-  subtext: "FCA Hamburg/Bremen • FOB Mombasa • DDP Europe"
+  subtext: "East Africa • Europe"
   cta_label: "Contact us"
   cta_href: "/#contact"
   image: "/images/hero.png"     # the CMS will swap this with an uploaded one
@@ -14,7 +14,7 @@ hero:
 services:
   - { icon: "shopping-cart", title: "Sourcing & Network Access", desc: "Exclusive lots from Uganda, certified cooperatives, storytelling collateral." }
   - { icon: "coffee", title: "Quality Management & Cupping", desc: "SCA-cuppings, Q-grader feedback, sample service." }
-  - { icon: "ship", title: "Logistics & Transport Coordination", desc: "From FOT Mbale to FCA Hamburg/Bremen or DDP Europe." }
+  - { icon: "ship", title: "Logistics & Transport Coordination", desc: "From East Africa to Europe." }
   - { icon: "euro", title: "Finance & Administration", desc: "Pre-financing, document services, reporting." }
 
 how_it_works: |
@@ -28,7 +28,7 @@ how_it_works: |
   The Commercial Coffee Producers of Uganda (CCPAU) consolidates orders across farms in Mount Elgon, Rwenzori, Masaka, Luwero and West Nile. CCPAU handles aggregation and international export.
 
   **2. Import & Customs — Zuricaf / Lorenz Stöckert**
-  German import, customs clearance, and consolidation at FCA Hamburg/Bremen or DDP delivery. No container minimum. No logistics headache for the roaster.
+  German import, customs clearance, and delivery to your roastery. No container minimum. No logistics headache for the roaster.
 
   **3. Key Account & Quality — Zuricaf**
   Permanent contact in Germany: SCA cuppings, Q-grader feedback, sample service, and repeat order management — ensuring every lot meets your specific sensory standards.
@@ -63,7 +63,7 @@ sustainability: |
   Diversity also pays socially: parallel cultivation of different crops allows smallholders to harvest year-round, stabilise income and differentiate from the bulk market.
 
   ### Trade for Aid – our values
-  - **Direct trade:** At least 70% of the FOB price remains with producers — full transparency.
+  - **Direct trade:** At least 70% of the export price remains with producers — full transparency.
   - **Slow Food commitment:** We actively support the Slow Food Coffee Presidio Uganda — promoting good, clean and fair practices from farm to cup.
   - **Holistic consulting:** From lot selection to logistics — all from one source.
   - **Deep-rooted network:** Long-term partnerships with farming families, cooperatives, and NGO projects across Uganda.
