@@ -5,22 +5,26 @@
 <div>
   <details class="accordion" {% if isFirst %}open{% endif %}>
     <summary class="accordion-summary">
-      <span>Lot Details &amp; Pricing</span>
+      <span data-en="Lot Details &amp; Pricing" data-lg="Ebikwata ku Lot &amp; Omuwendo">Lot Details &amp; Pricing</span>
       <svg data-lucide="chevron-down" width="16" height="16" class="accordion-icon"></svg>
     </summary>
     <div class="accordion-body">
 
       <div class="field-grid-2">
         <div>
-          <label class="field-label" for="variety_{{ n }}">Variety / species{% if isFirst %} <span class="req">*</span>{% endif %}
-            <span class="field-hint">SL14, SL28, Nyasaland, Robusta, Excelsa, other</span>
+          <label class="field-label" for="variety_{{ n }}">
+            <span data-en="Variety / species" data-lg="Ekika ky'emmwanyi">Variety / species</span>{% if isFirst %} <span class="req">*</span>{% endif %}
+            <span class="field-hint" data-en="SL14, SL28, Nyasaland, Robusta, Excelsa, other" data-lg="SL14, SL28, Nyasaland, Robusta, Excelsa, ebirala">SL14, SL28, Nyasaland, Robusta, Excelsa, other</span>
           </label>
           <input id="variety_{{ n }}" name="lot_{{ n }}_variety" type="text"
             {% if isFirst %}required{% endif %}
+            data-ph-en="List all varieties" data-ph-lg="Wandiika ebika byonna"
             placeholder="List all varieties" class="field-input">
         </div>
         <div>
-          <label class="field-label" for="processing_{{ n }}">Processing method</label>
+          <label class="field-label" for="processing_{{ n }}">
+            <span data-en="Processing method" data-lg="Engeri y'okukola">Processing method</span>
+          </label>
           <select id="processing_{{ n }}" name="lot_{{ n }}_processing" class="field-select">
             <option value="" disabled selected>&mdash; select &mdash;</option>
             <option>Washed / Fully Washed</option>
@@ -31,26 +35,26 @@
           </select>
         </div>
         <div>
-          <label class="field-label" for="quantity_{{ n }}">Quantity (60 kg bags){% if isFirst %} <span class="req">*</span>{% endif %}</label>
+          <label class="field-label" for="quantity_{{ n }}">
+            <span data-en="Quantity (60 kg bags)" data-lg="Obungi (amasaho ag'obuundu 60 kg)">Quantity (60 kg bags)</span>{% if isFirst %} <span class="req">*</span>{% endif %}
+          </label>
           <input id="quantity_{{ n }}" name="lot_{{ n }}_quantity" type="number" min="1"
             {% if isFirst %}required{% endif %}
+            data-ph-en="e.g. 20" data-ph-lg="Eky'okulabirako: 20"
             placeholder="e.g. 20" class="field-input">
         </div>
         <div>
-          <label class="field-label" for="altitude_{{ n }}">Altitude (masl)</label>
+          <label class="field-label" for="altitude_{{ n }}">
+            <span data-en="Altitude (masl)" data-lg="Buwanvu (masl)">Altitude (masl)</span>
+          </label>
           <input id="altitude_{{ n }}" name="lot_{{ n }}_altitude" type="number" min="0" max="3000"
+            data-ph-en="e.g. 1600" data-ph-lg="Eky'okulabirako: 1600"
             placeholder="e.g. 1600" class="field-input">
         </div>
         <div>
-          <label class="field-label" for="price_{{ n }}">Price expectation (USD/kg){% if isFirst %} <span class="req">*</span>{% endif %}
-            <span class="field-hint">FOB Entebbe or Mombasa</span>
+          <label class="field-label" for="status_{{ n }}">
+            <span data-en="Current status" data-lg="Embeera kati">Current status</span>
           </label>
-          <input id="price_{{ n }}" name="lot_{{ n }}_price" type="text"
-            {% if isFirst %}required{% endif %}
-            placeholder="e.g. 4.50" class="field-input">
-        </div>
-        <div>
-          <label class="field-label" for="status_{{ n }}">Current status</label>
           <select id="status_{{ n }}" name="lot_{{ n }}_status" class="field-select">
             <option value="" disabled selected>&mdash; select &mdash;</option>
             <option>Ready to ship</option>
@@ -62,10 +66,65 @@
         </div>
       </div>
 
-      <div style="margin-top:1rem;">
-        <label class="field-label" for="min_order_{{ n }}">Minimum order (bags)</label>
-        <input id="min_order_{{ n }}" name="lot_{{ n }}_min_order" type="number" min="1"
-          placeholder="e.g. 5" class="field-input" style="max-width:180px;">
+      <!-- Price block -->
+      <div style="margin-top:1rem;padding:1rem;background:var(--bg-warm);border:1px solid var(--border);border-radius:var(--radius);">
+        <p class="field-label" style="margin-bottom:.75rem;">
+          <span data-en="Price expectation" data-lg="Omuwendo ogw'esuubi">Price expectation</span>{% if isFirst %} <span class="req">*</span>{% endif %}
+        </p>
+        <div class="field-grid-2" style="gap:.75rem 1rem;">
+          <div style="display:flex;gap:.5rem;align-items:flex-end;">
+            <div style="flex:1;">
+              <label class="field-label" style="font-weight:400;font-size:.8rem;" for="price_{{ n }}">
+                <span data-en="Price" data-lg="Omuwendo">Price</span>
+              </label>
+              <input id="price_{{ n }}" name="lot_{{ n }}_price" type="number" min="0" step="0.01"
+                {% if isFirst %}required{% endif %}
+                data-ph-en="e.g. 4.50" data-ph-lg="Eky'okulabirako: 4.50"
+                placeholder="e.g. 4.50" class="field-input">
+            </div>
+            <div style="flex:0 0 90px;">
+              <label class="field-label" style="font-weight:400;font-size:.8rem;" for="currency_{{ n }}">
+                <span data-en="Currency" data-lg="Ensimbi">Currency</span>
+              </label>
+              <select id="currency_{{ n }}" name="lot_{{ n }}_currency" class="field-select">
+                <option value="USD" selected>USD</option>
+                <option value="UGX">UGX</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="field-label" style="font-weight:400;font-size:.8rem;" for="coffee_form_{{ n }}">
+              <span data-en="Coffee form" data-lg="Endabika y'emmwanyi">Coffee form</span>
+            </label>
+            <select id="coffee_form_{{ n }}" name="lot_{{ n }}_coffee_form" class="field-select">
+              <option value="" disabled selected>&mdash; select &mdash;</option>
+              <option value="Green">Green</option>
+              <option value="Parchment">Parchment</option>
+              <option value="Cherry">Cherry</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" style="font-weight:400;font-size:.8rem;" for="delivered_to_{{ n }}">
+              <span data-en="Delivered to" data-lg="Eggwa ery'okuweereza">Delivered to</span>
+            </label>
+            <select id="delivered_to_{{ n }}" name="lot_{{ n }}_delivered_to" class="field-select">
+              <option value="" disabled selected>&mdash; select &mdash;</option>
+              <option value="Farm gate">Farm gate</option>
+              <option value="Mill gate">Mill gate</option>
+              <option value="Kampala">Kampala</option>
+              <option value="FOB Mombasa">FOB Mombasa</option>
+              <option value="FOB Entebbe">FOB Entebbe</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" style="font-weight:400;font-size:.8rem;" for="min_order_{{ n }}">
+              <span data-en="Minimum order (bags)" data-lg="Obungi obuto obw'okugulawo">Minimum order (bags)</span>
+            </label>
+            <input id="min_order_{{ n }}" name="lot_{{ n }}_min_order" type="number" min="1"
+              data-ph-en="e.g. 5" data-ph-lg="Eky'okulabirako: 5"
+              placeholder="e.g. 5" class="field-input">
+          </div>
+        </div>
       </div>
 
     </div>
@@ -73,21 +132,23 @@
 
   <details class="accordion">
     <summary class="accordion-summary">
-      <span>Quality &amp; Certifications</span>
+      <span data-en="Quality &amp; Certifications" data-lg="Obuwombeefu &amp; Ebiwandiiko">Quality &amp; Certifications</span>
       <svg data-lucide="chevron-down" width="16" height="16" class="accordion-icon"></svg>
     </summary>
     <div class="accordion-body">
 
       <div>
-        <label class="field-label" for="cupping_{{ n }}">Cupping score (if available)
-          <span class="field-hint">SCA score — leave blank if not scored yet</span>
+        <label class="field-label" for="cupping_{{ n }}">
+          <span data-en="Cupping score (if available)" data-lg="Akalulu ak'okugezesa emmwanyi">Cupping score (if available)</span>
+          <span class="field-hint" data-en="SCA score — leave blank if not scored yet" data-lg="Akalulu ka SCA — siga nga temukigezesaako">SCA score — leave blank if not scored yet</span>
         </label>
         <input id="cupping_{{ n }}" name="lot_{{ n }}_cupping_score" type="text"
+          data-ph-en="e.g. 84.5" data-ph-lg="Eky'okulabirako: 84.5"
           placeholder="e.g. 84.5" class="field-input" style="max-width:180px;">
       </div>
 
       <div style="margin-top:1rem;">
-        <span class="field-label">Certifications</span>
+        <span class="field-label" data-en="Certifications" data-lg="Ebiwandiiko by'okukakasa">Certifications</span>
         <div style="display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem;">
           <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_slowfood" value="Slow Food Coffee Presidio"> Slow Food Coffee Presidio</label>
           <label class="check-label"><input type="checkbox" name="lot_{{ n }}_cert_organic" value="Organic (certified)"> Organic (certified)</label>
@@ -98,16 +159,22 @@
       </div>
 
       <div style="margin-top:1rem;">
-        <label class="field-label" for="material_{{ n }}">Additional material
-          <span class="field-hint">Link to cupping notes, farm profile PDF, or photos</span>
+        <label class="field-label" for="material_{{ n }}">
+          <span data-en="Additional material" data-lg="Ebintu ebirala">Additional material</span>
+          <span class="field-hint" data-en="Link to cupping notes, farm profile PDF, or photos" data-lg="Omuddo gw'ebiwandiiko, PDF, oba ebifaananyi">Link to cupping notes, farm profile PDF, or photos</span>
         </label>
         <input id="material_{{ n }}" name="lot_{{ n }}_material" type="text"
+          data-ph-en="https://… (Google Drive, Dropbox, etc.)" data-ph-lg="https://… (Google Drive, Dropbox, n'ebirala)"
           placeholder="https://… (Google Drive, Dropbox, etc.)" class="field-input">
       </div>
 
       <div style="margin-top:1rem;">
-        <label class="field-label" for="notes_{{ n }}">Notes</label>
+        <label class="field-label" for="notes_{{ n }}">
+          <span data-en="Notes" data-lg="Ebirowoozo">Notes</span>
+        </label>
         <textarea id="notes_{{ n }}" name="lot_{{ n }}_notes" rows="3"
+          data-ph-en="Harvest timing, special characteristics, packaging preferences, etc."
+          data-ph-lg="Ebbanga ery'okutema, eby'enjawulo, engeri y'okupaaka, n'ebirala"
           placeholder="Harvest timing, special characteristics, packaging preferences, etc."
           class="field-input"></textarea>
       </div>
@@ -120,6 +187,15 @@
 {# ── Page ─────────────────────────────────────────────── #}
 <main>
 <div class="wrapper" style="padding-top:2.5rem;padding-bottom:4rem;">
+
+  <!-- Language toggle -->
+  <div style="display:flex;align-items:center;justify-content:flex-end;gap:.5rem;margin-bottom:1.5rem;">
+    <span style="font-size:.8rem;color:var(--fg-light);">Language:</span>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" class="lang-btn lang-btn--active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button type="button" class="lang-btn" id="btn-lg" onclick="setLang('lg')">LG</button>
+    </div>
+  </div>
 
   <h1 style="margin-bottom:.25rem;">Coffee lot information</h1>
   <p style="color:var(--fg-light);font-size:.95rem;margin:0 0 .5rem;">
@@ -144,48 +220,73 @@
     <!-- ── FARM & CONTACT ─────────────────────────────── -->
     <details class="accordion" open>
       <summary class="accordion-summary accordion-summary--top">
-        <span>Farm &amp; Contact</span>
+        <span data-en="Farm &amp; Contact" data-lg="Oluggya &amp; Omuntu ow'okukwatako">Farm &amp; Contact</span>
         <svg data-lucide="chevron-down" width="16" height="16" class="accordion-icon"></svg>
       </summary>
       <div class="accordion-body">
 
         <div style="margin-bottom:1.25rem;">
-          <label class="field-label" for="farmer_org">Farmer organisation
-            <span class="field-hint">e.g. CPUA, Slow Food Uganda, NUCAFE, or Independent</span>
+          <label class="field-label" for="farmer_org">
+            <span data-en="Farmer organisation" data-lg="Ekibiina ky'abalimi">Farmer organisation</span>
+            <span class="field-hint" data-en="e.g. CPUA, Slow Food Uganda, NUCAFE, or Independent" data-lg="Eky'okulabirako: CPUA, Slow Food Uganda, NUCAFE, oba Wekka">e.g. CPUA, Slow Food Uganda, NUCAFE, or Independent</span>
           </label>
           <input id="farmer_org" name="farmer_org" type="text"
+            data-ph-en="e.g. CPUA – Commercial Coffee Producers of Uganda"
+            data-ph-lg="Eky'okulabirako: CPUA"
             placeholder="e.g. CPUA – Commercial Coffee Producers of Uganda"
             class="field-input">
         </div>
 
         <div class="field-grid-2">
           <div>
-            <label class="field-label" for="farm_name">Farm name <span class="req">*</span></label>
-            <input id="farm_name" name="farm_name" type="text" required placeholder="e.g. Kyarusozi Coffee Farm" class="field-input">
+            <label class="field-label" for="farm_name">
+              <span data-en="Farm name" data-lg="Erinnya ly'oluggya">Farm name</span> <span class="req">*</span>
+            </label>
+            <input id="farm_name" name="farm_name" type="text" required
+              data-ph-en="e.g. Kyarusozi Coffee Farm" data-ph-lg="Eky'okulabirako: Kyarusozi Coffee Farm"
+              placeholder="e.g. Kyarusozi Coffee Farm" class="field-input">
           </div>
           <div>
-            <label class="field-label" for="region">Region / district <span class="req">*</span></label>
-            <input id="region" name="region" type="text" required placeholder="e.g. Fort Portal, Kapchorwa" class="field-input">
+            <label class="field-label" for="region">
+              <span data-en="Region / district" data-lg="Essaza / Akaawunyisa">Region / district</span> <span class="req">*</span>
+            </label>
+            <input id="region" name="region" type="text" required
+              data-ph-en="e.g. Fort Portal, Kapchorwa" data-ph-lg="Eky'okulabirako: Fort Portal, Kapchorwa"
+              placeholder="e.g. Fort Portal, Kapchorwa" class="field-input">
           </div>
           <div>
-            <label class="field-label" for="contact_name">Contact name <span class="req">*</span></label>
-            <input id="contact_name" name="contact_name" type="text" required placeholder="Full name" class="field-input">
+            <label class="field-label" for="contact_name">
+              <span data-en="Contact name" data-lg="Erinnya ly'omuntu ow'okukwatako">Contact name</span> <span class="req">*</span>
+            </label>
+            <input id="contact_name" name="contact_name" type="text" required
+              data-ph-en="Full name" data-ph-lg="Erinnya lyona"
+              placeholder="Full name" class="field-input">
           </div>
           <div>
-            <label class="field-label" for="phone">WhatsApp / phone <span class="req">*</span></label>
-            <input id="phone" name="phone" type="tel" required placeholder="+256 …" class="field-input">
+            <label class="field-label" for="phone">
+              <span data-en="WhatsApp / phone" data-lg="WhatsApp / Essimu">WhatsApp / phone</span> <span class="req">*</span>
+            </label>
+            <input id="phone" name="phone" type="tel" required
+              data-ph-en="+256 …" data-ph-lg="+256 …"
+              placeholder="+256 …" class="field-input">
           </div>
         </div>
 
         <div style="margin-top:1rem;">
-          <label class="field-label" for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Optional" class="field-input">
+          <label class="field-label" for="email">
+            <span data-en="Email" data-lg="Email">Email</span>
+          </label>
+          <input id="email" name="email" type="email"
+            data-ph-en="Optional" data-ph-lg="Singa oyagala"
+            placeholder="Optional" class="field-input">
         </div>
         <div style="margin-top:1rem;">
-          <label class="field-label" for="social_link">Farm website or social media
-            <span class="field-hint">Instagram, Facebook, or any page with farm information</span>
+          <label class="field-label" for="social_link">
+            <span data-en="Farm website or social media" data-lg="Webusaiti oba social media">Farm website or social media</span>
+            <span class="field-hint" data-en="Instagram, Facebook, or any page with farm information" data-lg="Instagram, Facebook, oba olupapula olwonna olw'amawulire g'oluggya">Instagram, Facebook, or any page with farm information</span>
           </label>
           <input id="social_link" name="social_link" type="text"
+            data-ph-en="www.instagram.com/yourfarm or https://…" data-ph-lg="www.instagram.com/oluggya-lwo oba https://…"
             placeholder="www.instagram.com/yourfarm or https://…" class="field-input">
         </div>
 
@@ -238,10 +339,12 @@
 
     <button type="button" id="add-lot-btn" onclick="addLot()"
       style="display:flex;align-items:center;gap:.5rem;background:none;border:1.5px dashed var(--border);border-radius:var(--radius);padding:.65rem 1.2rem;font-family:inherit;font-size:.88rem;font-weight:600;color:var(--fg-mid);cursor:pointer;width:100%;justify-content:center;margin-bottom:2.5rem;transition:border-color .15s,color .15s;">
-      + &nbsp;Add another lot
+      <span data-en="+ &nbsp;Add another lot" data-lg="+ &nbsp;Gattako oluvannyuma olulala">+ &nbsp;Add another lot</span>
     </button>
 
-    <button type="submit" class="btn">Submit lot information &nbsp;↗</button>
+    <button type="submit" class="btn" id="submit-btn">
+      <span data-en="Submit lot information &nbsp;↗" data-lg="Weereza amawulire g'olot &nbsp;↗">Submit lot information &nbsp;↗</span>
+    </button>
 
     <p style="font-size:.8rem;color:var(--fg-light);margin-top:1.25rem;max-width:500px;">
       Your pricing data is confidential and will not be shared with other farmers. It is used solely to calculate indicative landed prices for the German roasters.
@@ -252,51 +355,30 @@
 </main>
 
 <style>
-  /* Accordion */
-  .accordion {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    margin-bottom: .75rem;
-    background: var(--bg);
-    overflow: hidden;
-  }
-  .accordion-summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: .9rem 1.1rem;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: .9rem;
-    list-style: none;
-    user-select: none;
-    background: var(--bg-warm);
-    transition: background .15s;
-  }
-  .accordion-summary::-webkit-details-marker { display: none; }
-  .accordion-summary:hover { background: #f0ede8; }
-  .accordion-summary--top {
-    font-size: .95rem;
-    padding: 1rem 1.1rem;
-  }
-  details[open] .accordion-icon { transform: rotate(180deg); }
-  .accordion-icon { transition: transform .2s; stroke: var(--fg-mid); flex-shrink: 0; }
-  .accordion-body { padding: 1.25rem 1.1rem; border-top: 1px solid var(--border); }
+  /* Language toggle */
+  .lang-toggle { display:flex;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden; }
+  .lang-btn { padding:.3rem .75rem;font-family:inherit;font-size:.8rem;font-weight:600;background:var(--bg);border:none;cursor:pointer;color:var(--fg-mid);transition:background .15s,color .15s; }
+  .lang-btn--active { background:var(--accent);color:#fff; }
 
-  /* Form fields */
-  .field-grid-2  { display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem; }
-  .field-label   { display:block;font-size:.88rem;font-weight:600;margin-bottom:.35rem;color:var(--fg); }
-  .field-hint    { display:block;font-weight:400;font-size:.8rem;color:var(--fg-light);margin-top:.1rem; }
-  .req           { color:var(--accent); }
-  .field-input, .field-select {
-    width:100%;padding:.55rem .75rem;border:1px solid var(--border);border-radius:var(--radius);
-    font-family:inherit;font-size:.95rem;color:var(--fg);background:#fff;transition:border-color .15s;
-  }
-  .field-input:focus, .field-select:focus {
-    outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,89,58,.12);
-  }
+  /* Accordion */
+  .accordion { border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.75rem;background:var(--bg);overflow:hidden; }
+  .accordion-summary { display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;cursor:pointer;font-weight:600;font-size:.9rem;list-style:none;user-select:none;background:var(--bg-warm);transition:background .15s; }
+  .accordion-summary::-webkit-details-marker { display:none; }
+  .accordion-summary:hover { background:#f0ede8; }
+  .accordion-summary--top { font-size:.95rem;padding:1rem 1.1rem; }
+  details[open] .accordion-icon { transform:rotate(180deg); }
+  .accordion-icon { transition:transform .2s;stroke:var(--fg-mid);flex-shrink:0; }
+  .accordion-body { padding:1.25rem 1.1rem;border-top:1px solid var(--border); }
+
+  /* Fields */
+  .field-grid-2 { display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem; }
+  .field-label  { display:block;font-size:.88rem;font-weight:600;margin-bottom:.35rem;color:var(--fg); }
+  .field-hint   { display:block;font-weight:400;font-size:.8rem;color:var(--fg-light);margin-top:.1rem; }
+  .req          { color:var(--accent); }
+  .field-input, .field-select { width:100%;padding:.55rem .75rem;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:.95rem;color:var(--fg);background:#fff;transition:border-color .15s; }
+  .field-input:focus, .field-select:focus { outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,89,58,.12); }
   textarea.field-input { min-height:90px;resize:vertical; }
-  .check-label   { display:flex;align-items:center;gap:.5rem;font-size:.92rem;cursor:pointer; }
+  .check-label  { display:flex;align-items:center;gap:.5rem;font-size:.92rem;cursor:pointer; }
   .check-label input[type="checkbox"] { width:15px;height:15px;accent-color:var(--accent);flex-shrink:0; }
 
   /* Lot blocks */
@@ -311,6 +393,25 @@
 </style>
 
 <script>
+  /* ── Language toggle ── */
+  var currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    // Toggle button styles
+    document.getElementById('btn-en').classList.toggle('lang-btn--active', lang === 'en');
+    document.getElementById('btn-lg').classList.toggle('lang-btn--active', lang === 'lg');
+    // Swap all data-en / data-lg text nodes
+    document.querySelectorAll('[data-en][data-lg]').forEach(function(el) {
+      el.innerHTML = el.getAttribute('data-' + lang);
+    });
+    // Swap placeholders
+    document.querySelectorAll('[data-ph-en][data-ph-lg]').forEach(function(el) {
+      el.placeholder = el.getAttribute('data-ph-' + lang);
+    });
+  }
+
+  /* ── Lots ── */
   var visibleLots = 1;
   var MAX_LOTS = 5;
 
@@ -321,13 +422,12 @@
     if (block) {
       block.style.display = '';
       block.querySelectorAll('input,select,textarea').forEach(function(el) { el.disabled = false; });
-      // open the first accordion in the new lot
       var firstDetails = block.querySelector('details');
       if (firstDetails) firstDetails.open = true;
+      // Apply current language to new lot
+      if (currentLang !== 'en') setLang(currentLang);
     }
-    if (visibleLots >= MAX_LOTS) {
-      document.getElementById('add-lot-btn').style.display = 'none';
-    }
+    if (visibleLots >= MAX_LOTS) document.getElementById('add-lot-btn').style.display = 'none';
     if (window.lucide) lucide.createIcons();
   }
 

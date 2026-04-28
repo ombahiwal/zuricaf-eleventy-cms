@@ -1,5 +1,4 @@
 {
-  "contact": { "email": "hallo@sortengold.de", "phone": "+41 44 123 45 67" },
   "links": [
     { "label": "Imprint", "href": "/imprint/" },
     { "label": "Privacy Policy", "href": "https://www.sortengold.de/en/policies/privacy-policy" }

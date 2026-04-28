@@ -68,7 +68,7 @@
       </div>
     </div>
     <p style="margin-top:1.5rem;font-size:.85rem;color:var(--fg-light);">
-      Pilot project 2025/26 · In partnership with CPUA (Uganda), Slow Food Uganda, and the Uganda Embassy Berlin.
+      2026 in partnership with CPUA (Uganda), Slow Food Uganda, and the Uganda Embassy Berlin.
     </p>
   </div>
 </section>
@@ -155,8 +155,44 @@
   </div>
 </section>
 
+<!-- ── Contact ───────────────────────────────────────────── -->
+<section id="contact" class="section">
+  <div class="wrapper" style="max-width:640px;">
+    <p class="section-label">Get in touch</p>
+    <h2 style="margin-bottom:.5rem;">Contact us</h2>
+    <p style="color:var(--fg-mid);margin-bottom:2rem;">Questions about sourcing, the delegation, or the supplier registration? We'll get back to you within 24 hours.</p>
+
+    <form name="contact" method="POST" netlify netlify-honeypot="bot-field" action="/contact-thanks/">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;margin-bottom:1rem;">
+        <div>
+          <label class="c-label" for="c_name">Name <span style="color:var(--accent)">*</span></label>
+          <input id="c_name" name="name" type="text" required placeholder="Your name" class="c-input">
+        </div>
+        <div>
+          <label class="c-label" for="c_email">Email <span style="color:var(--accent)">*</span></label>
+          <input id="c_email" name="email" type="email" required placeholder="your@email.com" class="c-input">
+        </div>
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <label class="c-label" for="c_message">Message <span style="color:var(--accent)">*</span></label>
+        <textarea id="c_message" name="message" required rows="5" placeholder="How can we help?" class="c-input" style="resize:vertical;"></textarea>
+      </div>
+      <button type="submit" class="btn">Send message</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .c-label { display:block;font-size:.88rem;font-weight:600;margin-bottom:.35rem;color:var(--fg); }
+  .c-input  { width:100%;padding:.55rem .75rem;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:.95rem;color:var(--fg);background:#fff;transition:border-color .15s; }
+  .c-input:focus { outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,89,58,.12); }
+</style>
+
 <!-- ── CTA ───────────────────────────────────────────────── -->
-<section id="cta" class="section">
+<section id="cta" class="section section-bg">
   <div class="wrapper cta-block">
     <h2>{{ cta.heading }}</h2>
     <p>{{ cta.text }}</p>

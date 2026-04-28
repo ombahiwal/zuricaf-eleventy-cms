@@ -332,29 +332,14 @@
   {% endif %}
 
   <!-- ── Footer ── -->
-  <footer id="contact" class="site-footer">
+  <footer class="site-footer">
     <div class="wrapper">
-      <p>{{ footer.text }}</p>
-      {% if footer.company_no %}<p>Company no.: {{ footer.company_no }}</p>{% endif %}
-
-      {% if footer.contact and (footer.contact.email or footer.contact.phone) %}
-        <p>
-          {% if footer.contact.email %}<a href="mailto:{{ footer.contact.email }}">{{ footer.contact.email }}</a>{% endif %}
-          {% if footer.contact.email and footer.contact.phone %} &nbsp;·&nbsp; {% endif %}
-          {% if footer.contact.phone %}{{ footer.contact.phone }}{% endif %}
-        </p>
-      {% endif %}
-
       <div class="footer-links">
-        {% for s in footer.social or [] %}
-          <a href="{{ s.href }}" target="_blank" rel="noopener">{{ s.label }}</a>
-        {% endfor %}
         {% for l in footer.links or [] %}
           <a href="{{ l.href }}">{{ l.label }}</a>
         {% endfor %}
       </div>
-
-      <p style="margin-top:1rem;opacity:.6;font-size:.8rem;">
+      <p style="margin-top:.75rem;opacity:.6;font-size:.8rem;">
         {{ footer.copyright or '© Zuricaf 2025' }}
       </p>
     </div>
