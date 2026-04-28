@@ -6,8 +6,8 @@ template: pages/home.njk
 hero:
   heading: "Direct specialty coffee from Uganda – clear & transparent."
   subtext: "FCA Hamburg/Bremen • FOB Mombasa • DDP Europe"
-  cta_label: "Request offers"
-  cta_href: "#cta"
+  cta_label: "Contact us"
+  cta_href: "/#contact"
   image: "/images/hero.png"     # the CMS will swap this with an uploaded one
   # video: ""                   # optional URL (YouTube/Vimeo/MP4)
 
@@ -24,8 +24,8 @@ how_it_works: |
 
   ### Three-stage supply chain
 
-  **1. Origin & Export — Dr. Ian Clarke / CPUA**
-  The Commercial Coffee Producers of Uganda (CPUA) consolidates orders across farms in Mount Elgon, Rwenzori, Masaka, Luwero and West Nile. CPUA handles aggregation and international export.
+  **1. Origin & Export — Dr. Ian Clarke / CCPAU**
+  The Commercial Coffee Producers of Uganda (CCPAU) consolidates orders across farms in Mount Elgon, Rwenzori, Masaka, Luwero and West Nile. CCPAU handles aggregation and international export.
 
   **2. Import & Customs — Zuricaf / Lorenz Stöckert**
   German import, customs clearance, and consolidation at FCA Hamburg/Bremen or DDP delivery. No container minimum. No logistics headache for the roaster.
@@ -33,7 +33,7 @@ how_it_works: |
   **3. Key Account & Quality — Zuricaf**
   Permanent contact in Germany: SCA cuppings, Q-grader feedback, sample service, and repeat order management — ensuring every lot meets your specific sensory standards.
 
-  > *Pilot project 2025/26 · In collaboration with Dr. Ian Clarke (CPUA, Uganda) and the Uganda Embassy Berlin.*
+  > *Pilot project 2025/26 · In collaboration with Dr. Ian Clarke (CCPAU, Uganda) and the Uganda Embassy Berlin.*
 
 sustainability: |
   ## Green Coffee – Why Zuricaf?
@@ -94,7 +94,7 @@ cta:
   heading: "Order samples or book a 15-min call"
   text: "We’ll get back to you within 24 h."
   buttons:
-    - { label: "Request offers", href: "https://www.notion.so/sortengold/21380df8242180a5af99fecd66eb06df?pvs=106" }
+    - { label: "Contact us", href: "/#contact" }
     - { label: "Book a call", href: "https://calendar.notion.so/meet/lorenzstckert/h932i4pxy" }
     - { label: "Supplier Registration", href: "/lot-info/" }
 ---
