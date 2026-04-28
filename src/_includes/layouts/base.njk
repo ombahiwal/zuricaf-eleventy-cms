@@ -1,144 +1,370 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }}</title>
-  <meta name="description" content="Sustainable sourcing, Slow Food coffee & climate‑resilient Liberica/Excelsa projects for specialty coffee from Uganda. FOB East Africa – FCA Europe – DDP Europe.">
-  <link rel="canonical" href="https://www.zuricaf.com/offers">
-  <!-- Accent colour & basic typography -->
-  <style>
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+  <meta name="description" content="Sustainable sourcing, Slow Food coffee &amp; climate-resilient Liberica/Excelsa projects for specialty coffee from Uganda. FOB East Africa – FCA Europe – DDP Europe.">
+  {% if page.url %}<link rel="canonical" href="https://www.zuricaf.com{{ page.url }}">{% endif %}
 
-    :root { --accent: #E27D60; --fg: #333; --bg: #fff; --radius: 8px; }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: "Karla", sans-serif; line-height: 1.6; color: var(--fg); background-color: var(--bg); }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Tokens ─────────────────────────────────────────── */
+    :root {
+      --accent:      #C8593A;
+      --accent-hover:#a8432a;
+      --fg:          #1c1c1c;
+      --fg-mid:      #555;
+      --fg-light:    #888;
+      --bg:          #ffffff;
+      --bg-warm:     #faf8f5;
+      --border:      #e6e1db;
+      --radius:      6px;
+      --max-w:       960px;
+      --section-gap: 4rem;
+    }
+
+    /* ── Reset ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: "Karla", system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--fg);
+      background: var(--bg);
+    }
+    img, video { max-width: 100%; height: auto; display: block; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    header, footer { background: #fafafa; border-bottom: 1px solid #eaeaea; }
-    .wrapper { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem; }
-    nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 1rem; font-weight: 500; }
-    .btn { display: inline-block; padding: 0.75rem 1.5rem; border-radius: var(--radius); background: var(--accent); color: #fff; font-weight: 600; border: none; cursor: pointer; transition: background 0.2s ease-in-out; }
-    .btn:hover { background: #cf6a4d; }
-    .wide-block { display: flex; flex-direction: row; align-items: stretch; gap: 2rem; }
-    .wide-block .content { flex: 1 1 50%; }
-    .wide-block img { flex: 1 1 50%; object-fit: cover; width: 100%; height: auto; }
-    .module-grid { display: grid; grid-template-columns: 40px 1fr; row-gap: 1.2rem; column-gap: 1rem; align-items: start; }
-    .module-grid svg { stroke: var(--accent); flex-shrink: 0; }
-    table.calendar { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-    .calendar th, .calendar td { border: 1px solid #e0e0e0; padding: 0.4rem 0.6rem; text-align: left; font-size: 0.9rem; }
-    .calendar thead { background: #fafafa; }
-    @media (max-width: 768px) { .wide-block { flex-direction: column; } .wide-block img { order: 1; } }
-    /* Fluid images, never overflow the container */
-    img, picture, video {
-      max-width: 100%;
-      height: auto;
-      display: block;
+
+    /* ── Layout ─────────────────────────────────────────── */
+    .wrapper {
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: 1.5rem;
     }
-  
-    .logo { height:72px; width:auto; }  
-    @media (max-width: 768px){ .logo { height:56px; } }
-    /* Optional: hero/wide image gets a nice cap + cover on large screens */
-    .wide-block > img {
+
+    /* ── Header ─────────────────────────────────────────── */
+    .site-header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .logo {
+      height: 52px;
+      width: auto;
+      flex-shrink: 0;
+    }
+    .site-nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .15rem .5rem;
+      justify-content: flex-end;
+    }
+    .site-nav a {
+      display: block;
+      padding: .35rem .6rem;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .01em;
+      color: var(--fg-mid);
+      border-radius: var(--radius);
+      transition: color .15s, background .15s;
+    }
+    .site-nav a:hover { color: var(--accent); background: var(--bg-warm); text-decoration: none; }
+
+    /* ── Buttons ─────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      padding: .65rem 1.4rem;
+      border-radius: var(--radius);
+      background: var(--accent);
+      color: #fff;
+      font-family: inherit;
+      font-size: .9rem;
+      font-weight: 600;
+      letter-spacing: .01em;
+      border: none;
+      cursor: pointer;
+      transition: background .15s;
+      text-decoration: none;
+    }
+    .btn:hover { background: var(--accent-hover); text-decoration: none; }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+    }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
+
+    /* ── Typography ─────────────────────────────────────── */
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--fg);
+    }
+    h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+    h2 { font-size: clamp(1.3rem, 3vw, 1.75rem); margin-bottom: .75rem; }
+    h3 { font-size: 1.15rem; margin-bottom: .5rem; }
+    h4 { font-size: 1rem; margin-bottom: .4rem; }
+    p  { margin-bottom: .75rem; }
+
+    /* ── Prose (markdown blocks) ─────────────────────────── */
+    .prose h2, .prose h3, .prose h4 { margin-top: 1.75rem; }
+    .prose p  { color: var(--fg-mid); }
+    .prose ul, .prose ol { padding-left: 1.4rem; margin-bottom: .75rem; }
+    .prose li { margin-bottom: .3rem; color: var(--fg-mid); }
+    .prose strong { color: var(--fg); }
+    .prose blockquote {
+      border-left: 3px solid var(--accent);
+      padding: .5rem 1rem;
+      margin: 1.25rem 0;
+      background: var(--bg-warm);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--fg-mid);
+    }
+
+    /* ── Hero ───────────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 480px;
+      align-items: stretch;
+    }
+    .hero-content {
+      padding: 4rem 3rem 4rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-content h1 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: .75rem; }
+    .hero-content .subtext { font-size: 1rem; color: var(--fg-mid); margin-bottom: 2rem; }
+    .hero-img {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+    .hero-img img {
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
     }
-    
-    .prose :where(p, ul, ol){ margin:.7rem 0; }
-.prose ul, .prose ol { padding-left:1.2rem; }
-.img-text-grid { display:grid; gap:1rem; align-items:start; }
-@media (min-width: 900px){ .img-text-grid { grid-template-columns:1.2fr 1fr; } .img-text-grid .img{ order:var(--img-order,0);} }
-img, picture, video { max-width:100%; height:auto; display:block; }
 
-  .site-footer {
-  background: #f7f7f7;
-  font-size: .9rem;
-  padding: 2rem 1rem;
-  margin-top: 3rem;
-  text-align: center;
-}
-.site-footer p { margin: .4rem 0; }
-.site-footer a { text-decoration: none; }
-.site-footer a:hover { text-decoration: underline; }
+    /* ── Sections ───────────────────────────────────────── */
+    .section { padding-block: var(--section-gap); }
+    .section-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--fg-light);
+      margin-bottom: 1.5rem;
+    }
+    .section-bg { background: var(--bg-warm); }
 
+    /* ── Module grid (services) ─────────────────────────── */
+    .module-grid {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      row-gap: 1.25rem;
+      column-gap: 1rem;
+      align-items: start;
+      margin-top: 1.5rem;
+    }
+    .module-grid svg { stroke: var(--accent); flex-shrink: 0; margin-top: 2px; }
+    .module-grid strong { display: block; margin-bottom: .15rem; }
+    .module-grid span { font-size: .9rem; color: var(--fg-mid); }
 
+    /* ── Image + Text grid ──────────────────────────────── */
+    .img-text-grid {
+      display: grid;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (min-width: 700px) {
+      .img-text-grid { grid-template-columns: 1.1fr 1fr; }
+      .img-text-grid .img-order-right { order: 1; }
+    }
+
+    /* ── Calendar table ─────────────────────────────────── */
+    .calendar {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: .9rem;
+    }
+    .calendar th, .calendar td {
+      border: 1px solid var(--border);
+      padding: .5rem .75rem;
+      text-align: left;
+    }
+    .calendar thead { background: var(--bg-warm); }
+    .calendar thead th { font-weight: 600; font-size: .8rem; letter-spacing: .03em; }
+
+    /* ── How it works (3-step) ──────────────────────────── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .step {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .step h3 { font-size: .95rem; margin-bottom: .4rem; }
+    .step p  { font-size: .875rem; color: var(--fg-mid); margin: 0; }
+
+    /* ── CTA block ──────────────────────────────────────── */
+    .cta-block {
+      text-align: center;
+      padding-block: var(--section-gap);
+    }
+    .cta-block h2 { margin-bottom: .5rem; }
+    .cta-block p  { color: var(--fg-mid); margin-bottom: 1.75rem; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+
+    /* ── Footer ─────────────────────────────────────────── */
+    .site-footer {
+      background: var(--bg-warm);
+      border-top: 1px solid var(--border);
+      padding-block: 2.5rem;
+      text-align: center;
+      font-size: .875rem;
+      color: var(--fg-mid);
+    }
+    .site-footer p { margin-bottom: .35rem; }
+    .site-footer a { color: var(--fg-mid); }
+    .site-footer a:hover { color: var(--accent); text-decoration: none; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: .25rem 1rem; justify-content: center; margin-top: .75rem; }
+
+    /* ── Responsive ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-content { padding: 3rem 0 2rem; order: 2; }
+      .hero-img { order: 1; min-height: 260px; }
+      .steps { grid-template-columns: 1fr; }
+      .header-inner { height: 60px; }
+      .logo { height: 42px; }
+      .site-nav a { font-size: .8rem; padding: .3rem .45rem; }
+    }
+
+    /* ── Video embed ─────────────────────────────────────── */
+    .video-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+
+    /* ── Gallery ─────────────────────────────────────────── */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .gallery figure { margin: 0; border-radius: var(--radius); overflow: hidden; }
   </style>
-  <!-- Lucide icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://unpkg.com/lucide@0.474.0/dist/umd/lucide.js"></script>
-  <script>window.addEventListener('DOMContentLoaded',()=>{ if (window.lucide) { lucide.createIcons(); } });</script>
 
+  <script src="https://unpkg.com/lucide@0.474.0/dist/umd/lucide.js" defer></script>
 </head>
-<header>
-  <div class="wrapper header-row" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
-    <img
-      src="{{ header.logo | default('/images/zuricaf.png') }}"
-      alt="{{ header.logo_alt | default('Zuricaf Logo') }}"
-      class="logo"
-      style="height:100px;width:auto;" />
-  <div> <br/>
-    <nav id="site-nav" class="site-nav">
-      <ul>
-        {% for item in header.links or [] %}
-          <li><a href="{{ item.href }}">{{ item.label }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
-    </div>
-  </div>
-</header>
 
 <body>
-  {{ content | safe }}
-  <script>lucide.createIcons();</script>
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/">
+        <img
+          src="{{ header.logo | default('/images/zuricaf.png') }}"
+          alt="{{ header.logo_alt | default('Zuricaf') }}"
+          class="logo">
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          {% for item in header.links or [] %}
+            {% if loop.last %}
+              <li><a href="{{ item.href }}" class="btn" style="font-size:.82rem;padding:.4rem .9rem;">{{ item.label }}</a></li>
+            {% else %}
+              <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Page content ── -->
+  {% if template %}
+    {% include template %}
+  {% else %}
+    <main>
+      <div class="wrapper section prose">
+        {{ content | safe }}
+      </div>
+    </main>
+  {% endif %}
+
+  <!-- ── Footer ── -->
+  <footer id="contact" class="site-footer">
+    <div class="wrapper">
+      <p>{{ footer.text }}</p>
+      {% if footer.company_no %}<p>Company no.: {{ footer.company_no }}</p>{% endif %}
+
+      {% if footer.contact and (footer.contact.email or footer.contact.phone) %}
+        <p>
+          {% if footer.contact.email %}<a href="mailto:{{ footer.contact.email }}">{{ footer.contact.email }}</a>{% endif %}
+          {% if footer.contact.email and footer.contact.phone %} &nbsp;·&nbsp; {% endif %}
+          {% if footer.contact.phone %}{{ footer.contact.phone }}{% endif %}
+        </p>
+      {% endif %}
+
+      <div class="footer-links">
+        {% for s in footer.social or [] %}
+          <a href="{{ s.href }}" target="_blank" rel="noopener">{{ s.label }}</a>
+        {% endfor %}
+        {% for l in footer.links or [] %}
+          <a href="{{ l.href }}">{{ l.label }}</a>
+        {% endfor %}
+      </div>
+
+      <p style="margin-top:1rem;opacity:.6;font-size:.8rem;">
+        {{ footer.copyright or '© Zuricaf 2025' }}
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
 </body>
-
-{% if template %}
-  {% include template %}
-{% else %}
-  {{ content | safe }}
-{% endif %}
-
-<footer id="contact" class="wrapper"
-        style="padding:2rem 1rem;text-align:center;font-size:0.9rem;background:#f7f7f7;margin-top:3rem;">
-  <p>
-    {{ footer.text }}
-    {% if footer.company_no %}<br />Company no.: {{ footer.company_no }}{% endif %}
-  </p>
-
-  {% if footer.contact and (footer.contact.email or footer.contact.phone) %}
-    <p>
-      {% if footer.contact.email %}<a href="mailto:{{ footer.contact.email }}">{{ footer.contact.email }}</a>{% endif %}
-      {% if footer.contact.email and footer.contact.phone %} | {% endif %}
-      {% if footer.contact.phone %}{{ footer.contact.phone }}{% endif %}
-    </p>
-  {% endif %}
-
-  {% if footer.social and footer.social.length %}
-    <p>
-      {% for s in footer.social %}
-        <a href="{{ s.href }}" target="_blank" rel="noopener">{{ s.label }}</a>{% if not loop.last %} | {% endif %}
-      {% endfor %}
-    </p>
-  {% endif %}
-
-  {% if footer.links and footer.links.length %}
-    <p>
-      {% for l in footer.links %}
-        <a href="{{ l.href }}">{{ l.label }}</a>{% if not loop.last %} | {% endif %}
-      {% endfor %}
-    </p>
-  {% endif %}
-
-<p style="opacity:.8;margin-top:.5rem;">
-  {{ (footer.copyright or '© Zuricaf [[year]]') | replace('[[year]]', site.year) }}
-</p>
-
-</footer>
-
-
 </html>

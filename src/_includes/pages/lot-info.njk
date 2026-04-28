@@ -26,15 +26,9 @@
       <label class="field-label" for="farmer_org">Farmer organisation <span class="req">*</span>
         <span class="field-hint">Select the cooperative or organisation you are submitting through</span>
       </label>
-      <select id="farmer_org" name="farmer_org" required class="field-select">
-        <option value="" disabled selected>&mdash; select &mdash;</option>
-        <option value="CPUA">CPUA – Commercial Coffee Producers of Uganda</option>
-        <option value="Slow Food Uganda">Slow Food Uganda</option>
-        <option value="NUCAFE">NUCAFE – National Union of Coffee Agribusinesses</option>
-        <option value="UGACOF">UGACOF</option>
-        <option value="Independent">Independent (no organisation)</option>
-        <option value="Other">Other</option>
-      </select>
+      <input id="farmer_org" name="farmer_org" type="text" required
+        placeholder="e.g. CPUA, Slow Food Uganda, NUCAFE, Independent …"
+        class="field-input">
     </div>
 
     <hr style="border:none;border-top:1px solid #eaeaea;margin:0 0 2rem;">

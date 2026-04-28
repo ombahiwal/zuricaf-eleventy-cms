@@ -1,111 +1,169 @@
 {# src/_includes/pages/home.njk #}
-<!-- Navigation stays as-is -->
 
-<!-- Hero -->
-<section class="wide-block" style="margin-top:0;">
-  <div class="content wrapper">
-    <h1>{{ hero.heading }}</h1>
-    {% if hero.subtext %}<p>{{ hero.subtext }}</p>{% endif %}
-    {% if hero.cta_label and hero.cta_href %}
-      <a href="{{ hero.cta_href }}" class="btn" style="margin-top:1rem;">{{ hero.cta_label }}</a>
-    {% endif %}
-  </div>
-
-  {% if hero.video %}
-    <video src="{{ hero.video }}" controls playsinline></video>
-  {% else %}
-    <img src="{{ hero.image }}" alt="Zuricaf hero">
-  {% endif %}
-</section>
-
-<!-- Services -->
-<section id="services" class="wrapper" style="padding-top:3rem;">
-  <h2>Services &amp; Modules</h2>
-  <div class="module-grid" style="margin-top:1.5rem;">
-    {% for item in services %}
-      {% if item.icon %}<svg data-lucide="{{ item.icon }}"></svg>{% else %}<div></div>{% endif %}
-      <div><strong>{{ item.title }}</strong><br />{{ item.desc }}</div>
-    {% endfor %}
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<section class="wrapper" style="padding-block: 3rem 2rem;">
+  <div class="hero">
+    <div class="hero-content">
+      <p class="section-label">Direct from Uganda</p>
+      <h1>{{ hero.heading }}</h1>
+      {% if hero.subtext %}<p class="subtext">{{ hero.subtext }}</p>{% endif %}
+      {% if hero.cta_label and hero.cta_href %}
+        <div>
+          <a href="{{ hero.cta_href }}" class="btn">{{ hero.cta_label }}</a>
+        </div>
+      {% endif %}
+    </div>
+    <div class="hero-img">
+      {% if hero.video %}
+        <video src="{{ hero.video }}" controls playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+      {% else %}
+        <img src="{{ hero.image }}" alt="Zuricaf hero">
+      {% endif %}
+    </div>
   </div>
 </section>
 
-<!-- How it works -->
+<!-- ── Services ──────────────────────────────────────────── -->
+<section id="services" class="section-bg" style="padding-block: var(--section-gap);">
+  <div class="wrapper">
+    <p class="section-label">What we offer</p>
+    <h2>Services &amp; Modules</h2>
+    <div class="module-grid">
+      {% for item in services %}
+        {% if item.icon %}
+          <svg data-lucide="{{ item.icon }}" width="20" height="20"></svg>
+        {% else %}
+          <div></div>
+        {% endif %}
+        <div>
+          <strong>{{ item.title }}</strong>
+          <span>{{ item.desc }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ── How it works ───────────────────────────────────────── -->
 {% if how_it_works %}
-<section id="how-it-works" class="wrapper" style="padding-top:3rem;">
-  <div class="prose">{{ how_it_works | markdown | safe }}</div>
+<section id="how-it-works" class="section">
+  <div class="wrapper">
+    <p class="section-label">The model</p>
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Origin &amp; Export</h3>
+        <p>Dr. Ian Clarke / CPUA consolidates lots across Ugandan farms and handles aggregation and international export.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Import &amp; Customs</h3>
+        <p>Zuricaf handles German import, customs clearance, and FCA Hamburg/Bremen or DDP delivery — from 10 bags.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Key Account &amp; Quality</h3>
+        <p>Permanent contact in Germany: SCA cuppings, Q-grader feedback, sample service, and repeat order management.</p>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem;font-size:.85rem;color:var(--fg-light);">
+      Pilot project 2025/26 · In collaboration with Dr. Ian Clarke (CPUA, Uganda) and the Uganda Embassy Berlin.
+    </p>
+  </div>
 </section>
 {% endif %}
 
-<!-- Sustainability -->
-<section id="sustainability" class="wrapper" style="padding-top:3rem;">
-
-  {{ sustainability | markdown | safe }} {# markdown renders to HTML #}
+<!-- ── Sustainability ─────────────────────────────────────── -->
+<section id="sustainability" class="section section-bg">
+  <div class="wrapper">
+    <p class="section-label">Our values</p>
+    <div class="prose">{{ sustainability | markdown | safe }}</div>
+  </div>
 </section>
 
-<!-- Liberica -->
-<section id="liberica" class="wrapper" style="padding-top:3rem;">
-  {{ liberica | markdown | safe }}
+<!-- ── Liberica ──────────────────────────────────────────── -->
+<section id="liberica" class="section">
+  <div class="wrapper">
+    <p class="section-label">Specialty varieties</p>
+    <div class="prose">{{ liberica | markdown | safe }}</div>
+  </div>
 </section>
 
-{# Render new Sections if present #}
+{# Additional CMS sections #}
 {% if sections and sections.length %}
   {% for s in sections %}
     {% if s.type == "text" %}
-      <section{% if s.id %} id="{{ s.id }}"{% endif %} class="wrapper" style="padding-top:3rem;">
-        {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
-        <div class="prose">{{ s.body | markdown | safe }}</div>
+      <section{% if s.id %} id="{{ s.id }}"{% endif %} class="section">
+        <div class="wrapper">
+          {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+          <div class="prose">{{ s.body | markdown | safe }}</div>
+        </div>
       </section>
 
     {% elif s.type == "image_text" %}
-      <section{% if s.id %} id="{{ s.id }}"{% endif %} class="wrapper" style="padding-top:3rem;">
-        {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
-        <div class="img-text-grid" style="{% if s.image_right %}--img-order:1{% endif %}">
-          <div class="img">{% if s.src %}<img src="{{ s.src }}" alt="{{ s.alt }}">{% endif %}</div>
-          <div class="txt">{{ s.body | markdown | safe }}</div>
+      <section{% if s.id %} id="{{ s.id }}"{% endif %} class="section">
+        <div class="wrapper">
+          {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+          <div class="img-text-grid">
+            <div class="img{% if s.image_right %} img-order-right{% endif %}">
+              {% if s.src %}<img src="{{ s.src }}" alt="{{ s.alt }}" style="border-radius:var(--radius);">{% endif %}
+            </div>
+            <div class="prose">{{ s.body | markdown | safe }}</div>
+          </div>
         </div>
       </section>
 
     {% elif s.type == "cta" %}
-      <section{% if s.id %} id="{{ s.id }}"{% endif %} class="wrapper" style="padding:3rem 1rem;text-align:center;">
-        <h2>{{ s.heading }}</h2>
-        <p>{{ s.text }}</p>
-        {% for b in s.buttons or [] %}
-          <a class="btn" href="{{ b.href }}" style="margin:.5rem;">{{ b.label }}</a>
-        {% endfor %}
+      <section{% if s.id %} id="{{ s.id }}"{% endif %} class="section-bg" style="padding-block:var(--section-gap);">
+        <div class="wrapper cta-block">
+          <h2>{{ s.heading }}</h2>
+          <p>{{ s.text }}</p>
+          <div class="btn-group">
+            {% for b in s.buttons or [] %}
+              <a class="btn" href="{{ b.href }}">{{ b.label }}</a>
+            {% endfor %}
+          </div>
+        </div>
       </section>
     {% endif %}
   {% endfor %}
-{% else %}
-  {# Fallback to your existing legacy sections here (leave your current code) #}
 {% endif %}
 
+<!-- ── Harvest Calendar ───────────────────────────────────── -->
+<section id="calendar" class="section section-bg">
+  <div class="wrapper">
+    <p class="section-label">Seasonality</p>
+    <h2>Uganda Harvest Calendar <span style="font-size:.8rem;font-weight:400;color:var(--fg-light);">(indicative – varies by micro-climate)</span></h2>
+    <div style="overflow-x:auto;margin-top:1rem;">
+      <table class="calendar">
+        <thead>
+          <tr><th>Region</th><th>Type</th><th>Main Crop</th><th>Fly Crop</th></tr>
+        </thead>
+        <tbody>
+          {% for row in calendar %}
+            <tr>
+              <td>{{ row.region }}</td>
+              <td>{{ row.type }}</td>
+              <td>{{ row.main }}</td>
+              <td>{{ row.fly }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-
-
-
-
-<!-- Calendar -->
-<section id="calendar" class="wrapper" style="padding-top:3rem;">
-  <h2>Uganda Harvest Calendar <span style="font-size:0.8rem;font-weight:400;">(indicative – can vary by micro-climate)</span></h2>
-  <table class="calendar">
-    <thead>
-      <tr><th>Region</th><th>Type</th><th>Main Crop</th><th>Fly Crop</th></tr>
-    </thead>
-    <tbody>
-      {% for row in calendar %}
-        <tr><td>{{ row.region }}</td><td>{{ row.type }}</td><td>{{ row.main }}</td><td>{{ row.fly }}</td></tr>
+<!-- ── CTA ───────────────────────────────────────────────── -->
+<section id="cta" class="section">
+  <div class="wrapper cta-block">
+    <h2>{{ cta.heading }}</h2>
+    <p>{{ cta.text }}</p>
+    <div class="btn-group">
+      {% for b in cta.buttons %}
+        <a href="{{ b.href }}" class="btn{% if loop.index > 1 %} btn-outline{% endif %}">{{ b.label }}</a>
       {% endfor %}
-    </tbody>
-  </table>
+    </div>
+  </div>
 </section>
-
-<!-- CTA -->
-<section id="cta" class="wrapper" style="padding:3rem 1rem;text-align:center;">
-  <h2 style="margin-bottom:0.5rem;">{{ cta.heading }}</h2>
-  <p>{{ cta.text }}</p>
-  {% for b in cta.buttons %}
-    <a href="{{ b.href }}" class="btn" style="margin:.5rem;">{{ b.label }}</a>
-  {% endfor %}
-</section>
-
-
