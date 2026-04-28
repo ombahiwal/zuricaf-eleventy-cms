@@ -8,6 +8,6 @@
     { "label": "Liberica Project", "href": "/#liberica" },
     { "label": "Harvest Calendar", "href": "/#calendar" },
     { "label": "Contact", "href": "/#contact" },
-    { "label": "Submit Lot", "href": "/lot-info/" }
+    { "label": "Supplier Registration", "href": "/lot-info/" }
   ]
 }
