@@ -29,6 +29,13 @@
   </div>
 </section>
 
+<!-- How it works -->
+{% if how_it_works %}
+<section id="how-it-works" class="wrapper" style="padding-top:3rem;">
+  <div class="prose">{{ how_it_works | markdown | safe }}</div>
+</section>
+{% endif %}
+
 <!-- Sustainability -->
 <section id="sustainability" class="wrapper" style="padding-top:3rem;">
 

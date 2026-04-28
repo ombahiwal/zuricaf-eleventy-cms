@@ -3,6 +3,7 @@
   "logo_alt": "Zuricaf Logo",
   "links": [
     { "label": "Services", "href": "/#services" },
+    { "label": "How It Works", "href": "/#how-it-works" },
     { "label": "Sustainability", "href": "/#sustainability" },
     { "label": "Slow Food", "href": "/#slowfood" },
     { "label": "Liberica Project", "href": "/#liberica" },

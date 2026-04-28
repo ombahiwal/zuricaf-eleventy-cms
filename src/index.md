@@ -17,6 +17,24 @@ services:
   - { icon: "ship", title: "Logistics & Transport Coordination", desc: "From FOT Mbale to FCA Hamburg/Bremen or DDP Europe." }
   - { icon: "euro", title: "Finance & Administration", desc: "Pre-financing, document services, reporting." }
 
+how_it_works: |
+  ## How It Works – End-to-End Direct Trade
+
+  Zuricaf runs an integrated service model purpose-built for small-to-medium German roasters who want direct access to Ugandan specialty lots without the complexity of a full container shipment (10–50 bags per roaster).
+
+  ### Three-stage supply chain
+
+  **1. Origin & Export — Dr. Ian Clarke / CPUA**
+  The Commercial Coffee Producers of Uganda (CPUA) consolidates orders across farms in Mount Elgon, Rwenzori, Masaka, Luwero and West Nile. CPUA handles aggregation and international export.
+
+  **2. Import & Customs — Zuricaf / Lorenz Stöckert**
+  German import, customs clearance, and consolidation at FCA Hamburg/Bremen or DDP delivery. No container minimum. No logistics headache for the roaster.
+
+  **3. Key Account & Quality — Zuricaf**
+  Permanent contact in Germany: SCA cuppings, Q-grader feedback, sample service, and repeat order management — ensuring every lot meets your specific sensory standards.
+
+  > *Pilot project 2025/26 · In collaboration with Dr. Ian Clarke (CPUA, Uganda) and the Uganda Embassy Berlin.*
+
 sustainability: |
   ## Green Coffee – Why Zuricaf?
 

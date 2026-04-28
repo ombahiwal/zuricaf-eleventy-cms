@@ -21,6 +21,24 @@
     <input type="hidden" name="form-name" value="coffee-lot-info">
     <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
 
+    <!-- ── FARMER ORGANIZATION ───────────────────────── -->
+    <div style="margin-bottom:2rem;">
+      <label class="field-label" for="farmer_org">Farmer organisation <span class="req">*</span>
+        <span class="field-hint">Select the cooperative or organisation you are submitting through</span>
+      </label>
+      <select id="farmer_org" name="farmer_org" required class="field-select">
+        <option value="" disabled selected>&mdash; select &mdash;</option>
+        <option value="CPUA">CPUA – Commercial Coffee Producers of Uganda</option>
+        <option value="Slow Food Uganda">Slow Food Uganda</option>
+        <option value="NUCAFE">NUCAFE – National Union of Coffee Agribusinesses</option>
+        <option value="UGACOF">UGACOF</option>
+        <option value="Independent">Independent (no organisation)</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <hr style="border:none;border-top:1px solid #eaeaea;margin:0 0 2rem;">
+
     <!-- ── FARM & CONTACT ─────────────────────────────── -->
     <fieldset style="border:none;padding:0;margin:0 0 2rem;">
       <legend style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:1.25rem;">Farm &amp; Contact</legend>
