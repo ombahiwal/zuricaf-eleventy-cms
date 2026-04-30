@@ -23,9 +23,9 @@
         </div>
         <div>
           <label class="field-label" for="processing_{{ n }}">
-            <span data-en="Processing method" data-lg="Engeri y'okukola">Processing method</span>
+            <span data-en="Processing method" data-lg="Engeri y'okukola">Processing method</span> <span class="req">*</span>
           </label>
-          <select id="processing_{{ n }}" name="lot_{{ n }}_processing" class="field-select">
+          <select id="processing_{{ n }}" name="lot_{{ n }}_processing" required class="field-select">
             <option value="" disabled selected>&mdash; select &mdash;</option>
             <option>Washed / Fully Washed</option>
             <option>Natural / Dry Process</option>
@@ -36,10 +36,9 @@
         </div>
         <div>
           <label class="field-label" for="quantity_{{ n }}">
-            <span data-en="Quantity (60 kg bags)" data-lg="Obungi (amasaho ag'obuundu 60 kg)">Quantity (60 kg bags)</span>{% if isFirst %} <span class="req">*</span>{% endif %}
+            <span data-en="Quantity (60 kg bags)" data-lg="Obungi (amasaho ag'obuundu 60 kg)">Quantity (60 kg bags)</span> <span class="req">*</span>
           </label>
-          <input id="quantity_{{ n }}" name="lot_{{ n }}_quantity" type="number" min="1"
-            {% if isFirst %}required{% endif %}
+          <input id="quantity_{{ n }}" name="lot_{{ n }}_quantity" type="number" min="1" required
             data-ph-en="e.g. 20" data-ph-lg="Eky'okulabirako: 20"
             placeholder="e.g. 20" class="field-input">
         </div>
@@ -68,19 +67,18 @@
 
       <!-- Price block -->
       <div style="margin-top:1rem;padding:1rem;background:var(--bg-warm);border:1px solid var(--border);border-radius:var(--radius);">
-        <p class="field-label" style="margin-bottom:.25rem;">
-          <span data-en="FOT price (Free on Truck)" data-lg="Omuwendo FOT (Free on Truck)">FOT price (Free on Truck)</span>{% if isFirst %} <span class="req">*</span>{% endif %}
+        <p class="field-label" style="margin-bottom:.1rem;">
+          <span data-en="Price per kg (USD)" data-lg="Omuwendo ku kg (USD)">Price per kg (USD)</span> <span class="req">*</span>
         </p>
         <p style="font-size:.78rem;color:var(--fg-light);margin-bottom:.75rem;">
-          <span data-en="Your price at the collection point — logistics &amp; agent fees are added by Zuricaf." data-lg="Omuwendo gwo mu kifo ky'okukunganya — Zuricaf gw'agattako ebitifo n'empeera z'abasuubuzi.">Your price at the collection point — logistics &amp; agent fees are added by Zuricaf.</span>
+          <span data-en="Your price at collection point or farm gate" data-lg="Omuwendo gwo mu kifo ky'okukunganya oba ku luggya lw'oluggya">Your price at collection point or farm gate</span>
         </p>
-        <div style="display:flex;gap:.5rem;align-items:flex-end;margin-bottom:1rem;">
+        <div style="display:flex;gap:.5rem;align-items:flex-end;margin-bottom:.75rem;">
           <div style="flex:1;">
             <label class="field-label" style="font-weight:400;font-size:.8rem;" for="price_{{ n }}">
               <span data-en="Amount" data-lg="Omuwendo">Amount</span>
             </label>
-            <input id="price_{{ n }}" name="lot_{{ n }}_price" type="number" min="0" step="0.01"
-              {% if isFirst %}required{% endif %}
+            <input id="price_{{ n }}" name="lot_{{ n }}_price" type="number" min="0" step="0.01" required
               data-ph-en="e.g. 4.50" data-ph-lg="Eky'okulabirako: 4.50"
               placeholder="e.g. 4.50" class="field-input">
           </div>
@@ -88,12 +86,16 @@
             <label class="field-label" style="font-weight:400;font-size:.8rem;" for="currency_{{ n }}">
               <span data-en="Currency" data-lg="Ensimbi">Currency</span>
             </label>
-            <select id="currency_{{ n }}" name="lot_{{ n }}_currency" class="field-select">
+            <select id="currency_{{ n }}" name="lot_{{ n }}_currency" required class="field-select">
               <option value="USD" selected>USD</option>
               <option value="UGX">UGX</option>
             </select>
           </div>
         </div>
+        <label class="check-label" style="font-size:.85rem;margin-bottom:.75rem;">
+          <input type="checkbox" name="lot_{{ n }}_excl_milling" value="Excludes milling/processing costs">
+          <span data-en="This price excludes milling / processing costs" data-lg="Omuwendo guno tegutereka ebisente by'okusengeja / okukola">This price excludes milling / processing costs</span>
+        </label>
         <div>
           <label class="field-label" style="font-weight:400;font-size:.8rem;" for="min_order_{{ n }}">
             <span data-en="Minimum order (bags)" data-lg="Obungi obuto obw'okugulawo">Minimum order (bags)</span>
@@ -265,6 +267,16 @@
           <input id="social_link" name="social_link" type="text"
             data-ph-en="www.instagram.com/yourfarm or https://…" data-ph-lg="www.instagram.com/oluggya-lwo oba https://…"
             placeholder="www.instagram.com/yourfarm or https://…" class="field-input">
+        </div>
+
+        <div style="margin-top:1rem;">
+          <label class="field-label" for="programme_stop">
+            <span data-en="Which programme stop / date are you part of?" data-lg="Olimu ggwe ki mu mutendera gw'olugendo?">Which programme stop / date are you part of?</span>
+            <span class="field-hint" data-en="e.g. Sample only · In-person visit, 5 May" data-lg="Eky'okulabirako: Sampuli yokka · Okujja mu maaso, 5 May">e.g. Sample only · In-person visit, 5 May</span>
+          </label>
+          <input id="programme_stop" name="programme_stop" type="text"
+            data-ph-en="e.g. In-person visit, 5 May" data-ph-lg="Eky'okulabirako: Okujja mu maaso, 5 May"
+            placeholder="e.g. In-person visit, 5 May" class="field-input">
         </div>
 
       </div>
