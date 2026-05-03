@@ -116,14 +116,25 @@
     </summary>
     <div class="accordion-body">
 
-      <div>
-        <label class="field-label" for="cupping_{{ n }}">
-          <span data-en="Cupping score (if available)" data-lg="Akalulu ak'okugezesa emmwanyi">Cupping score (if available)</span>
-          <span class="field-hint" data-en="SCA score — leave blank if not scored yet" data-lg="Akalulu ka SCA — siga nga temukigezesaako">SCA score — leave blank if not scored yet</span>
-        </label>
-        <input id="cupping_{{ n }}" name="lot_{{ n }}_cupping_score" type="text"
-          data-ph-en="e.g. 84.5" data-ph-lg="Eky'okulabirako: 84.5"
-          placeholder="e.g. 84.5" class="field-input" style="max-width:180px;">
+      <div class="field-grid-2">
+        <div>
+          <label class="field-label" for="cupping_{{ n }}">
+            <span data-en="Cupping score (if available)" data-lg="Akalulu ak'okugezesa emmwanyi">Cupping score (if available)</span>
+            <span class="field-hint" data-en="SCA score — leave blank if not scored yet" data-lg="Akalulu ka SCA — siga nga temukigezesaako">SCA score — leave blank if not scored yet</span>
+          </label>
+          <input id="cupping_{{ n }}" name="lot_{{ n }}_cupping_score" type="text"
+            data-ph-en="e.g. 84.5" data-ph-lg="Eky'okulabirako: 84.5"
+            placeholder="e.g. 84.5" class="field-input">
+        </div>
+        <div>
+          <label class="field-label" for="sample_id_{{ n }}">
+            <span data-en="Sample ID (if cupped)" data-lg="Namba y'omusanvu (singa bagezesezza)">Sample ID (if cupped)</span>
+            <span class="field-hint" data-en="Reference used in cupping session" data-lg="Omuddo ogukozesebwa mu kugeza">Reference used in cupping session</span>
+          </label>
+          <input id="sample_id_{{ n }}" name="lot_{{ n }}_sample_id" type="text"
+            data-ph-en="e.g. UG-2026-042" data-ph-lg="Eky'okulabirako: UG-2026-042"
+            placeholder="e.g. UG-2026-042" class="field-input">
+        </div>
       </div>
 
       <div style="margin-top:1rem;">
@@ -277,6 +288,16 @@
           <input id="programme_stop" name="programme_stop" type="text"
             data-ph-en="e.g. In-person visit, 5 May" data-ph-lg="Eky'okulabirako: Okujja mu maaso, 5 May"
             placeholder="e.g. In-person visit, 5 May" class="field-input">
+        </div>
+
+        <div style="margin-top:1rem;">
+          <label class="field-label" for="existing_buyers">
+            <span data-en="Importers / exporters you already work with" data-lg="Abayuzi / abatuuza b'enjawulo mwe mukolagana">Importers / exporters you already work with</span>
+            <span class="field-hint" data-en="Helps us understand your current trade relationships" data-lg="Binaatuyamba okutegeera enkolagana zo kati">Helps us understand your current trade relationships</span>
+          </label>
+          <input id="existing_buyers" name="existing_buyers" type="text"
+            data-ph-en="e.g. Sucafina, Schluter, local exporter name…" data-ph-lg="Eky'okulabirako: Sucafina, Schluter, erinnya ly'omutuuza…"
+            placeholder="e.g. Sucafina, Schluter, local exporter name…" class="field-input">
         </div>
 
       </div>
