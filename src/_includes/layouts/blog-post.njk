@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} – Sortengold Blog</title>
+  <meta name="description" content="{{ description }}">
+  {% if page.url %}<link rel="canonical" href="https://www.zuricaf.com{{ page.url }}">{% endif %}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent:      #C8593A;
+      --accent-hover:#a8432a;
+      --fg:          #1c1c1c;
+      --fg-mid:      #555;
+      --fg-light:    #888;
+      --bg:          #ffffff;
+      --bg-warm:     #faf8f5;
+      --border:      #e6e1db;
+      --radius:      6px;
+      --max-w:       960px;
+      --section-gap: 4rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: "Karla", system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--fg);
+      background: var(--bg);
+    }
+    img, video { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrapper { max-width: var(--max-w); margin-inline: auto; padding-inline: 1.5rem; }
+
+    /* Header */
+    .site-header { background: var(--bg); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: var(--max-w); margin-inline: auto; padding-inline: 1.5rem; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .logo { height: 52px; width: auto; flex-shrink: 0; }
+    .site-nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: .15rem .5rem; justify-content: flex-end; }
+    .site-nav a { display: block; padding: .35rem .6rem; font-size: .85rem; font-weight: 500; color: var(--fg-mid); border-radius: var(--radius); transition: color .15s, background .15s; }
+    .site-nav a:hover { color: var(--accent); background: var(--bg-warm); text-decoration: none; }
+
+    /* Buttons */
+    .btn { display: inline-block; padding: .65rem 1.4rem; border-radius: var(--radius); background: var(--accent); color: #fff; font-family: inherit; font-size: .9rem; font-weight: 600; border: none; cursor: pointer; transition: background .15s; text-decoration: none; }
+    .btn:hover { background: var(--accent-hover); text-decoration: none; }
+    .btn-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+
+    /* Typography */
+    h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; color: var(--fg); }
+    h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+    h2 { font-size: clamp(1.3rem, 3vw, 1.75rem); margin-bottom: .75rem; }
+    h3 { font-size: 1.15rem; margin-bottom: .5rem; }
+    p  { margin-bottom: .75rem; }
+
+    .section-label { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--fg-light); margin-bottom: 1.5rem; }
+
+    /* Prose */
+    .prose h2, .prose h3 { margin-top: 2rem; }
+    .prose p  { color: var(--fg-mid); }
+    .prose ul, .prose ol { padding-left: 1.4rem; margin-bottom: .75rem; }
+    .prose li { margin-bottom: .3rem; color: var(--fg-mid); }
+    .prose strong { color: var(--fg); }
+    .prose blockquote {
+      border-left: 3px solid var(--accent);
+      padding: .5rem 1rem;
+      margin: 1.25rem 0;
+      background: var(--bg-warm);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--fg-mid);
+    }
+    .prose figure { margin: 2rem 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+    .prose figure img { width: 100%; height: 320px; object-fit: cover; }
+    .prose figcaption { padding: .6rem 1rem; font-size: .8rem; color: var(--fg-light); background: var(--bg-warm); }
+    .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .9rem; }
+    .prose table th, .prose table td { border: 1px solid var(--border); padding: .5rem .75rem; text-align: left; }
+    .prose table thead { background: var(--bg-warm); }
+    .prose table thead th { font-weight: 600; font-size: .8rem; letter-spacing: .03em; }
+    .prose hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0 1.5rem; }
+    .prose ol.sources { font-size: .82rem; color: var(--fg-light); padding-left: 1.25rem; line-height: 1.7; }
+
+    /* Hero section */
+    .blog-hero { background: var(--bg-warm); border-bottom: 1px solid var(--border); padding-block: 3.5rem 3rem; }
+    .blog-hero h1 { max-width: 720px; margin-bottom: .75rem; }
+    .blog-hero .subtitle { font-size: 1.05rem; color: var(--fg-mid); max-width: 640px; margin-bottom: 1.5rem; }
+    .blog-hero .meta { font-size: .85rem; color: var(--fg-light); }
+
+    /* Cover image */
+    .blog-cover { margin-block: 2.5rem 0; }
+    .blog-cover figure { margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+    .blog-cover figure img { width: 100%; height: 380px; object-fit: cover; }
+    .blog-cover figcaption { padding: .6rem 1rem; font-size: .8rem; color: var(--fg-light); background: var(--bg-warm); }
+
+    /* CTA */
+    .cta-block { text-align: center; }
+    .cta-block h2 { margin-bottom: .5rem; }
+    .cta-block p  { color: var(--fg-mid); margin-bottom: 1.75rem; }
+
+    /* Footer */
+    .site-footer { background: var(--bg-warm); border-top: 1px solid var(--border); padding-block: 2.5rem; text-align: center; font-size: .875rem; color: var(--fg-mid); }
+    .site-footer p { margin-bottom: .35rem; }
+    .site-footer a { color: var(--fg-mid); }
+    .site-footer a:hover { color: var(--accent); text-decoration: none; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: .25rem 1rem; justify-content: center; margin-top: .75rem; }
+
+    @media (max-width: 768px) {
+      .header-inner { height: 60px; }
+      .logo { height: 42px; }
+      .site-nav a { font-size: .8rem; padding: .3rem .45rem; }
+      .blog-cover figure img { height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/"><img src="{{ header.logo | default('/images/zuricaf.png') }}" alt="{{ header.logo_alt | default('Zuricaf') }}" class="logo"></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          {% for item in header.links or [] %}
+            {% if loop.last %}
+              <li><a href="{{ item.href }}" class="btn" style="font-size:.82rem;padding:.4rem .9rem;">{{ item.label }}</a></li>
+            {% else %}
+              <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="blog-hero">
+    <div class="wrapper">
+      <p class="section-label">Blog{% if category %} · {{ category }}{% endif %}</p>
+      <h1>{{ title }}</h1>
+      {% if subtitle %}<p class="subtitle">{{ subtitle }}</p>{% endif %}
+      <p class="meta">
+        <time datetime="{{ date | date('yyyy-MM-dd') }}">{{ date | date('d. MMMM yyyy') }}</time>
+        {% if author %} · {{ author }}{% endif %}
+      </p>
+    </div>
+  </section>
+
+  <!-- Cover image -->
+  {% if cover_image %}
+  <div class="wrapper blog-cover">
+    <figure>
+      <img src="{{ cover_image }}" alt="{{ cover_image_alt | default(title) }}">
+      {% if cover_image_caption %}<figcaption>{{ cover_image_caption }}</figcaption>{% endif %}
+    </figure>
+  </div>
+  {% endif %}
+
+  <!-- Body -->
+  <article class="wrapper prose" style="max-width:720px;padding-block:3rem;">
+    {{ content | safe }}
+  </article>
+
+  <!-- CTA -->
+  <section style="background:var(--bg-warm);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding-block:3rem;">
+    <div class="wrapper cta-block" style="max-width:600px;">
+      <p class="section-label">Mehr erfahren</p>
+      <h2>Qualität von der Quelle bis zur Tasse</h2>
+      <p>Interesse an unseren Barista-Workshops in Berlin oder an direktem Handel mit ugandischen Kaffeebauern?</p>
+      <div class="btn-group">
+        <a href="/lot-info/" class="btn">Kaffee-Lots anfragen →</a>
+        <a href="https://calendar.notion.so/meet/lorenzstckert/h932i4pxy" class="btn btn-outline" target="_blank" rel="noopener">Gespräch buchen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="footer-links">
+        {% for l in footer.links or [] %}
+          <a href="{{ l.href }}">{{ l.label }}</a>
+        {% endfor %}
+      </div>
+      <p style="margin-top:.75rem;opacity:.6;font-size:.8rem;">{{ footer.copyright or '© Zuricaf 2025' }}</p>
+    </div>
+  </footer>
+
+</body>
+</html>
