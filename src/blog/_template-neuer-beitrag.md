@@ -6,6 +6,8 @@ date: 2026-01-01
 author: Sortengold
 category: Kategorie (z. B. Qualität & Herkunft / Direkthandel / Events)
 layout: layouts/blog-post.njk
+permalink: false
+eleventyExcludeFromCollections: true
 
 cover_image: "/images/blog/dateiname.jpg"
 cover_image_alt: "Bildbeschreibung für Screenreader"
