@@ -1,6 +1,8 @@
 ---
 layout: layouts/base.njk
 title: "Thank you | Zuricaf"
+noindex: true
+description: "Thank you for submitting your coffee lot information to Zuricaf. We received it and will be in touch with you within 24 hours."
 permalink: /lot-info/thanks/
 ---
 <main>

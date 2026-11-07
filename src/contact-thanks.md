@@ -1,6 +1,8 @@
 ---
 layout: layouts/base.njk
 title: "Thank you | Zuricaf"
+noindex: true
+description: "Thank you for your message to Zuricaf. We received your enquiry about direct trade coffee from Uganda and will get back to you within 24 hours."
 permalink: /contact-thanks/
 ---
 <main>
