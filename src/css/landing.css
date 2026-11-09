@@ -50,10 +50,10 @@ h3 { font-size: 17px; font-weight: 500; margin-bottom: 6px; }
 .cols > div, .inout > div { background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); }
 .inout { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
 .inout h2 { color: var(--coral-700); }
-.inout ul { list-style: none; font-size: 15px; }
-.inout li { padding: 8px 0 8px 24px; position: relative; border-bottom: 1px solid var(--border); }
-.inout li:last-child { border-bottom: 0; }
-.inout li::before { position: absolute; left: 0; top: 8px; font-weight: 500; }
+.inout ul, .lists ul { list-style: none; font-size: 15px; }
+.inout li, .lists li { padding: 8px 0 8px 24px; position: relative; border-bottom: 1px solid var(--border); }
+.inout li:last-child, .lists li:last-child { border-bottom: 0; }
+.inout li::before, .lists li::before { position: absolute; left: 0; top: 8px; font-weight: 500; }
 .yes li::before { content: "+"; color: var(--status-success); }
 .no li::before { content: "–"; color: var(--coral-700); }
 
@@ -137,9 +137,8 @@ tr.hl td { background: var(--surface-sunken); }
 .gfx { display: block; width: 100%; max-width: 480px; height: auto; margin: 24px 0 0; font-family: inherit; }
 .gfx text { fill: var(--text-primary); font-size: 13px; }
 .gfx .g-title { font-size: 15px; font-weight: 500; }
-.gfx .g-sub, .gfx .g-sub2, .gfx .g-conn, .gfx .w-lab, .gfx .w-leg { fill: var(--fg-mid); }
+.gfx .g-sub, .gfx .g-conn, .gfx .w-leg { fill: var(--fg-mid); }
 .gfx .g-conn { font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; fill: var(--coral-700); }
-.gfx .w-val { font-weight: 500; }
 .gfx .g-num { fill: var(--surface-page); font-size: 13px; font-weight: 500; }
 .gfx .g-line, .gfx .g-road { stroke: var(--border-strong); stroke-width: 2; }
 .gfx .g-road { stroke-dasharray: 3 6; stroke-linecap: round; }
@@ -148,16 +147,13 @@ tr.hl td { background: var(--surface-sunken); }
 .gfx .g-hub { fill: var(--surface-page); }
 .gfx .g-band { fill: var(--surface-raised); stroke: var(--coral-700); stroke-width: 1; }
 .gfx .g-rule { stroke: var(--border); stroke-width: 1; }
-.gfx .g-chip { fill: var(--coral-700); }
-.gfx .w-sale { fill: var(--text-primary); }
 .gfx .w-cost { fill: var(--border); stroke: var(--border-strong); stroke-width: 1; }
 .gfx .w-you { fill: var(--status-success); }
 .gfx .w-us { fill: var(--action-primary); }
-.gfx .w-split { fill: var(--surface-page); stroke: var(--coral-700); stroke-width: 1; stroke-dasharray: 3 2; }
 
 /* ── Centered, graphic-led sections ── */
 .c { text-align: center; }
-.c .lead { margin-left: auto; margin-right: auto; }
+.c .lead { margin-left: auto; margin-right: auto; text-wrap: balance; }
 .c ul { text-align: left; }
 .c .gfx { margin: 16px auto 0; }
 .c .inout > div, .c .cols > div { display: flex; flex-direction: column; align-items: center; }
@@ -167,12 +163,15 @@ tr.hl td { background: var(--surface-sunken); }
 .c h1 em, .c h1 { text-wrap: balance; }
 .stat { font-size: 17px; color: var(--fg-mid); margin-top: 8px; }
 .stat strong { font-size: clamp(44px, 9vw, 64px); font-weight: 500; line-height: 1; color: var(--coral-700); letter-spacing: -.01em; }
-.big { margin: 4px 0 0; }
-.big strong { font-size: 34px; font-weight: 500; line-height: 1.1; }
-.f-you { fill: var(--status-success); }
-.f-us { fill: var(--action-primary); }
-.f-rel { fill: var(--ink-700); }
-.f-ink { fill: var(--text-primary); }
-.f-link { stroke: var(--border-strong); stroke-width: 2; }
-.f-arrow { fill: var(--border-strong); }
-.f-back { stroke: var(--coral-700); stroke-width: 2; stroke-dasharray: 4 4; fill: none; }
+
+/* ── Plain two-column text and lists (no cards) ── */
+.two, .lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px 64px; max-width: 760px; margin: 40px auto 0; }
+.two h3 { color: var(--coral-700); }
+.two .lead + .lead { margin-top: 12px; }
+.lists { text-align: left; }
+.c > .lead.sm { margin-top: 16px; }
+.fine { font-size: 13px; color: var(--fg-mid); margin-top: 24px; }
+.c .gfx-route { max-width: 560px; }
+.c .gfx-split { max-width: 520px; margin-top: 24px; }
+.c h3.gap { margin-top: 56px; }
+.stat span { font-size: 17px; }
