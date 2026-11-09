@@ -1,4 +1,4 @@
-// DE/EN toggle for /direct-trade/ and /direct-trade-thanks/. Start language from ?lang=de, no storage (§ 25 TDDDG).
+// DE/EN toggle for /direct-trade/, /direct-trade-thanks/ and /next-run/. Start language from ?lang=de, no storage (§ 25 TDDDG).
 function setLang(lang) {
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-en][data-de]').forEach(function (el) {

@@ -4,6 +4,7 @@ const md = new MarkdownIt({ html: true, linkify: true });
 
 module.exports = function(eleventyConfig) {
   
+  eleventyConfig.addShortcode("year", () => String(new Date().getFullYear()));
   eleventyConfig.addFilter("markdown", (content = "") => md.render(String(content)));
 
   const MONTHS_DE = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
