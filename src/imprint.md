@@ -23,8 +23,8 @@ permalink: /imprint/
 
   <h2>Contact</h2>
   <p>
-    Email: <a href="mailto:hallo@sortengold.de">hallo@sortengold.de</a><br>
-    Web: <a href="https://www.sortengold.de" target="_blank" rel="noopener">www.sortengold.de</a>
+    Email: <a href="mailto:trade@zuricaf.com">trade@zuricaf.com</a><br>
+    Web: <a href="https://zuricaf.com/">zuricaf.com</a>
   </p>
 
   <h2>Commercial Register</h2>
