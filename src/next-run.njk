@@ -102,7 +102,7 @@ eleventyExcludeFromCollections: true
 <circle cx="24" cy="34" r="15" class="g-dot"/>
 <text x="24" y="39" class="g-num" text-anchor="middle">1</text>
 <text x="54" y="31" class="g-title" data-en="Register interest" data-de="Vormerken">Register interest</text>
-<text x="54" y="48" class="g-sub" data-en="Email us, reply within two working days" data-de="Mail an uns, Antwort in zwei Werktagen">Email us, reply within two working days</text>
+<text x="54" y="48" class="g-sub" data-en="Short form, reply within two working days" data-de="Kurzes Formular, Antwort in zwei Werktagen">Short form, reply within two working days</text>
 <circle cx="24" cy="106" r="15" class="g-dot"/>
 <text x="24" y="111" class="g-num" text-anchor="middle">2</text>
 <text x="54" y="103" class="g-title" data-en="Confirmation" data-de="Bestätigung">Confirmation</text>
@@ -122,7 +122,7 @@ eleventyExcludeFromCollections: true
 <text x="54" y="352" class="g-sub" data-en="then free storage period" data-de="dann Freilagerung">then free storage period</text>
 </svg>
   <ol class="steps sr-only">
-    <li><div><h3 data-en="Register interest" data-de="Vormerken">Register interest</h3><p data-en="Email us. We reply within two working days." data-de="Mail an uns. Antwort innerhalb von zwei Werktagen.">Email us. We reply within two working days.</p></div></li>
+    <li><div><h3 data-en="Register interest" data-de="Vormerken">Register interest</h3><p data-en="Send the short form. We reply within two working days." data-de="Kurzes Formular senden. Antwort innerhalb von zwei Werktagen.">Send the short form. We reply within two working days.</p></div></li>
     <li><div><h3 data-en="Confirmation" data-de="Bestätigung">Confirmation</h3><p data-en="Rate, date and booking deadline in writing." data-de="Rate, Termin und Buchungsschluss schriftlich.">Rate, date and booking deadline in writing.</p></div></li>
     <li><div><h3 data-en="Your supplier delivers" data-de="Dein Lieferant liefert an">Your supplier delivers</h3><p data-en="Collection point Uganda, big bags or GrainPro." data-de="Sammelstelle Uganda, Big Bags oder GrainPro.">Collection point Uganda, big bags or GrainPro.</p></div></li>
     <li><div><h3 data-en="We bag and ship" data-de="Wir sacken ab und verschiffen">We bag and ship</h3><p data-en="The weighed net weight is the invoiced weight." data-de="Das verwogene Nettogewicht ist das Abrechnungsgewicht.">The weighed net weight is the invoiced weight.</p></div></li>
@@ -133,8 +133,28 @@ eleventyExcludeFromCollections: true
 <section id="form" class="c">
   <p class="sec-note" data-en="Register interest" data-de="Vormerken">Register interest</p>
   <h2 data-en="Tell us briefly what you need." data-de="Schreib uns kurz, was du brauchst.">Tell us briefly what you need.</h2>
-  <p class="lead" data-en="No obligation. Volume, region and processing are enough. We get back to you within two working days." data-de="Unverbindlich. Menge, Region und Aufbereitung genügen. Wir melden uns innerhalb von zwei Werktagen.">No obligation. Volume, region and processing are enough. We get back to you within two working days.</p>
-  <a class="send" href="mailto:lorenz@zuricaf.com?subject=Vormerkung%20Sammelcontainer" data-en="Email lorenz@zuricaf.com" data-de="Mail an lorenz@zuricaf.com">Email lorenz@zuricaf.com</a>
+  <p class="lead" data-en="No obligation. We get back to you within two working days. We ship from Uganda today; if you would rather source from Kenya or Rwanda, choose it below so we know there is demand." data-de="Unverbindlich. Wir melden uns innerhalb von zwei Werktagen. Wir verschiffen heute aus Uganda; willst du lieber aus Kenia oder Ruanda beziehen, wähl es unten aus, dann wissen wir, dass es Nachfrage gibt.">No obligation. We get back to you within two working days. We ship from Uganda today; if you would rather source from Kenya or Rwanda, choose it below so we know there is demand.</p>
+  <form id="next-run" name="next-run" method="POST" action="/next-run-thanks/" data-thanks="/next-run-thanks/" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="next-run">
+    <input type="hidden" name="lang" value="en">
+    <p class="hp"><label>Leave empty: <input name="bot-field"></label></p>
+    <div class="grid">
+      <div class="f"><label for="roastery" data-en="Roastery" data-de="Rösterei">Roastery</label><input id="roastery" name="roastery" required></div>
+      <div class="f"><label for="contact" data-en="Contact name" data-de="Ansprechperson">Contact name</label><input id="contact" name="contact" required></div>
+      <div class="f"><label for="email" data-en="Email" data-de="E-Mail">Email</label><input id="email" name="email" type="email" required></div>
+      <div class="f"><label for="phone" data-en="Phone, optional" data-de="Telefon, optional">Phone, optional</label><input id="phone" name="phone" type="tel"></div>
+      <div class="f"><label for="origin" data-en="Origin" data-de="Herkunft">Origin</label><select id="origin" name="origin" required>
+        <option value="Uganda" data-en="Uganda" data-de="Uganda">Uganda</option>
+        <option value="Kenya" data-en="Kenya" data-de="Kenia">Kenya</option>
+        <option value="Rwanda" data-en="Rwanda" data-de="Ruanda">Rwanda</option>
+        <option value="Other" data-en="Other" data-de="Andere">Other</option>
+      </select></div>
+      <div class="f"><label for="volume" data-en="Rough volume, e.g. bags of 60 kg" data-de="Ungefähre Menge, z. B. Sack à 60 kg">Rough volume, e.g. bags of 60 kg</label><input id="volume" name="volume"></div>
+      <div class="f full"><label for="notes" data-en="Region, processing, anything else" data-de="Region, Aufbereitung, sonst etwas">Region, processing, anything else</label><textarea id="notes" name="notes" rows="4"></textarea></div>
+    </div>
+    <p class="note" data-en="By sending you agree that we store your details to answer you. See the &lt;a href=&quot;/datenschutz/&quot;&gt;privacy policy&lt;/a&gt; (German). Rather email? &lt;a href=&quot;mailto:lorenz@zuricaf.com?subject=Vormerkung%20Sammelcontainer&quot;&gt;lorenz@zuricaf.com&lt;/a&gt;" data-de="Mit dem Absenden stimmst du zu, dass wir deine Angaben speichern, um zu antworten. Siehe &lt;a href=&quot;/datenschutz/&quot;&gt;Datenschutzerklärung&lt;/a&gt;. Lieber per Mail? &lt;a href=&quot;mailto:lorenz@zuricaf.com?subject=Vormerkung%20Sammelcontainer&quot;&gt;lorenz@zuricaf.com&lt;/a&gt;">By sending you agree that we store your details to answer you. See the <a href="/datenschutz/">privacy policy</a> (German). Rather email? <a href="mailto:lorenz@zuricaf.com?subject=Vormerkung%20Sammelcontainer">lorenz@zuricaf.com</a></p>
+    <button type="submit" class="send" data-en="Send" data-de="Absenden">Send</button>
+  </form>
 </section>
 
 <footer>

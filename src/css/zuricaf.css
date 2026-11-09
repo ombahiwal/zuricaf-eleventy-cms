@@ -197,6 +197,10 @@ p  { margin-bottom: 12px; }
 }
 .step h3 { font-size: 17px; margin-bottom: 8px; }
 .step p  { font-size: 15px; color: var(--fg-mid); margin: 0; }
+.ways { grid-template-columns: repeat(2, 1fr); margin-top: 0; }
+a.step { display: flex; flex-direction: column; align-items: flex-start; color: inherit; text-decoration: none; }
+a.step .btn { margin-top: auto; }
+a.step p:last-of-type { margin-bottom: 20px; }
 
 /* ── CTA block ── */
 .cta-block { text-align: center; padding-block: var(--section-gap); }
