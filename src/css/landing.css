@@ -150,7 +150,7 @@ tr.hl td { background: var(--surface-sunken); }
 .gfx .g-rule { stroke: var(--border); stroke-width: 1; }
 .gfx .g-chip { fill: var(--coral-700); }
 .gfx .w-sale { fill: var(--text-primary); }
-.gfx .w-cost { fill: var(--border-strong); }
+.gfx .w-cost { fill: var(--border); stroke: var(--border-strong); stroke-width: 1; }
 .gfx .w-you { fill: var(--status-success); }
 .gfx .w-us { fill: var(--action-primary); }
-.gfx .w-split { fill: var(--surface-sunken); stroke: var(--border-strong); stroke-width: 1; }
+.gfx .w-split { fill: var(--surface-page); stroke: var(--coral-700); stroke-width: 1; stroke-dasharray: 3 2; }
