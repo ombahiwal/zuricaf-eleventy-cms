@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 title: "Datenschutzerklärung | Zuricaf"
-description: "Datenschutzerklärung für zuricaf.com: Verantwortlicher tabme UG, Hosting bei Netlify, Kontaktformulare, cookielose Reichweitenmessung mit GoatCounter, Ihre Rechte."
+description: "Datenschutzerklärung für zuricaf.com: Verantwortlicher tabme UG, Hosting bei Netlify, Kontaktformulare mit Auswertung in Google Workspace, Claude und Notion, cookielose Reichweitenmessung mit GoatCounter, Ihre Rechte."
 permalink: /datenschutz/
 ---
 <main>
@@ -29,7 +29,10 @@ permalink: /datenschutz/
   <p>Mit Netlify besteht ein Auftragsverarbeitungsvertrag (Data Processing Agreement, Bestandteil der Netlify-Nutzungsbedingungen). Netlify ist nach dem EU-U.S. Data Privacy Framework zertifiziert, die Übermittlung in die USA stützt sich auf den Angemessenheitsbeschluss der EU-Kommission (Art. 45 DSGVO). Details: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a>.</p>
 
   <h2>4. Kontaktformular und Anfrageformulare</h2>
-  <p>Wenn Sie uns über ein Formular schreiben (Kontakt, Lieferanten-Registrierung, Anfrage zum Reiseprogramm), verarbeiten wir die von Ihnen eingegebenen Daten, etwa Name, E-Mail-Adresse, Firma und Nachricht, um Ihre Anfrage zu bearbeiten. Die Angaben sind freiwillig, ohne sie können wir Ihre Anfrage aber nicht bearbeiten. Die Formulare werden über Netlify Forms übermittelt und bei Netlify gespeichert (siehe Abschnitt 3), wir erhalten eine Benachrichtigung per E-Mail.</p>
+  <p>Wenn Sie uns über ein Formular schreiben (Kontakt, Lieferanten-Registrierung, Direct-Trade-Anfrage, Anfrage zum Reiseprogramm), verarbeiten wir die von Ihnen eingegebenen Daten, etwa Name, E-Mail-Adresse, Firma und Nachricht, um Ihre Anfrage zu bearbeiten. Die Angaben sind freiwillig, ohne sie können wir Ihre Anfrage aber nicht bearbeiten. Die Formulare werden über Netlify Forms übermittelt und bei Netlify gespeichert (siehe Abschnitt 3), wir erhalten eine Benachrichtigung per E-Mail.</p>
+  <p>Diese E-Mail geht an unser Postfach bei Google Workspace. Ein automatischer Ablauf in Google Workspace liest mit der KI Gemini die Angaben aus der E-Mail aus und trägt sie in eine Tabelle in unserem Google Drive ein, damit wir Anfragen vollständig und nachvollziehbar bearbeiten können. Anbieter ist Google Cloud EMEA Limited (Irland). Mit Google besteht ein Auftragsverarbeitungsvertrag (Cloud Data Processing Addendum). Eine Übermittlung in die USA ist möglich, Google LLC ist nach dem EU-U.S. Data Privacy Framework zertifiziert (Art. 45 DSGVO). Details: <a href="https://cloud.google.com/terms/data-processing-addendum/" target="_blank" rel="noopener">cloud.google.com/terms/data-processing-addendum</a>.</p>
+  <p>Zur Bearbeitung von Anfragen nutzen wir außerdem den KI-Assistenten Claude der Anthropic Ireland, Limited (Irland). Dabei können Ihre Angaben aus den Formularen an Anthropic übermittelt werden, etwa um sie in unsere Tabelle zu übertragen oder eine Antwort vorzubereiten. Anthropic verarbeitet diese Daten nach seiner eigenen Datenschutzerklärung und kann sie auch auf Servern in den USA verarbeiten, Grundlage dafür sind Standardvertragsklauseln (Art. 46 DSGVO). Details: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">anthropic.com/legal/privacy</a>.</p>
+  <p>Anfragen und Antwortentwürfe verwalten wir in Notion (Notion Labs, Inc., USA). Dabei werden Name, Kontaktdaten und Inhalt Ihrer Anfrage bei Notion gespeichert, auch auf Servern in den USA. Details: <a href="https://privacycenter.notion.so/policies" target="_blank" rel="noopener">privacycenter.notion.so</a>.</p>
   <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit die Anfrage auf einen Vertrag oder eine Geschäftsbeziehung zielt, sonst Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Wir löschen die Daten, wenn sie für den Zweck nicht mehr nötig sind, es sei denn, gesetzliche Aufbewahrungspflichten stehen entgegen.</p>
 
   <h2>5. Reichweitenmessung mit GoatCounter</h2>

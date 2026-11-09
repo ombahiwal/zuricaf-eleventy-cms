@@ -29,7 +29,7 @@ how_it_works: |
   The Commercial Coffee Producers of Uganda (CCPAU) consolidates orders across farms in Mount Elgon, Rwenzori, Masaka, Luwero and West Nile. CCPAU handles aggregation and international export.
 
   **2. Import & Customs Coordination — Zuricaf / Lorenz Stöckert**
-  Zuricaf coordinates German import, customs clearance, and delivery to your roastery. You purchase the coffee directly — Zuricaf never takes title to the goods, we handle the movement. No container minimum, no logistics headache for the roaster.
+  Zuricaf coordinates German import, customs clearance, and delivery to your roastery. No container minimum, no logistics headache for the roaster.
 
   **3. Key Account & Quality — Zuricaf**
   Permanent contact in Germany: SCA cuppings, Q-grader feedback, sample service, and repeat order management — ensuring every lot meets your specific sensory standards.

@@ -1,4 +1,4 @@
-/* Standalone landing pages (/direct-trade/, /run-2026-09/). Loads after zuricaf.css and uses its tokens. */
+/* Standalone landing pages (/direct-trade/, /next-run/, /run-2026-09/). Loads after zuricaf.css and uses its tokens. */
 
 .wrap { max-width: 1000px; margin: 0 auto; padding: 0 48px; }
 @media (max-width: 720px) { .wrap { padding: 0 24px; } }
@@ -50,10 +50,10 @@ h3 { font-size: 17px; font-weight: 500; margin-bottom: 6px; }
 .cols > div, .inout > div { background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); }
 .inout { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
 .inout h2 { color: var(--coral-700); }
-.inout ul { list-style: none; font-size: 15px; }
-.inout li { padding: 8px 0 8px 24px; position: relative; border-bottom: 1px solid var(--border); }
-.inout li:last-child { border-bottom: 0; }
-.inout li::before { position: absolute; left: 0; top: 8px; font-weight: 500; }
+.inout ul, .lists ul { list-style: none; font-size: 15px; }
+.inout li, .lists li { padding: 8px 0 8px 24px; position: relative; border-bottom: 1px solid var(--border); }
+.inout li:last-child, .lists li:last-child { border-bottom: 0; }
+.inout li::before, .lists li::before { position: absolute; left: 0; top: 8px; font-weight: 500; }
 .yes li::before { content: "+"; color: var(--status-success); }
 .no li::before { content: "–"; color: var(--coral-700); }
 
@@ -131,3 +131,47 @@ th { text-align: left; font-weight: 500; font-size: 13px; letter-spacing: .12em;
 td { padding: 12px 12px 12px 0; border-bottom: 1px solid var(--border); }
 td.r, th.r { text-align: right; padding-right: 0; }
 tr.hl td { background: var(--surface-sunken); }
+
+/* ── Graphics (inline SVG, tokens only) ── */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.gfx { display: block; width: 100%; max-width: 480px; height: auto; margin: 24px 0 0; font-family: inherit; }
+.gfx text { fill: var(--text-primary); font-size: 13px; }
+.gfx .g-title { font-size: 15px; font-weight: 500; }
+.gfx .g-sub, .gfx .g-conn, .gfx .w-leg { fill: var(--fg-mid); }
+.gfx .g-conn { font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; fill: var(--coral-700); }
+.gfx .g-num { fill: var(--surface-page); font-size: 13px; font-weight: 500; }
+.gfx .g-line, .gfx .g-road { stroke: var(--border-strong); stroke-width: 2; }
+.gfx .g-road { stroke-dasharray: 3 6; stroke-linecap: round; }
+.gfx .g-sea { stroke: var(--coral-700); stroke-width: 3; }
+.gfx .g-dot { fill: var(--coral-700); }
+.gfx .g-hub { fill: var(--surface-page); }
+.gfx .g-band { fill: var(--surface-raised); stroke: var(--coral-700); stroke-width: 1; }
+.gfx .g-rule { stroke: var(--border); stroke-width: 1; }
+.gfx .w-cost { fill: var(--border); stroke: var(--border-strong); stroke-width: 1; }
+.gfx .w-you { fill: var(--status-success); }
+.gfx .w-us { fill: var(--action-primary); }
+
+/* ── Centered, graphic-led sections ── */
+.c { text-align: center; }
+.c .lead { margin-left: auto; margin-right: auto; text-wrap: balance; }
+.c ul { text-align: left; }
+.c .gfx { margin: 16px auto 0; }
+.c .inout > div, .c .cols > div { display: flex; flex-direction: column; align-items: center; }
+.c .inout > div .lead { max-width: 340px; }
+.c .inout ul { align-self: stretch; }
+.c .steps { text-align: left; }
+.c h1 em, .c h1 { text-wrap: balance; }
+.stat { font-size: 17px; color: var(--fg-mid); margin-top: 8px; }
+.stat strong { font-size: clamp(44px, 9vw, 64px); font-weight: 500; line-height: 1; color: var(--coral-700); letter-spacing: -.01em; }
+
+/* ── Plain two-column text and lists (no cards) ── */
+.two, .lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px 64px; max-width: 760px; margin: 40px auto 0; }
+.two h3 { color: var(--coral-700); }
+.two .lead + .lead { margin-top: 12px; }
+.lists { text-align: left; }
+.c > .lead.sm { margin-top: 16px; }
+.fine { font-size: 13px; color: var(--fg-mid); margin-top: 24px; }
+.c .gfx-route { max-width: 560px; }
+.c .gfx-split { max-width: 520px; margin-top: 24px; }
+.c h3.gap { margin-top: 56px; }
+.stat span { font-size: 17px; }
