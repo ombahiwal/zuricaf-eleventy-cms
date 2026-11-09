@@ -64,7 +64,7 @@ sustainability: |
   Diversity also pays socially: parallel cultivation of different crops allows smallholders to harvest year-round, stabilise income and differentiate from the bulk market.
 
   ### Trade for Aid – our values
-  - **Direct trade:** At least 70% of the export price remains with producers — full transparency.
+  - **Direct trade:** full transparency.
   - **Slow Food commitment:** We actively support the Slow Food Coffee Presidio Uganda — promoting good, clean and fair practices from farm to cup.
   - **Holistic consulting:** From lot selection to logistics — all from one source.
   - **Deep-rooted network:** Long-term partnerships with farming families, cooperatives, and NGO projects across Uganda.
@@ -82,7 +82,7 @@ liberica: |
   - Premium positioning: unique flavour profile (bold, fruity, gently sweet).
   - Climate action: agroforestry, efficient irrigation & renewable energy.
 
-  **Status quo:** exchange & pilot phase — first micro-lots expected in 2026; international trade not yet started.
+  **Status quo:** exchange & pilot phase; international trade not yet started.
 
 calendar:
   - { region: "Mount Elgon (Bugisu)", type: "Arabica", main: "Oct – Mar", fly: "May – Jul" }
@@ -97,5 +97,5 @@ cta:
   buttons:
     - { label: "Contact us", href: "/#contact" }
     - { label: "Book a call", href: "https://calendar.notion.so/meet/lorenzstckert/h932i4pxy" }
-    - { label: "Supplier Registration", href: "/lot-info/" }
+    - { label: "Supplier Registration", href: "/direct-trade/" }
 ---

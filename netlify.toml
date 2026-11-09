@@ -14,3 +14,27 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Blog post was Sortengold content, removed from zuricaf.com (Lorenz 09.11.2026).
+[[redirects]]
+  from = "/blog/kette-des-respekts/"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/blog-kette-des-respekts/"
+  to = "/"
+  status = 301
+
+# /lot-info/ (delegation May 2026) replaced by /direct-trade/ (Lorenz 09.11.2026).
+# Forced (!) because the page files stay in the repo, so the Netlify form
+# "coffee-lot-info" and its past submissions are not touched.
+[[redirects]]
+  from = "/lot-info/thanks/"
+  to = "/direct-trade-thanks/"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/lot-info/"
+  to = "/direct-trade/"
+  status = 301
+  force = true
