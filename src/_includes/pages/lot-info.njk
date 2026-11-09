@@ -368,13 +368,13 @@
   /* Language toggle */
   .lang-toggle { display:flex;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden; }
   .lang-btn { padding:.3rem .75rem;font-family:inherit;font-size:.8rem;font-weight:600;background:var(--bg);border:none;cursor:pointer;color:var(--fg-mid);transition:background .15s,color .15s; }
-  .lang-btn--active { background:var(--accent);color:#fff; }
+  .lang-btn--active { background:var(--text-primary);color:var(--surface-page); }
 
   /* Accordion */
   .accordion { border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.75rem;background:var(--bg);overflow:hidden; }
   .accordion-summary { display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;cursor:pointer;font-weight:600;font-size:.9rem;list-style:none;user-select:none;background:var(--bg-warm);transition:background .15s; }
   .accordion-summary::-webkit-details-marker { display:none; }
-  .accordion-summary:hover { background:#f0ede8; }
+  .accordion-summary:hover { background:var(--bg-sunken); }
   .accordion-summary--top { font-size:.95rem;padding:1rem 1.1rem; }
   details[open] .accordion-icon { transform:rotate(180deg); }
   .accordion-icon { transition:transform .2s;stroke:var(--fg-mid);flex-shrink:0; }
@@ -386,7 +386,7 @@
   .field-hint   { display:block;font-weight:400;font-size:.8rem;color:var(--fg-light);margin-top:.1rem; }
   .req          { color:var(--accent); }
   .field-input, .field-select { width:100%;padding:.55rem .75rem;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:.95rem;color:var(--fg);background:#fff;transition:border-color .15s; }
-  .field-input:focus, .field-select:focus { outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,89,58,.12); }
+  .field-input:focus, .field-select:focus { outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--focus-ring); }
   textarea.field-input { min-height:90px;resize:vertical; }
   .check-label  { display:flex;align-items:center;gap:.5rem;font-size:.92rem;cursor:pointer; }
   .check-label input[type="checkbox"] { width:15px;height:15px;accent-color:var(--accent);flex-shrink:0; }
