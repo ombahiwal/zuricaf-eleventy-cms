@@ -1,7 +1,7 @@
 ---
 title: "Die Kette des Respekts: Warum jede Zutat für unser Sortengold zählt"
 subtitle: "Vom fruchtbaren Boden am Mount Elgon bis zum letzten Schluck im Berliner Büro: Qualität ist das Ergebnis eines respektvollen Umgangs mit Ressourcen."
-description: "Wie biodynamischer Kaffeeanbau in Uganda, faire Preise und das richtige Brühwasser zusammen Qualität in der Tasse ergeben – eine Partnerschaft zwischen Sortengold und Spreequell."
+description: "Biodynamischer Kaffeeanbau am Mount Elgon, faire Preise und das richtige Brühwasser: Wie Sortengold und Spreequell Qualität in der Tasse sichern."
 date: 2026-06-01
 author: Sortengold
 category: Qualität & Herkunft

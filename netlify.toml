@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+# Security headers for the whole site, including /admin (Decap CMS).
+# The Content-Security-Policy is NOT set here: it is a <meta http-equiv> tag in
+# base.njk, blog-post.njk and run-2026-09.njk, so /admin (which loads Decap from
+# unpkg and needs inline scripts) is not affected. frame-ancestors only works as
+# a header, so clickjacking protection is X-Frame-Options instead.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

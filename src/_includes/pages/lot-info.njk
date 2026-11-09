@@ -182,8 +182,8 @@
   <div style="display:flex;align-items:center;justify-content:flex-end;gap:.5rem;margin-bottom:1.5rem;">
     <span style="font-size:.8rem;color:var(--fg-light);">Language:</span>
     <div class="lang-toggle" role="group" aria-label="Language">
-      <button type="button" class="lang-btn lang-btn--active" id="btn-en" onclick="setLang('en')">EN</button>
-      <button type="button" class="lang-btn" id="btn-lg" onclick="setLang('lg')">LG</button>
+      <button type="button" class="lang-btn lang-btn--active" id="btn-en" data-set-lang="en">EN</button>
+      <button type="button" class="lang-btn" id="btn-lg" data-set-lang="lg">LG</button>
     </div>
   </div>
 
@@ -316,7 +316,7 @@
       <div class="lot-block lot-extra" id="lot-2" style="display:none;">
         <div class="lot-header">
           <span class="lot-badge">Lot 2</span>
-          <button type="button" class="lot-remove" onclick="removeLot(2)">Remove</button>
+          <button type="button" class="lot-remove" data-remove-lot="2">Remove</button>
         </div>
         {{ lotFields("2", false) }}
       </div>
@@ -324,7 +324,7 @@
       <div class="lot-block lot-extra" id="lot-3" style="display:none;">
         <div class="lot-header">
           <span class="lot-badge">Lot 3</span>
-          <button type="button" class="lot-remove" onclick="removeLot(3)">Remove</button>
+          <button type="button" class="lot-remove" data-remove-lot="3">Remove</button>
         </div>
         {{ lotFields("3", false) }}
       </div>
@@ -332,7 +332,7 @@
       <div class="lot-block lot-extra" id="lot-4" style="display:none;">
         <div class="lot-header">
           <span class="lot-badge">Lot 4</span>
-          <button type="button" class="lot-remove" onclick="removeLot(4)">Remove</button>
+          <button type="button" class="lot-remove" data-remove-lot="4">Remove</button>
         </div>
         {{ lotFields("4", false) }}
       </div>
@@ -340,14 +340,14 @@
       <div class="lot-block lot-extra" id="lot-5" style="display:none;">
         <div class="lot-header">
           <span class="lot-badge">Lot 5</span>
-          <button type="button" class="lot-remove" onclick="removeLot(5)">Remove</button>
+          <button type="button" class="lot-remove" data-remove-lot="5">Remove</button>
         </div>
         {{ lotFields("5", false) }}
       </div>
 
     </div>
 
-    <button type="button" id="add-lot-btn" onclick="addLot()"
+    <button type="button" id="add-lot-btn"
       style="display:flex;align-items:center;gap:.5rem;background:none;border:1.5px dashed var(--border);border-radius:var(--radius);padding:.65rem 1.2rem;font-family:inherit;font-size:.88rem;font-weight:600;color:var(--fg-mid);cursor:pointer;width:100%;justify-content:center;margin-bottom:2.5rem;transition:border-color .15s,color .15s;">
       <span data-en="+ &nbsp;Add another lot" data-lg="+ &nbsp;Gattako oluvannyuma olulala">+ &nbsp;Add another lot</span>
     </button>
@@ -402,63 +402,4 @@
   @media (max-width:560px) { .field-grid-2 { grid-template-columns:1fr; } }
 </style>
 
-<script>
-  /* ── Language toggle ── */
-  var currentLang = 'en';
-
-  function setLang(lang) {
-    currentLang = lang;
-    // Toggle button styles
-    document.getElementById('btn-en').classList.toggle('lang-btn--active', lang === 'en');
-    document.getElementById('btn-lg').classList.toggle('lang-btn--active', lang === 'lg');
-    // Swap all data-en / data-lg text nodes
-    document.querySelectorAll('[data-en][data-lg]').forEach(function(el) {
-      el.innerHTML = el.getAttribute('data-' + lang);
-    });
-    // Swap placeholders
-    document.querySelectorAll('[data-ph-en][data-ph-lg]').forEach(function(el) {
-      el.placeholder = el.getAttribute('data-ph-' + lang);
-    });
-  }
-
-  /* ── Lots ── */
-  var visibleLots = 1;
-  var MAX_LOTS = 5;
-
-  function addLot() {
-    if (visibleLots >= MAX_LOTS) return;
-    visibleLots++;
-    var block = document.getElementById('lot-' + visibleLots);
-    if (block) {
-      block.style.display = '';
-      block.querySelectorAll('input,select,textarea').forEach(function(el) { el.disabled = false; });
-      var firstDetails = block.querySelector('details');
-      if (firstDetails) firstDetails.open = true;
-      // Apply current language to new lot
-      if (currentLang !== 'en') setLang(currentLang);
-    }
-    if (visibleLots >= MAX_LOTS) document.getElementById('add-lot-btn').style.display = 'none';
-    if (window.lucide) lucide.createIcons();
-  }
-
-  function removeLot(n) {
-    var block = document.getElementById('lot-' + n);
-    if (block) {
-      block.style.display = 'none';
-      block.querySelectorAll('input,select,textarea').forEach(function(el) {
-        el.disabled = true;
-        if (el.type !== 'checkbox') el.value = '';
-        if (el.type === 'checkbox') el.checked = false;
-      });
-    }
-    visibleLots = Math.max(1, visibleLots - 1);
-    document.getElementById('add-lot-btn').style.display = '';
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.lot-extra').forEach(function(block) {
-      block.querySelectorAll('input,select,textarea').forEach(function(el) { el.disabled = true; });
-    });
-    if (window.lucide) lucide.createIcons();
-  });
-</script>
+<script src="/js/lot-info.js" defer></script>

@@ -1,16 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang or 'en' }}">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; font-src 'self'; connect-src 'self' https://*.goatcounter.com; form-action 'self'; base-uri 'self'; object-src 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }}</title>
-  <meta name="description" content="Sustainable sourcing, Slow Food coffee &amp; climate-resilient Liberica/Excelsa projects for specialty coffee from Uganda. Direct trade from East Africa to Europe.">
-  {% if page.url %}<link rel="canonical" href="https://www.zuricaf.com{{ page.url }}">{% endif %}
+  <meta name="description" content="{{ description or 'Sustainable sourcing, Slow Food coffee & climate-resilient Liberica/Excelsa projects for specialty coffee from Uganda. Direct trade from East Africa to Europe.' }}">
+  {% if page.url %}<link rel="canonical" href="https://zuricaf.com{{ page.url }}">{% endif %}
   {% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  {%- set pageLang = lang or 'en' %}
+  {%- set canonicalUrl = 'https://zuricaf.com' + page.url if page.url else '' %}
+  {%- set ogImg = ogImage or '/images/hero.png' %}
+  {%- set ogImgAbs = ogImg if ogImg.startsWith('http') else 'https://zuricaf.com' + ogImg %}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Zuricaf">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description or 'Sustainable sourcing, Slow Food coffee & climate-resilient Liberica/Excelsa projects for specialty coffee from Uganda. Direct trade from East Africa to Europe.' }}">
+  {% if page.url %}<meta property="og:url" content="{{ canonicalUrl }}">{% endif %}
+  <meta property="og:image" content="{{ ogImgAbs }}">
+  <meta property="og:locale" content="{{ 'de_DE' if pageLang == 'de' else 'en_US' }}">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/fonts.css">
+
+  {% if page.url == '/' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Zuricaf",
+    "url": "https://zuricaf.com/",
+    "logo": "https://zuricaf.com/images/zuricaf.png",
+    "email": "trade@zuricaf.com",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "tabme UG (haftungsbeschränkt)",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Diesterwegstr. 40",
+        "postalCode": "33604",
+        "addressLocality": "Bielefeld",
+        "addressCountry": "DE"
+      }
+    },
+    "location": [
+      { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE" } },
+      { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Kampala", "addressCountry": "UG" } }
+    ],
+    "areaServed": "Europe",
+    "knowsAbout": ["green coffee", "Uganda coffee", "direct trade", "EUDR"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "trade@zuricaf.com",
+      "availableLanguage": ["de", "en"]
+    }
+  }
+  </script>
+  {% endif %}
 
   <style>
     /* ── Tokens ─────────────────────────────────────────── */
@@ -293,7 +340,8 @@
     .gallery figure { margin: 0; border-radius: var(--radius); overflow: hidden; }
   </style>
 
-  <script src="https://unpkg.com/lucide@0.474.0/dist/umd/lucide.js" defer></script>
+  <script src="/js/lucide.min.js" defer></script>
+  <script src="/js/site.js" defer></script>
 </head>
 
 <body>
@@ -346,11 +394,7 @@
     </div>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (window.lucide) lucide.createIcons();
-    });
-  </script>
+  {% if site.goatcounter %}<script data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count" async src="/js/count.js"></script>{% endif %}
 
 </body>
 </html>

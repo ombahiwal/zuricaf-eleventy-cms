@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
 title: "Zuricaf | Direct Ugandan Coffee & Climate-Smart Varieties"
+description: "Direct specialty coffee from Uganda for German roasters: sourcing, cupping, logistics and finance. From 10 bags, no full container needed."
 template: pages/home.njk
 
 hero:

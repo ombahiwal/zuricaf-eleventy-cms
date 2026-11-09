@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
 title: "Imprint | Zuricaf"
+description: "Imprint of zuricaf.com: operator tabme UG (haftungsbeschränkt), Diesterwegstr. 40, 33604 Bielefeld, managing director Lorenz Stöckert."
 permalink: /imprint/
 ---
 <main>
