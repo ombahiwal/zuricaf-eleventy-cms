@@ -191,3 +191,13 @@ tr.hl td { background: var(--surface-sunken); }
 .legend .w-us { background: var(--action-primary); }
 .legend .w-cost { background: var(--border); border: 1px solid var(--border-strong); }
 .m { white-space: nowrap; }
+
+/* Price slider in the way B example */
+[hidden] { display: none !important; } /* .lang and .ex-ctl set display, which would beat the attribute */
+.ex-ctl { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 520px; margin: 0 auto; }
+.ex-lab { font-size: 15px; font-weight: 500; color: var(--fg-mid); margin-top: 8px; }
+.ex-price { font-size: 17px; color: var(--fg-mid); margin: 0; }
+.ex-price strong { font-size: 32px; font-weight: 500; color: var(--text-primary); }
+.ex-ctl input[type=range] { width: 100%; min-height: 44px; accent-color: var(--action-primary); cursor: pointer; }
+.ex-zone.low { color: var(--coral-700); font-weight: 500; }
+.c > .ex-note { max-width: 520px; margin: 8px auto 0; }
