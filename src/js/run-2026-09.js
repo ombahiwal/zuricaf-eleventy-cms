@@ -1,5 +1,5 @@
 const TIERS=[[600,999,1.60],[1000,1999,1.45],[2000,3499,1.32],[3500,4999,1.24],[5000,7000,1.18]];
-const CAP=19200, BAGS=320, MAIL='lorenz@sortengold.de';
+const CAP=19200, BAGS=320, MAIL='lorenz@zuricaf.com';
 const eur=n=>n.toLocaleString('de-DE',{style:'currency',currency:'EUR',minimumFractionDigits:2});
 const eur0=n=>n.toLocaleString('de-DE',{style:'currency',currency:'EUR',maximumFractionDigits:0});
 const rateFor=kg=>{for(const[a,b,r]of TIERS){if(kg>=a&&kg<=b)return r;}return null;};
