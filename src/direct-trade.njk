@@ -122,8 +122,8 @@ eleventyExcludeFromCollections: true
 </section>
 
 <section id="form">
-  <p class="sec-note" data-en="Register" data-de="Anmeldung">Register</p>
-  <h2 data-en="Tell us about your coffee" data-de="Kaffee anmelden">Tell us about your coffee</h2>
+  <p class="sec-note" data-en="Get in touch" data-de="Kontakt">Get in touch</p>
+  <h2 data-en="Tell us about yourselves" data-de="Erzählt uns von euch">Tell us about yourselves</h2>
   <p class="lead" data-en="No obligation. We reply within two working days." data-de="Unverbindlich. Antwort binnen zwei Werktagen.">No obligation. We reply within two working days.</p>
 
   <form id="direct-trade" name="direct-trade" method="POST" action="/direct-trade-thanks/" data-netlify="true" netlify-honeypot="bot-field">
@@ -133,37 +133,15 @@ eleventyExcludeFromCollections: true
     <div class="grid">
       <div class="f"><label for="farm" data-en="Farm / group" data-de="Farm / Gruppe">Farm / group</label><input id="farm" name="farm" required></div>
       <div class="f"><label for="region" data-en="District" data-de="Distrikt">District</label><input id="region" name="region" required></div>
-      <div class="f"><label for="subcounty" data-en="Sub-county" data-de="Sub-county">Sub-county</label><input id="subcounty" name="subcounty"></div>
       <div class="f"><label for="contact" data-en="Contact name" data-de="Ansprechperson">Contact name</label><input id="contact" name="contact" required></div>
       <div class="f"><label for="phone" data-en="WhatsApp / phone" data-de="WhatsApp / Telefon">WhatsApp / phone</label><input id="phone" name="phone" type="tel" required></div>
       <div class="f"><label for="email" data-en="Email" data-de="E-Mail">Email</label><input id="email" name="email" type="email"></div>
-      <div class="f full"><label for="owner" data-en="Who owns the coffee (person, group or company)" data-de="Wem gehört der Kaffee (Person, Gruppe oder Firma)">Who owns the coffee (person, group or company)</label><input id="owner" name="owner" required></div>
-      <div class="f"><label for="variety" data-en="Variety" data-de="Sorte">Variety</label>
-        <select id="variety" name="variety">
-          <option value="Arabica">Arabica</option>
-          <option value="Robusta">Robusta</option>
-          <option value="other" data-en="other" data-de="andere">other</option>
-        </select></div>
-      <div class="f"><label for="processing" data-en="Processing" data-de="Aufbereitung">Processing</label><input id="processing" name="processing" data-ph-en="e.g. washed, natural" data-ph-de="z. B. gewaschen, natural" placeholder="e.g. washed, natural"></div>
-      <div class="f"><label for="bags" data-en="Expected bags (60 kg)" data-de="Erwartete Sack (60 kg)">Expected bags (60 kg)</label><input id="bags" name="bags" type="number" min="1" step="1" inputmode="numeric"></div>
-      <div class="f"><label for="harvest" data-en="Harvest months" data-de="Erntemonate">Harvest months</label><input id="harvest" name="harvest"></div>
-      <div class="f"><label for="geodata" data-en="Plots mapped?" data-de="Parzellen kartiert?">Plots mapped?</label>
-        <select id="geodata" name="geodata">
-          <option value="GPS points" data-en="GPS points" data-de="GPS-Punkte">GPS points</option>
-          <option value="polygons" data-en="polygons" data-de="Polygone">polygons</option>
-          <option value="not yet" data-en="not yet" data-de="noch nicht">not yet</option>
-        </select></div>
-      <div class="f"><label for="route" data-en="Preferred way" data-de="Bevorzugter Weg">Preferred way</label>
-        <select id="route" name="route">
-          <option value="A family in Germany" data-en="A · family in Germany" data-de="A · Familie in Deutschland">A · family in Germany</option>
-          <option value="B stock in Europe" data-en="B · stock in Europe" data-de="B · Ware in Europa">B · stock in Europe</option>
-          <option value="not sure" data-en="not sure" data-de="noch unsicher">not sure</option>
-        </select></div>
+      <div class="f full"><label for="about" data-en="Who are you? How long have you grown coffee, how many families are part of it, what matters to you?" data-de="Wer seid ihr? Seit wann baut ihr Kaffee an, wie viele Familien gehören dazu, was ist euch wichtig?">Who are you? How long have you grown coffee, how many families are part of it, what matters to you?</label><textarea id="about" name="about" rows="5"></textarea></div>
+      <div class="f full"><label for="coffees" data-en="Which coffees do you have? Varieties, processing, roughly how many bags per season." data-de="Welche Kaffees habt ihr? Sorten, Aufbereitung, ungefähr wie viele Sack pro Saison.">Which coffees do you have? Varieties, processing, roughly how many bags per season.</label><textarea id="coffees" name="coffees" rows="4"></textarea></div>
       <div class="f full"><label for="de_contact" data-en="Family member or partner in Germany (name, email), optional" data-de="Familienmitglied oder Partner in Deutschland (Name, E-Mail), optional">Family member or partner in Germany (name, email), optional</label><input id="de_contact" name="de_contact"></div>
-      <div class="f full"><label for="notes" data-en="Notes" data-de="Anmerkungen">Notes</label><textarea id="notes" name="notes"></textarea></div>
+      <div class="f full"><label for="notes" data-en="Notes" data-de="Anmerkungen">Notes</label><textarea id="notes" name="notes" rows="3"></textarea></div>
     </div>
-    <label class="check"><input type="checkbox" name="terms_accepted" value="yes" required>
-      <span data-en="I understand that ownership stays with me until the container is sealed, that a lot is accepted only after cupping, and that plot coordinates are required." data-de="Ich habe verstanden, dass der Kaffee bis zur Plombierung des Containers mein Eigentum bleibt, dass ein Lot erst nach dem Cupping angenommen wird und dass Geodaten der Parzellen Voraussetzung sind.">I understand that ownership stays with me until the container is sealed, that a lot is accepted only after cupping, and that plot coordinates are required.</span></label>
+    <p class="note" data-en="By sending you agree that we store your details to answer you. See the &lt;a href=&quot;/datenschutz/&quot;&gt;privacy policy&lt;/a&gt; (German)." data-de="Mit dem Absenden stimmt ihr zu, dass wir eure Angaben speichern, um zu antworten. Siehe &lt;a href=&quot;/datenschutz/&quot;&gt;Datenschutzerklärung&lt;/a&gt;.">By sending you agree that we store your details to answer you. See the <a href="/datenschutz/">privacy policy</a> (German).</p>
     <button type="submit" class="send" data-en="Send" data-de="Absenden">Send</button>
   </form>
 </section>
