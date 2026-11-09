@@ -131,3 +131,26 @@ th { text-align: left; font-weight: 500; font-size: 13px; letter-spacing: .12em;
 td { padding: 12px 12px 12px 0; border-bottom: 1px solid var(--border); }
 td.r, th.r { text-align: right; padding-right: 0; }
 tr.hl td { background: var(--surface-sunken); }
+
+/* ── Graphics (inline SVG, tokens only) ── */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.gfx { display: block; width: 100%; max-width: 480px; height: auto; margin: 24px 0 0; font-family: inherit; }
+.gfx text { fill: var(--text-primary); font-size: 13px; }
+.gfx .g-title { font-size: 15px; font-weight: 500; }
+.gfx .g-sub, .gfx .g-sub2, .gfx .g-conn, .gfx .w-lab, .gfx .w-leg { fill: var(--fg-mid); }
+.gfx .g-conn { font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; fill: var(--coral-700); }
+.gfx .w-val { font-weight: 500; }
+.gfx .g-num { fill: var(--surface-page); font-size: 13px; font-weight: 500; }
+.gfx .g-line, .gfx .g-road { stroke: var(--border-strong); stroke-width: 2; }
+.gfx .g-road { stroke-dasharray: 3 6; stroke-linecap: round; }
+.gfx .g-sea { stroke: var(--coral-700); stroke-width: 3; }
+.gfx .g-dot { fill: var(--coral-700); }
+.gfx .g-hub { fill: var(--surface-page); }
+.gfx .g-band { fill: var(--surface-raised); stroke: var(--coral-700); stroke-width: 1; }
+.gfx .g-rule { stroke: var(--border); stroke-width: 1; }
+.gfx .g-chip { fill: var(--coral-700); }
+.gfx .w-sale { fill: var(--text-primary); }
+.gfx .w-cost { fill: var(--border-strong); }
+.gfx .w-you { fill: var(--status-success); }
+.gfx .w-us { fill: var(--action-primary); }
+.gfx .w-split { fill: var(--surface-sunken); stroke: var(--border-strong); stroke-width: 1; }
