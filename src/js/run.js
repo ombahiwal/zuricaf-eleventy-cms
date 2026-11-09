@@ -47,7 +47,7 @@ render();
 
 // form → Netlify, mailto als Fallback
 const form=document.getElementById('booking');
-form.addEventListener('submit',e=>{
+if(form)form.addEventListener('submit',e=>{
   e.preventDefault();
   const g=id=>document.getElementById(id).value.trim();
   const msg=document.getElementById('msg');
@@ -83,7 +83,7 @@ form.addEventListener('submit',e=>{
   }).catch(()=>{
     btn.disabled=false;
     const body=[
-      'Anmeldung Sammelcontainer — Run UG-GER-2026-09','',
+      'Anmeldung Sammelcontainer — Run '+form.elements.run.value,'',
       'Rösterei: '+g('firma'),'Ansprechpartner: '+g('name'),
       'E-Mail: '+g('mail'),'Telefon: '+(g('tel')||'—'),'',
       'Menge: '+kg.toLocaleString('de-DE')+' kg ('+Math.round(kg/60)+' Sack)',

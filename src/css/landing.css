@@ -1,4 +1,4 @@
-/* Standalone landing pages (/direct-trade/, /run-2026-09/). Loads after zuricaf.css and uses its tokens. */
+/* Standalone landing pages (/direct-trade/, /next-run/, /run-2026-09/). Loads after zuricaf.css and uses its tokens. */
 
 .wrap { max-width: 1000px; margin: 0 auto; padding: 0 48px; }
 @media (max-width: 720px) { .wrap { padding: 0 24px; } }

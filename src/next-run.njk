@@ -1,0 +1,192 @@
+---
+permalink: /next-run/
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.goatcounter.com; font-src 'self'; connect-src 'self' https://*.goatcounter.com; form-action 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sammelcontainer Uganda → Hamburg · Nächster Run</title>
+<link rel="stylesheet" href="/css/zuricaf.css">
+<link rel="stylesheet" href="/css/landing.css">
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <div class="cobrand">
+    <a href="/"><img class="zuricaf" src="/images/zuricaf.png" alt="Zuricaf · Farmers Direct Sourcing Co." width="915" height="408"></a>
+    <span class="x" aria-hidden="true">×</span>
+    <img class="littlefarms" src="/images/littlefarms.png" alt="littlefarms · coffee by farmers" width="600" height="400">
+  </div>
+  <div class="masthead">
+    <span>Direct Trade Uganda</span>
+    <span>Nächster Run · Kampala → Hamburg</span>
+  </div>
+
+  <p class="eyebrow" style="margin-top:38px">Sammelcontainer · 20ft · 320 Sack à 60 kg</p>
+  <h1>19.200 kg passen in einen Container.<br>Du brauchst <em>600</em>.</h1>
+  <p class="lead">Wir konsolidieren einen Container ugandischen Rohkaffees nach Hamburg. Du buchst deine Menge, wir übernehmen Export, Fracht, Verzollung und Einlagerung. Was du zahlst, hängt davon ab, wie voll der Container wird — deshalb steht die ganze Rechnung hier offen.</p>
+
+  <p class="note" style="margin-top:24px">Termin und Buchungsschluss des nächsten Runs nennen wir in der Bestätigung. Die Anmeldung ist unverbindlich. Du bist Farmer oder Gruppe in Uganda? <a href="/direct-trade/">Hier geht es für euch weiter.</a></p>
+
+  <p class="provisional">Alle Raten vorläufig — endgültige Rate erst nach Bestätigung der Frachtkosten.</p>
+
+  <div class="calc">
+    <div class="calc-top">
+      <span>Ein Strich = ein Sack à 60 kg</span>
+      <span id="bagcount">0 von 320 Sack</span>
+    </div>
+    <div class="tally" id="tally" aria-hidden="true"></div>
+    <div class="marks">
+      <div class="mark" style="left:52.08%"><b></b><span>10 t · Mindestmenge</span></div>
+      <div class="mark" style="left:78.13%"><b></b><span>15 t · Rebate</span></div>
+      <div class="mark" style="left:88.54%"><b></b><span>17 t</span></div>
+    </div>
+    <div class="calc-in">
+      <div class="field-lg">
+        <label for="vol">Deine Menge in kg</label>
+        <input type="number" id="vol" min="0" max="7000" step="60" value="1200" inputmode="numeric">
+      </div>
+      <div class="readout">
+        <div class="ro" id="ro-rate"><b>Deine Rate</b><strong id="rate">–</strong><small id="tier">&nbsp;</small></div>
+        <div class="ro"><b>Logistik gesamt</b><strong id="total">–</strong><small>zzgl. Zoll, EUSt, Cess</small></div>
+        <div class="ro"><b>Anzahlung 30%</b><strong id="dep">–</strong><small>bei Buchung fällig</small></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <p class="sec-note">Warum es das gibt</p>
+  <div class="cols">
+    <div>
+      <h3>Der Container ist die Hürde</h3>
+      <p class="lead" style="font-size:15px">Ein eigenes Lot aus Uganda bekommst du nur, wenn du einen Container füllst. Die meisten Röstereien brauchen 600 bis 6.000 kg. Dazwischen gibt es nichts — außer den Importeur, der dir seine Auswahl verkauft.</p>
+    </div>
+    <div>
+      <h3>Du behältst deinen Lieferanten</h3>
+      <p class="lead" style="font-size:15px">Du kaufst den Kaffee selbst, bei dem Produzenten, den du willst.</p>
+    </div>
+    <div>
+      <h3>Eine Rate, keine Überraschungen</h3>
+      <p class="lead" style="font-size:15px">Alles von der Sammelstelle in Uganda bis zum Lager in Hamburg steckt in einem Preis je Kilo. Was nicht drin ist, steht unten — vollständig und einzeln.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sec-note">Preisstaffel</p>
+  <h2 style="margin-bottom:8px">Je mehr du buchst, desto weniger zahlst du je Kilo.</h2>
+  <p class="provisional" style="margin:0 0 20px">Vorläufig — endgültige Rate erst nach Bestätigung der Frachtkosten.</p>
+  <table>
+    <thead><tr><th>Menge</th><th class="r">Rate €/kg</th><th class="r">bei 15 t Füllung</th><th class="r">bei 17 t Füllung</th></tr></thead>
+    <tbody id="ladder"></tbody>
+  </table>
+  <p style="font-family:var(--mono);font-size:12px;color:var(--slate);margin-top:14px">
+    Erreicht der Container 15.000 kg, bekommt jeder Teilnehmer 0,08 €/kg zurück. Ab 17.000 kg sind es 0,15 €/kg.
+    Ausgezahlt nach der Verschiffung. Über 7.000 kg rechnen wir individuell.
+  </p>
+</section>
+
+<section>
+  <p class="sec-note">Leistungsumfang</p>
+  <div class="inout">
+    <div>
+      <h3 style="margin-bottom:12px">In der Rate enthalten</h3>
+      <ul class="yes">
+        <li>Annahme an unserer Sammelstelle in Uganda</li>
+        <li>Absacken, Screening, Exportmarkierung</li>
+        <li>Exportabfertigung und Dokumentation</li>
+        <li>Landtransport bis Mombasa</li>
+        <li>Seefracht bis Hamburg</li>
+        <li>Einfuhrabfertigung und Terminal Handling</li>
+        <li>Entladung, Sortierung, Freilagerung</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-bottom:12px">Nicht enthalten, zu Beleg</h3>
+      <ul class="no">
+        <li>Der Kaffee selbst — den kaufst du direkt</li>
+        <li>Cess: 2% auf den deklarierten Exportwert</li>
+        <li>Einfuhrzoll und Einfuhrumsatzsteuer</li>
+        <li>Transportversicherung</li>
+        <li>Lagerung über die Freiperiode hinaus</li>
+        <li>Standgeld durch fehlende Papiere oder Zahlung</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sec-note">Ablauf</p>
+  <ol class="steps">
+    <li><div><h3>Menge anmelden</h3><p>Formular unten. Du bekommst innerhalb von zwei Werktagen eine Bestätigung mit deiner Rate und dem Buchungsschluss.</p></div></li>
+    <li><div><h3>Buchen und anzahlen</h3><p>30% Anzahlung. Damit ist dein Platz reserviert. Bis zum Buchungsschluss ist die Rate indikativ, danach fix.</p></div></li>
+    <li><div><h3>Dein Lieferant liefert an</h3><p>An unsere Sammelstelle in Uganda, unverzollt und ohne Exportvorbereitung. Big Bags oder GrainPro. Eigene Jutesäcke mit deinem Logo kannst du leer schicken.</p></div></li>
+    <li><div><h3>Wir sacken ab und verschiffen</h3><p>Absacken, Wiegen, Markieren, Export unter einer Anmeldung für den ganzen Container. Das verwogene Nettogewicht ist das Abrechnungsgewicht.</p></div></li>
+    <li><div><h3>Abholung in Hamburg</h3><p>Nach Verzollung und Entladung bekommst du die Freimeldung. Ab da läuft deine Freilagerung.</p></div></li>
+  </ol>
+</section>
+
+<section>
+  <p class="sec-note">Bedingungen</p>
+  <div class="terms">
+    <p><b>Mindestmenge je Teilnehmer</b> 600 kg. Darüber in Schritten von 60 kg, also ganzen Sack.</p>
+    <p><b>Der Container fährt ab 10.000 kg</b> gebuchtem Gesamtvolumen. Wird das nicht erreicht, kommt deine Anzahlung vollständig zurück und es entstehen dir keine Kosten.</p>
+    <p><b>Raten sind indikativ bis zum Buchungsschluss</b> und danach fix — in beide Richtungen. Die veröffentlichte Staffel ist vorläufig, bis die Frachtkosten bestätigt sind.</p>
+    <p><b>Zahlung</b> 30% bei Buchung, Rest vor Freistellung in Hamburg.</p>
+    <p><b>Abrechnungsgewicht</b> ist das beim Absacken verwogene Nettogewicht, nicht die angemeldete Menge.</p>
+    <p><b>Rebate</b> ab 15.000 kg 0,08 €/kg, ab 17.000 kg 0,15 €/kg, an alle Teilnehmer gleich.</p>
+  </div>
+</section>
+
+<section id="form">
+  <p class="sec-note">Anmeldung</p>
+  <h2>Menge anmelden</h2>
+  <p class="lead">Unverbindlich. Du bekommst deine Rate schriftlich bestätigt, bevor irgendetwas fällig wird.</p>
+
+  <form id="booking" name="sammelcontainer" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+    <input type="hidden" name="form-name" value="sammelcontainer">
+    <input type="hidden" name="run" value="naechster-run">
+    <input type="hidden" name="rate" id="h-rate">
+    <input type="hidden" name="logistik_gesamt" id="h-total">
+    <input type="hidden" name="anzahlung_30" id="h-dep">
+    <input type="hidden" name="sack" id="h-sack">
+    <p style="display:none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+    <div class="grid">
+      <div class="f"><label for="firma">Rösterei / Firma</label><input id="firma" name="firma" required></div>
+      <div class="f"><label for="name">Ansprechpartner</label><input id="name" name="ansprechpartner" required></div>
+      <div class="f"><label for="mail">E-Mail</label><input id="mail" name="email" type="email" required></div>
+      <div class="f"><label for="tel">Telefon</label><input id="tel" name="telefon" type="tel"></div>
+      <div class="f"><label for="menge">Menge in kg</label><input id="menge" name="menge_kg" type="number" min="600" max="7000" step="60" required></div>
+      <div class="f"><label for="pack">Anlieferung durch Lieferant</label>
+        <select id="pack" name="anlieferung"><option>Big Bags</option><option>GrainPro</option><option>noch offen</option></select></div>
+      <div class="f"><label for="jute">Eigene Jutesäcke mit Logo</label>
+        <select id="jute" name="jutesaecke"><option>nein</option><option>ja, schicke ich leer</option><option>noch offen</option></select></div>
+      <div class="f"><label for="lief">Lieferant / Exporteur</label><input id="lief" name="lieferant" placeholder="falls schon feststehend"></div>
+      <div class="f full"><label for="lot">Lot, Aufbereitung, Region</label><input id="lot" name="lot" placeholder="z. B. Bugisu, Natural Anaerobic, 2 Lots à 600 kg"></div>
+      <div class="f full"><label for="notes">Anmerkungen</label><textarea id="notes" name="anmerkungen" placeholder="Termine, Muster, offene Fragen"></textarea></div>
+    </div>
+    <label class="check"><input type="checkbox" id="ack" name="bedingungen_bestaetigt" value="ja" required>
+      <span>Ich habe gelesen, dass der Container erst ab 10.000 kg Gesamtvolumen fährt, dass die Raten vorläufig sind bis die Frachtkosten bestätigt wurden, und dass Zoll, Einfuhrumsatzsteuer, Cess und Versicherung nicht in der Rate enthalten sind.</span></label>
+    <button type="submit">Anmeldung senden</button>
+    <div class="msg" id="msg"></div>
+  </form>
+</section>
+
+<footer>
+  <span>tabme UG (haftungsbeschränkt) · Zuricaf</span>
+  <span><a href="mailto:lorenz@zuricaf.com">lorenz@zuricaf.com</a> · +49 160 3134000</span>
+</footer>
+
+</div>
+
+<script src="/js/run.js" defer></script>
+  {% if site.goatcounter %}<script data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count" async src="/js/count.js"></script>{% endif %}
+</body>
+</html>
