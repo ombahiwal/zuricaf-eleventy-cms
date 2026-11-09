@@ -5,10 +5,9 @@
     { "label": "Services", "href": "/#services" },
     { "label": "How It Works", "href": "/#how-it-works" },
     { "label": "Sustainability", "href": "/#sustainability" },
-    { "label": "Liberica Project", "href": "/#liberica" },
-    { "label": "Harvest Calendar", "href": "/#calendar" },
     { "label": "Uganda 2026", "href": "/uganda-2026/" },
     { "label": "Contact", "href": "/#contact" },
-    { "label": "Register as Supplier →", "href": "/direct-trade/" }
+    { "label": "For farmers", "href": "/direct-trade/", "button": true },
+    { "label": "For roasters", "href": "/next-run/", "button": true }
   ]
 }

@@ -24,6 +24,7 @@ collections:
             fields:
               - { label: "Label", name: "label", widget: "string" }
               - { label: "URL", name: "href", widget: "string" }
+              - { label: "As button", name: "button", widget: "boolean", required: false, default: false }
       
       # NEW: editable footer
       - name: "footer"
@@ -45,6 +46,7 @@ collections:
             fields:
               - { label: "Label", name: "label", widget: "string" }
               - { label: "URL", name: "href", widget: "string" }
+              - { label: "As button", name: "button", widget: "boolean", required: false, default: false }
           - label: "Footer Links"
             name: "links"
             widget: "list"
@@ -52,6 +54,7 @@ collections:
             fields:
               - { label: "Label", name: "label", widget: "string" }
               - { label: "URL", name: "href", widget: "string" }
+              - { label: "As button", name: "button", widget: "boolean", required: false, default: false }
           - { label: "Copyright", name: "copyright", widget: "string", required: false, hint: "You can use {{ year }} here" }
 
   - name: "pages"
@@ -143,6 +146,7 @@ collections:
                     fields:
                       - { label: "Label", name: "label", widget: "string" }
                       - { label: "URL", name: "href", widget: "string" }
+              - { label: "As button", name: "button", widget: "boolean", required: false, default: false }
   - name: "assets"
     label: "Standalone Assets"
     folder: "src/content/assets"

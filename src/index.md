@@ -97,5 +97,6 @@ cta:
   buttons:
     - { label: "Contact us", href: "/#contact" }
     - { label: "Book a call", href: "https://calendar.notion.so/meet/lorenzstckert/h932i4pxy" }
-    - { label: "Supplier Registration", href: "/direct-trade/" }
+    - { label: "For farmers", href: "/direct-trade/" }
+    - { label: "For roasters", href: "/next-run/" }
 ---
