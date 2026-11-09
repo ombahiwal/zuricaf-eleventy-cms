@@ -178,7 +178,7 @@ tr.hl td { background: var(--surface-sunken); }
 .c .gfx-route { max-width: 560px; }
 .c .gfx-split { max-width: 520px; margin-top: 24px; }
 .c h3.gap { margin-top: 56px; }
-.stat span { font-size: 17px; }
+.stat > span { font-size: 17px; }
 
 /* Legend under the split bar (HTML, so long UGX amounts wrap instead of clipping) */
 .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-top: 12px; font-size: 17px; color: var(--fg-mid); }
