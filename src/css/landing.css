@@ -6,11 +6,13 @@ section { padding: 64px 0; border-top: 1px solid var(--border); }
 section:first-of-type { border-top: none; }
 
 /* ── Cobrand head ── */
-header { padding: 20px 0 0; }
-/* Language and currency switch: sticks to the top while scrolling (height 0, so it takes no room). */
-.toggles { position: sticky; top: 0; z-index: 20; height: 0; padding-top: 12px; display: flex; justify-content: flex-end; gap: 8px; pointer-events: none; }
-.toggles .lang { pointer-events: auto; box-shadow: var(--shadow-md); align-self: flex-start; }
-@media (max-width: 640px) { header { padding-top: 64px; } }
+header { padding: 24px 0 0; }
+/* Language and currency switch: slim bar that stays at the top while scrolling, content passes under it. */
+.toggles { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--surface-page) 90%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.toggles .wrap { display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding-top: 8px; padding-bottom: 8px; }
+.toggles .brand { margin-right: auto; }
+.toggles .brand img { display: block; height: 44px; width: auto; mix-blend-mode: multiply; }
+@media (max-width: 520px) { .toggles .brand img { height: 32px; } .toggles .lang button { padding: 6px 10px; } }
 :target, #form { scroll-margin-top: 80px; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 .cobrand { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
@@ -29,13 +31,14 @@ header { padding: 20px 0 0; }
   padding: 12px 0;
 }
 
-.lang { display: inline-flex; border: 1px solid var(--border); border-radius: var(--radius-pill); overflow: hidden; background: var(--surface-card); }
+.lang { display: inline-flex; gap: 2px; padding: 3px; border: 1px solid var(--border); border-radius: var(--radius-pill); background: var(--surface-card); }
 .lang button {
   margin: 0; font-family: inherit; font-size: 13px; font-weight: 500; letter-spacing: .12em;
-  padding: 8px 16px; min-height: 48px; background: transparent; color: var(--fg-mid); border: 0; cursor: pointer;
+  padding: 6px 14px; min-height: 44px; border-radius: var(--radius-pill); background: transparent; color: var(--fg-mid); border: 0; cursor: pointer;
   transition: background 120ms var(--ease), color 120ms var(--ease);
 }
 .lang button[aria-pressed="true"] { background: var(--text-primary); color: var(--surface-page); }
+.lang button:focus-visible { outline-offset: -3px; }
 
 /* ── Type ── */
 .eyebrow { font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--coral-700); margin-top: 48px; }
