@@ -41,7 +41,7 @@
   --coral-700:      #8C2E1B;
   --ink-700:        #443B34;
   --ink-200:        #E4E0D8;
-  --focus-ring:     #F2542859;
+  --focus-ring:     var(--coral-700); /* DS-Wert #F2542859 hat auf Creme nur 1,5:1 */
   --status-success: #585231;
   --sans: 'Jost', 'Futura 100 LXT', Futura, system-ui, sans-serif;
   --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px; --radius-pill: 999px;
@@ -55,7 +55,7 @@
   --accent-hover: var(--text-link-hover);
   --fg:           var(--text-primary);
   --fg-mid:       var(--ink-700);
-  --fg-light:     var(--text-secondary);
+  --fg-light:     var(--ink-700); /* text-secondary hat auf Creme nur 4,35:1 */
   --bg:           var(--surface-page);
   --bg-warm:      var(--surface-raised);
   --bg-sunken:    var(--surface-sunken);
