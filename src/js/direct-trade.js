@@ -20,11 +20,11 @@ function money(eur, lang) {
 }
 
 // Example way B on /direct-trade/: all figures per kg in EUR, the one place to change them.
-// Registered values: UCDA daily price 30 Oct 2026 at EUR 1 = USD 1.1172 (run 2026-09); the label date in direct-trade.njk names the same day.
+// ugx = UCDA/MAAIF Daily Coffee Market Report 10 Nov 2026 (Arabica Bugisu AA, Robusta Screen 15); the registered value is that price at RATE_UGX, the label date in direct-trade.njk names the same day.
 // Zone limits are assumptions, under review. Static numbers in direct-trade.njk show Arabica at its start for visitors without JS.
 var EX = {
-  arabica: { reg: 5.59, min: 6, max: 14, start: 9, zones: [8, 10, 12] },
-  robusta: { reg: 3.04, min: 4, max: 9, start: 6, zones: [5.5, 7] }
+  arabica: { ugx: 24267, grade: 'Bugisu AA', min: 6, max: 14, start: 9, zones: [8, 10, 12] },
+  robusta: { ugx: 14413, grade: 'Screen 15', min: 4, max: 9, start: 6, zones: [5.5, 7] }
 };
 var EX_RATE = 1.60, EX_CESS = 0.02, EX_STORE = 0.083, EX_BASE = 0.40, EX_KG = 600; // rate for 600 kg, cess 2% of the registered value
 var exVar = 'arabica', exPrice = document.getElementById('ex-price');
@@ -32,15 +32,16 @@ var exVar = 'arabica', exPrice = document.getElementById('ex-price');
 function r2(x) { return Math.round(x * 100) / 100; }
 
 // way B: costs and our base share come off the sale, what is left above the registered value is split 50/50
-function exCalc(p, reg) {
-  var n = p - EX_RATE - EX_CESS * reg - EX_STORE - EX_BASE, above = Math.max(n - reg, 0);
+function exCalc(p, ugx) {
+  var reg = r2(ugx / RATE_UGX), n = p - EX_RATE - EX_CESS * reg - EX_STORE - EX_BASE, above = Math.max(n - reg, 0);
   var you = r2(Math.min(n, reg) + above / 2), us = r2(EX_BASE + above / 2);
   return { price: p, reg: reg, you: you, us: us, cost: r2(p - you - us), cess: r2(EX_CESS * reg),
-    above: r2(above), total: Math.round(you * EX_KG), diff: r2(Math.abs(you - reg)), wa: r2(Math.max(0.1 * p, EX_BASE)) }; // wa: our way A commission, 10% of the sale, at least the base share
+    above: r2(above), total: Math.round(you * EX_KG), diff: r2(Math.abs(you - reg)), wa: r2(Math.max(0.1 * p, EX_BASE)), kmp: ugx / RATE_UGX,
+    be: Math.ceil((reg * (1 + EX_CESS) + EX_RATE + EX_STORE + EX_BASE) * 100) / 100 }; // be: lowest sale price at which you reach the registered value // wa: our way A commission, 10% of the sale, at least the base share
 }
 
 function renderExample(lang) {
-  var ex = EX[exVar], p = parseFloat(exPrice.value), v = exCalc(p, ex.reg), zone = 1;
+  var ex = EX[exVar], p = parseFloat(exPrice.value), v = exCalc(p, ex.ugx), zone = 1;
   ex.zones.forEach(function (z) { if (p >= z) zone++; });
   document.querySelectorAll('.m[data-k]').forEach(function (el) { el.setAttribute('data-eur', v[el.getAttribute('data-k')]); });
   document.querySelectorAll('[data-zone]').forEach(function (el) { el.hidden = el.getAttribute('data-zone') !== String(zone); });
@@ -51,6 +52,7 @@ function renderExample(lang) {
     var bar = document.getElementById('bar-' + k);
     bar.setAttribute('x', x.toFixed(1)); bar.setAttribute('width', (v[k] * w).toFixed(1)); x += v[k] * w;
   });
+  document.querySelectorAll('[data-grade]').forEach(function (el) { el.textContent = ex.grade; });
   exPrice.setAttribute('aria-valuetext', money(p, lang));
   document.getElementById('sp-t').textContent = (lang === 'de' ? 'Von ' + money(p, lang) + ' je kg: ihr ' + money(v.you, lang) + ', Zuricaf ' + money(v.us, lang) + ', Logistik und Cess ' : 'Of ' + money(p, lang) + ' per kg: you ' + money(v.you, lang) + ', Zuricaf ' + money(v.us, lang) + ', logistics and cess ') + money(v.cost, lang);
 }
@@ -60,6 +62,7 @@ function renderMoney() {
   if (exPrice) renderExample(lang);
   document.querySelectorAll('.m[data-eur]').forEach(function (el) {
     el.textContent = money(parseFloat(el.getAttribute('data-eur')), lang);
+    if (el.classList.contains('ab')) el.textContent = el.textContent.replace('≈\u00a0', ''); // the sentence says about/etwa itself
   });
   document.querySelectorAll('[data-set-cur]').forEach(function (btn) {
     btn.setAttribute('aria-pressed', String(btn.getAttribute('data-set-cur') === cur));
