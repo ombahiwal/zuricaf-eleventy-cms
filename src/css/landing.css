@@ -209,3 +209,14 @@ tr.hl td { background: var(--surface-sunken); }
 .ex-ref { font-size: 15px; color: var(--fg-mid); margin: 8px 0 20px; line-height: 1.5; }
 .ex-ctl .ex-lab { font-size: 15px; font-weight: 400; margin-top: 4px; }
 .ex-lab b { font-weight: 500; color: var(--text-primary); }
+.cmp2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; max-width: 560px; margin: 24px auto 0; }
+.cmp-col { border: 1px solid var(--border-strong); border-radius: 12px; padding: 18px 12px; }
+.cmp-col.you { border: 2px solid var(--action-primary); }
+.cmp-h { font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-light); margin: 0; }
+.cmp-n { margin: 8px 0 6px; font-size: 15px; color: var(--fg-mid); }
+.cmp-n strong { font-size: clamp(19px, 5.2vw, 36px); font-weight: 500; color: var(--text-primary); white-space: nowrap; }
+.cmp-s { font-size: 13px; line-height: 1.4; color: var(--fg-mid); margin: 0; }
+.gain { font-size: 17px; margin: 16px 0 0; }
+.gain b { font-weight: 500; color: var(--text-primary); }
+.ex-note { margin-top: 8px; }
+.split-h { margin-top: 40px; }
