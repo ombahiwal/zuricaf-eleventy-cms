@@ -1,4 +1,4 @@
-// DE/EN toggle for /direct-trade/, /next-run/ and their thanks pages, EUR/UGX toggle on /direct-trade/.
+// DE/EN toggle for the home page, /direct-trade/, /next-run/ and their thanks pages, EUR/UGX toggle on /direct-trade/.
 // Start language from ?lang=de and currency EUR from ?cur=eur, no storage (§ 25 TDDDG).
 var RATE_UGX = 4586; // EUR 1 in UGX, XE mid-market 9 Nov 2026; the fine print on /direct-trade/ names the same rate
 var cur = new URLSearchParams(location.search).get('cur') === 'eur' ? 'eur' : 'ugx'; // farmers first: UGX unless ?cur=eur

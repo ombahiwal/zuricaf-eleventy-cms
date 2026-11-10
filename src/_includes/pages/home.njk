@@ -1,15 +1,17 @@
+{% set D = de.home %}
+{% macro t(en, dee) %}{% if dee %} data-en="{{ en | forceescape }}" data-de="{{ dee | forceescape }}"{% endif %}{% endmacro %}
 {# src/_includes/pages/home.njk #}
 
 <!-- ── Hero ─────────────────────────────────────────────── -->
 <section class="wrapper" style="padding-block: 3rem 2rem;">
   <div class="hero">
     <div class="hero-content">
-      <p class="section-label">Direct from Uganda</p>
-      <h1>{{ hero.heading }}</h1>
-      {% if hero.subtext %}<p class="subtext">{{ hero.subtext }}</p>{% endif %}
+      <p class="section-label"{{ t("Direct from Uganda", D.hero.label) }}>Direct from Uganda</p>
+      <h1{{ t(hero.heading, D.hero.heading) }}>{{ hero.heading }}</h1>
+      {% if hero.subtext %}<p class="subtext"{{ t(hero.subtext, D.hero.subtext) }}>{{ hero.subtext }}</p>{% endif %}
       {% if hero.cta_label and hero.cta_href %}
         <div>
-          <a href="{{ hero.cta_href }}" class="btn">{{ hero.cta_label }}</a>
+          <a href="{{ hero.cta_href }}" class="btn"{{ t(hero.cta_label, D.hero.cta_label) }}>{{ hero.cta_label }}</a>
         </div>
       {% endif %}
     </div>
@@ -27,16 +29,16 @@
 <section class="wrapper" style="padding-block: 0 3rem;">
   <div class="steps ways">
     <a class="step" href="/direct-trade/">
-      <p class="section-label" style="margin-bottom:12px;">You grow coffee</p>
-      <h3>Your coffee, your name, in European roasteries.</h3>
-      <p>Farmers and groups in Uganda: roasters in Europe buy named lots from named farms. A shared container takes your coffee there from 10 bags.</p>
-      <span class="btn btn-outline">For farmers →</span>
+      <p class="section-label" style="margin-bottom:12px;"{{ t("You grow coffee", "Ihr baut Kaffee an") }}>You grow coffee</p>
+      <h3{{ t("Your coffee, your name, in European roasteries.", "Euer Kaffee, euer Name, in europäischen Röstereien.") }}>Your coffee, your name, in European roasteries.</h3>
+      <p{{ t("Farmers and groups in Uganda: roasters in Europe buy named lots from named farms. A shared container takes your coffee there from 10 bags.", "Farmer und Gruppen in Uganda: Röstereien in Europa kaufen benannte Lots von benannten Farmen. Ein geteilter Container bringt euren Kaffee ab 10 Sack dorthin.") }}>Farmers and groups in Uganda: roasters in Europe buy named lots from named farms. A shared container takes your coffee there from 10 bags.</p>
+      <span class="btn btn-outline"{{ t("For farmers →", "Für Farmer →") }}>For farmers →</span>
     </a>
     <a class="step" href="/next-run/">
-      <p class="section-label" style="margin-bottom:12px;">You roast coffee</p>
-      <h3>Your own lot from Uganda, no full container needed.</h3>
-      <p>Register your volume for the next shared container to Hamburg. One price per kilo from the collection point in Uganda to the warehouse in Hamburg.</p>
-      <span class="btn btn-outline">For roasters →</span>
+      <p class="section-label" style="margin-bottom:12px;"{{ t("You roast coffee", "Du röstest Kaffee") }}>You roast coffee</p>
+      <h3{{ t("Your own lot from Uganda, no full container needed.", "Dein eigenes Lot aus Uganda, ohne vollen Container.") }}>Your own lot from Uganda, no full container needed.</h3>
+      <p{{ t("Register your volume for the next shared container to Hamburg. One price per kilo from the collection point in Uganda to the warehouse in Hamburg.", "Melde deine Menge für den nächsten Sammelcontainer nach Hamburg an. Ein Preis je Kilo von der Sammelstelle in Uganda bis zum Lager in Hamburg.") }}>Register your volume for the next shared container to Hamburg. One price per kilo from the collection point in Uganda to the warehouse in Hamburg.</p>
+      <span class="btn btn-outline"{{ t("For roasters →", "Für Röster →") }}>For roasters →</span>
     </a>
   </div>
 </section>
@@ -46,13 +48,13 @@
   <div class="wrapper">
     <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.25rem;">
       <div style="display:flex;align-items:flex-start;gap:1.25rem;">
-        <div class="badge" style="margin-top:4px;">Trip report</div>
+        <div class="badge" style="margin-top:4px;"{{ t("Trip report", "Reisebericht") }}>Trip report</div>
         <div>
-          <div style="font-weight:500;font-size:20px;margin-bottom:4px;">German Roaster Delegation · Uganda, 2–10 May 2026</div>
-          <div class="muted" style="font-size:13px;">9 days · 8 participants · 6 growing regions — German Embassy Kampala · MAAIF · CCPAU</div>
+          <div style="font-weight:500;font-size:20px;margin-bottom:4px;"{{ t("German Roaster Delegation · Uganda, 2–10 May 2026", "Deutsche Röster-Delegation · Uganda, 2.–10. Mai 2026") }}>German Roaster Delegation · Uganda, 2–10 May 2026</div>
+          <div class="muted" style="font-size:13px;"{{ t("9 days · 8 participants · 6 growing regions — German Embassy Kampala · MAAIF · CCPAU", "9 Tage · 8 Teilnehmende · 6 Anbauregionen — Deutsche Botschaft Kampala · MAAIF · CCPAU") }}>9 days · 8 participants · 6 growing regions — German Embassy Kampala · MAAIF · CCPAU</div>
         </div>
       </div>
-      <a href="/uganda-2026/" class="btn btn-on-dark" style="white-space:nowrap;">Read the trip report →</a>
+      <a href="/uganda-2026/" class="btn btn-on-dark" style="white-space:nowrap;"{{ t("Read the trip report →", "Zum Reisebericht →") }}>Read the trip report →</a>
     </div>
   </div>
 </section>
@@ -60,8 +62,8 @@
 <!-- ── Services ──────────────────────────────────────────── -->
 <section id="services" class="section-bg" style="padding-block: var(--section-gap);">
   <div class="wrapper">
-    <p class="section-label">What we offer</p>
-    <h2>Services &amp; Modules</h2>
+    <p class="section-label"{{ t("What we offer", "Was wir bieten") }}>What we offer</p>
+    <h2{{ t("Services & Modules", "Leistungen und Module") }}>Services &amp; Modules</h2>
     <div class="module-grid">
       {% for item in services %}
         {% if item.icon %}
@@ -70,8 +72,8 @@
           <div></div>
         {% endif %}
         <div>
-          <strong>{{ item.title }}</strong>
-          <span>{{ item.desc }}</span>
+          {% set sd = D.services[loop.index0] %}<strong{{ t(item.title, sd.title if sd) }}>{{ item.title }}</strong>
+          <span{{ t(item.desc, sd.desc if sd) }}>{{ item.desc }}</span>
         </div>
       {% endfor %}
     </div>
@@ -82,28 +84,26 @@
 {% if how_it_works %}
 <section id="how-it-works" class="section">
   <div class="wrapper">
-    <p class="section-label">The model</p>
-    <h2>How It Works</h2>
+    <p class="section-label"{{ t("The model", "Das Modell") }}>The model</p>
+    <h2{{ t("How It Works", "So funktioniert es") }}>How It Works</h2>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <h3>Origin &amp; Export</h3>
-        <p>Our Ugandan partners consolidate lots across farms in Mount Elgon, Rwenzori, Masaka and West Nile — handling aggregation and international export.</p>
+        <h3{{ t("Origin & Export", "Ursprung und Export") }}>Origin &amp; Export</h3>
+        <p{{ t("Our Ugandan partners consolidate lots across farms in Mount Elgon, Rwenzori, Masaka and West Nile — handling aggregation and international export.", "Unsere ugandischen Partner bündeln Lots von Farmen in Mount Elgon, Rwenzori, Masaka und West Nile und übernehmen Aggregation und Export.") }}>Our Ugandan partners consolidate lots across farms in Mount Elgon, Rwenzori, Masaka and West Nile — handling aggregation and international export.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h3>Import &amp; Customs Coordination</h3>
-        <p>Zuricaf coordinates German import, customs clearance, and delivery to your roastery — from 10 bags, no full container needed.</p>
+        <h3{{ t("Import & Customs Coordination", "Import- und Zollkoordination") }}>Import &amp; Customs Coordination</h3>
+        <p{{ t("Zuricaf coordinates German import, customs clearance, and delivery to your roastery — from 10 bags, no full container needed.", "Zuricaf koordiniert Import, Verzollung und Lieferung an deine Rösterei in Deutschland, ab 10 Sack, ohne vollen Container.") }}>Zuricaf coordinates German import, customs clearance, and delivery to your roastery — from 10 bags, no full container needed.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>Key Account &amp; Quality</h3>
-        <p>Permanent contact in Germany: SCA cuppings, Q-grader feedback, sample service, and repeat order management.</p>
+        <h3{{ t("Key Account & Quality", "Key Account und Qualität") }}>Key Account &amp; Quality</h3>
+        <p{{ t("Permanent contact in Germany: SCA cuppings, Q-grader feedback, sample service, and repeat order management.", "Feste Ansprechperson in Deutschland: SCA-Cuppings, Q-Grader-Feedback, Musterservice und Nachbestellungen.") }}>Permanent contact in Germany: SCA cuppings, Q-grader feedback, sample service, and repeat order management.</p>
       </div>
     </div>
-    <p style="margin-top:1.5rem;font-size:.85rem;color:var(--fg-light);">
-      2026 in partnership with CCPAU (Uganda), Slow Food Uganda, and the Uganda Embassy Berlin.
-    </p>
+    <p style="margin-top:1.5rem;font-size:.85rem;color:var(--fg-light);"{{ t("2026 in partnership with CCPAU (Uganda), Slow Food Uganda, and the Uganda Embassy Berlin.", "2026 in Partnerschaft mit CCPAU (Uganda), Slow Food Uganda und der Botschaft Ugandas in Berlin.") }}>2026 in partnership with CCPAU (Uganda), Slow Food Uganda, and the Uganda Embassy Berlin.</p>
   </div>
 </section>
 {% endif %}
@@ -111,16 +111,16 @@
 <!-- ── Sustainability ─────────────────────────────────────── -->
 <section id="sustainability" class="section section-bg">
   <div class="wrapper">
-    <p class="section-label">Our values</p>
-    <div class="prose">{{ sustainability | markdown | safe }}</div>
+    <p class="section-label"{{ t("Our values", "Unsere Werte") }}>Our values</p>
+    <div class="prose"{{ t(sustainability | markdown, D.sustainability | markdown) }}>{{ sustainability | markdown | safe }}</div>
   </div>
 </section>
 
 <!-- ── Liberica ──────────────────────────────────────────── -->
 <section id="liberica" class="section">
   <div class="wrapper">
-    <p class="section-label">Specialty varieties</p>
-    <div class="prose">{{ liberica | markdown | safe }}</div>
+    <p class="section-label"{{ t("Specialty varieties", "Besondere Varietäten") }}>Specialty varieties</p>
+    <div class="prose"{{ t(liberica | markdown, D.liberica | markdown) }}>{{ liberica | markdown | safe }}</div>
   </div>
 </section>
 
@@ -167,20 +167,20 @@
 <!-- ── Harvest Calendar ───────────────────────────────────── -->
 <section id="calendar" class="section section-bg">
   <div class="wrapper">
-    <p class="section-label">Seasonality</p>
-    <h2>Uganda Harvest Calendar <span style="font-size:.8rem;font-weight:400;color:var(--fg-light);">(indicative – varies by micro-climate)</span></h2>
+    <p class="section-label"{{ t("Seasonality", "Saisonalität") }}>Seasonality</p>
+    <h2{{ t('Uganda Harvest Calendar <span style="font-size:.8rem;font-weight:400;color:var(--fg-light);">(indicative – varies by micro-climate)</span>', 'Erntekalender Uganda <span style="font-size:.8rem;font-weight:400;color:var(--fg-light);">(Richtwerte, je nach Mikroklima)</span>') }}>Uganda Harvest Calendar <span style="font-size:.8rem;font-weight:400;color:var(--fg-light);">(indicative – varies by micro-climate)</span></h2>
     <div style="overflow-x:auto;margin-top:1rem;">
       <table class="calendar">
         <thead>
-          <tr><th>Region</th><th>Type</th><th>Main Crop</th><th>Fly Crop</th></tr>
+          <tr><th>Region</th><th{{ t("Type", "Sorte") }}>Type</th><th{{ t("Main Crop", "Haupternte") }}>Main Crop</th><th{{ t("Fly Crop", "Nebenernte") }}>Fly Crop</th></tr>
         </thead>
         <tbody>
           {% for row in calendar %}
             <tr>
-              <td>{{ row.region }}</td>
-              <td>{{ row.type }}</td>
-              <td>{{ row.main }}</td>
-              <td>{{ row.fly }}</td>
+              {% set cd = D.calendar_rows[loop.index0] if D.calendar_rows[loop.index0] and D.calendar_rows[loop.index0][0] == row.region %}<td>{{ row.region }}</td>
+              <td{{ t(row.type, cd[1] if cd) }}>{{ row.type }}</td>
+              <td{{ t(row.main, cd[2] if cd) }}>{{ row.main }}</td>
+              <td{{ t(row.fly, cd[3] if cd) }}>{{ row.fly }}</td>
             </tr>
           {% endfor %}
         </tbody>
@@ -192,9 +192,9 @@
 <!-- ── Contact ───────────────────────────────────────────── -->
 <section id="contact" class="section">
   <div class="wrapper" style="max-width:640px;">
-    <p class="section-label">Get in touch</p>
-    <h2 style="margin-bottom:.5rem;">Contact us</h2>
-    <p style="color:var(--fg-mid);margin-bottom:2rem;">Questions about sourcing, the delegation, direct trade or the shared container? We'll get back to you within 24 hours. All fields are required.</p>
+    <p class="section-label"{{ t("Get in touch", "Kontakt") }}>Get in touch</p>
+    <h2 style="margin-bottom:.5rem;"{{ t("Contact us", "Schreib uns") }}>Contact us</h2>
+    <p style="color:var(--fg-mid);margin-bottom:2rem;"{{ t("Questions about sourcing, the delegation, direct trade or the shared container? We'll get back to you within 24 hours. All fields are required.", "Fragen zu Sourcing, Delegation, Direkthandel oder Sammelcontainer? Wir melden uns innerhalb von 24 Stunden. Alle Felder sind Pflicht.") }}>Questions about sourcing, the delegation, direct trade or the shared container? We'll get back to you within 24 hours. All fields are required.</p>
 
     <form name="contact" method="POST" netlify netlify-honeypot="bot-field" action="/contact-thanks/">
       <input type="hidden" name="form-name" value="contact">
@@ -203,7 +203,7 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;margin-bottom:1rem;">
         <div>
           <label class="c-label" for="c_name">Name</label>
-          <input id="c_name" name="name" type="text" required placeholder="Your name" class="c-input">
+          <input id="c_name" name="name" type="text" required placeholder="Your name" data-ph-en="Your name" data-ph-de="Dein Name" class="c-input">
         </div>
         <div>
           <label class="c-label" for="c_email">Email</label>
@@ -212,9 +212,9 @@
       </div>
       <div style="margin-bottom:1.5rem;">
         <label class="c-label" for="c_message">Message</label>
-        <textarea id="c_message" name="message" required rows="5" placeholder="How can we help?" class="c-input" style="resize:vertical;"></textarea>
+        <textarea id="c_message" name="message" required rows="5" placeholder="How can we help?" data-ph-en="How can we help?" data-ph-de="Wie können wir helfen?" class="c-input" style="resize:vertical;"></textarea>
       </div>
-      <button type="submit" class="btn">Send message</button>
+      <button type="submit" class="btn"{{ t("Send message", "Nachricht senden") }}>Send message</button>
     </form>
   </div>
 </section>
@@ -229,11 +229,11 @@
 <!-- ── CTA ───────────────────────────────────────────────── -->
 <section id="cta" class="section section-bg">
   <div class="wrapper cta-block">
-    <h2>{{ cta.heading }}</h2>
-    <p>{{ cta.text }}</p>
+    <h2{{ t(cta.heading, D.cta.heading) }}>{{ cta.heading }}</h2>
+    <p{{ t(cta.text, D.cta.text) }}>{{ cta.text }}</p>
     <div class="btn-group">
       {% for b in cta.buttons %}
-        <a href="{{ b.href }}" class="btn{% if loop.index > 1 %} btn-outline{% endif %}">{{ b.label }}</a>
+        <a href="{{ b.href }}" class="btn{% if loop.index > 1 %} btn-outline{% endif %}"{{ t(b.label, D.cta.buttons[b.label]) }}>{{ b.label }}</a>
       {% endfor %}
     </div>
   </div>
