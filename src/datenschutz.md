@@ -1,53 +1,52 @@
 ---
 layout: layouts/base.njk
-title: "Datenschutzerklärung | Zuricaf"
-description: "Datenschutzerklärung für zuricaf.com: Verantwortlicher tabme UG, Hosting bei Netlify, Kontaktformulare mit Auswertung in Google Workspace, Claude und Notion, cookielose Reichweitenmessung mit GoatCounter, Ihre Rechte."
+title: "Privacy Policy | Zuricaf"
+description: "Privacy policy for zuricaf.com: controller tabme UG, hosting at Netlify, contact forms processed in Google Workspace, Claude and Notion, cookie-free analytics with GoatCounter, your rights."
 permalink: /datenschutz/
 ---
 <main>
 <div class="wrapper section prose" style="max-width:640px;">
 
-  <h1>Datenschutzerklärung</h1>
-  <p><em>This privacy policy is provided in German. For questions in English, write to <a href="mailto:trade@zuricaf.com">trade@zuricaf.com</a>.</em></p>
+  <h1>Privacy Policy</h1>
 
-  <h2>1. Verantwortlicher</h2>
+  <h2>1. Controller</h2>
   <p>
     tabme UG (haftungsbeschränkt)<br>
     Diesterwegstr. 40<br>
     33604 Bielefeld<br>
-    Deutschland<br>
-    Geschäftsführer: Lorenz Stöckert<br>
-    E-Mail: <a href="mailto:trade@zuricaf.com">trade@zuricaf.com</a>
+    Germany<br>
+    Managing director: Lorenz Stöckert<br>
+    Email: <a href="mailto:trade@zuricaf.com">trade@zuricaf.com</a>
   </p>
-  <p>Zuricaf ist eine Marke der tabme UG (haftungsbeschränkt). Ein Datenschutzbeauftragter ist nicht benannt.</p>
+  <p>Zuricaf is a brand of tabme UG (haftungsbeschränkt). No data protection officer has been appointed.</p>
 
-  <h2>2. Keine Cookies</h2>
-  <p>Die öffentlichen Seiten dieser Website setzen keine Cookies und speichern keine Informationen in Ihrem Browser (kein Local Storage, kein Session Storage). Ein Cookie-Banner ist daher nicht erforderlich. Nur der Redaktionsbereich unter /admin, der ausschließlich für angemeldete Redakteure gedacht ist, nutzt für die Anmeldung über Netlify Identity technisch notwendige Speicher im Browser. Schriften und Icons liegen auf unserem eigenen Server, beim Aufruf werden keine Daten an Google oder andere Schriften-Anbieter übertragen.</p>
+  <h2>2. No cookies</h2>
+  <p>The public pages of this website set no cookies and store no information in your browser (no local storage, no session storage). A cookie banner is therefore not required. Only the editorial area under /admin, which is meant exclusively for logged-in editors, uses browser storage that is technically necessary for signing in via Netlify Identity. Fonts and icons are served from our own server; no data is sent to Google or other font providers when you open a page.</p>
 
-  <h2>3. Hosting und Server-Logfiles</h2>
-  <p>Die Website wird bei Netlify, Inc. (USA) gehostet. Beim Aufruf jeder Seite verarbeitet Netlify technisch notwendige Daten: IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Referrer, Browser und Betriebssystem. Zweck ist die sichere und stabile Auslieferung der Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren Betrieb).</p>
-  <p>Mit Netlify besteht ein Auftragsverarbeitungsvertrag (Data Processing Agreement, Bestandteil der Netlify-Nutzungsbedingungen). Netlify ist nach dem EU-U.S. Data Privacy Framework zertifiziert, die Übermittlung in die USA stützt sich auf den Angemessenheitsbeschluss der EU-Kommission (Art. 45 DSGVO). Details: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a>.</p>
+  <h2>3. Hosting and server log files</h2>
+  <p>The website is hosted by Netlify, Inc. (USA). When you open any page, Netlify processes technically necessary data: IP address, date and time, page requested, referrer, browser and operating system. The purpose is secure and stable delivery of the website. The legal basis is Art. 6(1)(f) GDPR (legitimate interest in secure operation).</p>
+  <p>A data processing agreement exists with Netlify (Data Processing Agreement, part of the Netlify terms of service). Netlify is certified under the EU-U.S. Data Privacy Framework; the transfer to the USA relies on the adequacy decision of the EU Commission (Art. 45 GDPR). Details: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a>.</p>
 
-  <h2>4. Kontaktformular und Anfrageformulare</h2>
-  <p>Wenn Sie uns über ein Formular schreiben (Kontakt, Lieferanten-Registrierung, Direct-Trade-Anfrage, Vormerkung Sammelcontainer, Anfrage zum Reiseprogramm), verarbeiten wir die von Ihnen eingegebenen Daten, etwa Name, E-Mail-Adresse, Firma und Nachricht, um Ihre Anfrage zu bearbeiten. Die Angaben sind freiwillig, ohne sie können wir Ihre Anfrage aber nicht bearbeiten. Die Formulare werden über Netlify Forms übermittelt und bei Netlify gespeichert (siehe Abschnitt 3), wir erhalten eine Benachrichtigung per E-Mail.</p>
-  <p>Diese E-Mail geht an unser Postfach bei Google Workspace. Ein automatischer Ablauf in Google Workspace liest mit der KI Gemini die Angaben aus der E-Mail aus und trägt sie in eine Tabelle in unserem Google Drive ein, damit wir Anfragen vollständig und nachvollziehbar bearbeiten können. Anbieter ist Google Cloud EMEA Limited (Irland). Mit Google besteht ein Auftragsverarbeitungsvertrag (Cloud Data Processing Addendum). Eine Übermittlung in die USA ist möglich, Google LLC ist nach dem EU-U.S. Data Privacy Framework zertifiziert (Art. 45 DSGVO). Details: <a href="https://cloud.google.com/terms/data-processing-addendum/" target="_blank" rel="noopener">cloud.google.com/terms/data-processing-addendum</a>.</p>
-  <p>Zur Bearbeitung von Anfragen nutzen wir außerdem den KI-Assistenten Claude der Anthropic Ireland, Limited (Irland). Dabei können Ihre Angaben aus den Formularen an Anthropic übermittelt werden, etwa um sie in unsere Tabelle zu übertragen oder eine Antwort vorzubereiten. Anthropic verarbeitet diese Daten nach seiner eigenen Datenschutzerklärung und kann sie auch auf Servern in den USA verarbeiten, Grundlage dafür sind Standardvertragsklauseln (Art. 46 DSGVO). Details: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">anthropic.com/legal/privacy</a>.</p>
-  <p>Anfragen und Antwortentwürfe verwalten wir in Notion (Notion Labs, Inc., USA). Dabei werden Name, Kontaktdaten und Inhalt Ihrer Anfrage bei Notion gespeichert, auch auf Servern in den USA. Details: <a href="https://privacycenter.notion.so/policies" target="_blank" rel="noopener">privacycenter.notion.so</a>.</p>
-  <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit die Anfrage auf einen Vertrag oder eine Geschäftsbeziehung zielt, sonst Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Wir löschen die Daten, wenn sie für den Zweck nicht mehr nötig sind, spätestens 24 Monate nach dem letzten Kontakt, es sei denn, gesetzliche Aufbewahrungspflichten stehen entgegen.</p>
+  <h2>4. Contact form and enquiry forms</h2>
+  <p>If you write to us through a form (contact, supplier registration, direct trade enquiry, consolidated container waiting list, travel programme enquiry), we process the data you enter, such as name, email address, company and message, to handle your enquiry. Providing the data is voluntary, but without it we cannot handle your enquiry. The forms are submitted through Netlify Forms and stored at Netlify (see section 3); we receive a notification by email.</p>
+  <p>This email goes to our mailbox at Google Workspace. An automated process in Google Workspace uses the AI Gemini to read the details from the email and enter them into a spreadsheet in our Google Drive, so that we can handle enquiries completely and traceably. The provider is Google Cloud EMEA Limited (Ireland). A data processing agreement exists with Google (Cloud Data Processing Addendum). A transfer to the USA is possible; Google LLC is certified under the EU-U.S. Data Privacy Framework (Art. 45 GDPR). Details: <a href="https://cloud.google.com/terms/data-processing-addendum/" target="_blank" rel="noopener">cloud.google.com/terms/data-processing-addendum</a>.</p>
+  <p>To handle enquiries we also use the AI assistant Claude of Anthropic Ireland, Limited (Ireland). Your details from the forms may be transmitted to Anthropic, for example to transfer them into our spreadsheet or to prepare a reply. Anthropic processes this data under its own privacy policy and may also process it on servers in the USA, on the basis of standard contractual clauses (Art. 46 GDPR). Details: <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">anthropic.com/legal/privacy</a>.</p>
+  <p>We manage enquiries and draft replies in Notion (Notion Labs, Inc., USA). Name, contact details and the content of your enquiry are stored at Notion, also on servers in the USA. Details: <a href="https://privacycenter.notion.so/policies" target="_blank" rel="noopener">privacycenter.notion.so</a>.</p>
+  <p>The legal basis is Art. 6(1)(b) GDPR where the enquiry aims at a contract or business relationship, otherwise Art. 6(1)(f) GDPR (legitimate interest in answering enquiries). We delete the data when it is no longer needed for the purpose, at the latest 24 months after the last contact, unless statutory retention obligations apply.</p>
 
-  <h2>5. Reichweitenmessung mit GoatCounter</h2>
-  <p>Wir messen die Nutzung dieser Website mit GoatCounter, einem Dienst von Martin Tournoij (Irland). Die Daten liegen auf Servern der Hetzner Online GmbH in Deutschland und Finnland. Das Messskript wird von unserem eigenen Server geladen. Wir haben es so angepasst, dass es nichts in Ihrem Browser speichert oder ausliest.</p>
-  <p>Erfasst werden: aufgerufene Seite, Referrer (die Seite, von der Sie kommen), Browser und Betriebssystem, Bildschirmbreite, Spracheinstellung und das Land, das aus der IP-Adresse abgeleitet wird. Die IP-Adresse wird nicht dauerhaft gespeichert: Um wiederholte Aufrufe zu erkennen, hält GoatCounter eine Kombination aus Seitenname, IP-Adresse und Browser-Kennung höchstens 8 Stunden im Arbeitsspeicher. Sicherungskopien können Daten bis zu 30 Tage enthalten. Ein Rückschluss auf Ihre Person ist uns nicht möglich.</p>
-  <p>Zweck ist, zu verstehen, welche Inhalte genutzt werden und über welche Wege Besucher kommen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Sie können der Messung widersprechen, etwa indem Sie in Ihrem Browser Skripte von zuricaf.com unter /js/count.js blockieren oder uns per E-Mail schreiben. Details: <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener">goatcounter.com/help/privacy</a>.</p>
+  <h2>5. Analytics with GoatCounter</h2>
+  <p>We measure the use of this website with GoatCounter, a service of Martin Tournoij (Ireland). The data is stored on servers of Hetzner Online GmbH in Germany and Finland. The measurement script is loaded from our own server. We have adapted it so that it neither stores nor reads anything in your browser.</p>
+  <p>The following is recorded: page requested, referrer (the page you come from), browser and operating system, screen width, language setting and the country derived from the IP address. The IP address is not stored permanently: to recognise repeat visits, GoatCounter keeps a combination of page name, IP address and browser identifier in memory for at most 8 hours. Backups may contain data for up to 30 days. We cannot identify you personally from it.</p>
+  <p>The purpose is to understand which content is used and how visitors arrive. The legal basis is Art. 6(1)(f) GDPR. You can object to the measurement, for example by blocking scripts from zuricaf.com under /js/count.js in your browser or by writing to us by email. Details: <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener">goatcounter.com/help/privacy</a>.</p>
 
-  <h2>6. Terminbuchung über Notion Calendar</h2>
-  <p>Für Gesprächstermine verlinken wir auf eine Buchungsseite von Notion Calendar (Notion Labs, Inc., USA). Erst wenn Sie diesen Link anklicken, verlassen Sie unsere Website, und es gelten die Datenschutzbestimmungen von Notion: <a href="https://privacycenter.notion.so/policies" target="_blank" rel="noopener">privacycenter.notion.so</a>. Die Daten, die Sie bei der Buchung angeben, nutzen wir zur Vorbereitung und Durchführung des Termins (Art. 6 Abs. 1 lit. b DSGVO).</p>
+  <h2>6. Appointment booking via Notion Calendar</h2>
+  <p>For calls we link to a booking page of Notion Calendar (Notion Labs, Inc., USA). Only when you click this link do you leave our website, and Notion's privacy terms apply: <a href="https://privacycenter.notion.so/policies" target="_blank" rel="noopener">privacycenter.notion.so</a>. We use the data you enter when booking to prepare and hold the appointment (Art. 6(1)(b) GDPR).</p>
 
-  <h2>7. Ihre Rechte</h2>
-  <p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch gegen Verarbeitungen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (Art. 21). Schreiben Sie dazu an <a href="mailto:trade@zuricaf.com">trade@zuricaf.com</a>.</p>
-  <p>Sie können sich außerdem bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel bei der für uns zuständigen Landesbeauftragten für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (<a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">ldi.nrw.de</a>).</p>
+  <h2>7. Your rights</h2>
+  <p>You have the right of access (Art. 15 GDPR), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20) and to object to processing based on Art. 6(1)(f) GDPR (Art. 21). Write to <a href="mailto:trade@zuricaf.com">trade@zuricaf.com</a> for this.</p>
+  <p>You can also complain to a data protection supervisory authority, for example the authority responsible for us, the State Commissioner for Data Protection and Freedom of Information of North Rhine-Westphalia (<a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">ldi.nrw.de</a>).</p>
 
-  <p><small>Stand: November 2026</small></p>
+  <p><small>Last updated: November 2026</small></p>
 
 </div>
 </main>
