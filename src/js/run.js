@@ -1,15 +1,15 @@
 const TIERS=[[600,999,1.60],[1000,1999,1.45],[2000,3499,1.32],[3500,4999,1.24],[5000,7000,1.18]];
 const CAP=19200, BAGS=320, MAIL='lorenz@zuricaf.com';
-const eur=n=>n.toLocaleString('de-DE',{style:'currency',currency:'EUR',minimumFractionDigits:2});
-const eur0=n=>n.toLocaleString('de-DE',{style:'currency',currency:'EUR',maximumFractionDigits:0});
+const eur=n=>n.toLocaleString('en-GB',{style:'currency',currency:'EUR',minimumFractionDigits:2});
+const eur0=n=>n.toLocaleString('en-GB',{style:'currency',currency:'EUR',maximumFractionDigits:0});
 const rateFor=kg=>{for(const[a,b,r]of TIERS){if(kg>=a&&kg<=b)return r;}return null;};
 
 // ladder table
 document.getElementById('ladder').innerHTML=TIERS.map(([a,b,r])=>
-  `<tr data-lo="${a}" data-hi="${b}"><td>${a.toLocaleString('de-DE')} – ${b.toLocaleString('de-DE')} kg</td>
-   <td class="r">${r.toFixed(2).replace('.',',')}</td>
-   <td class="r">${(r-0.08).toFixed(2).replace('.',',')}</td>
-   <td class="r">${(r-0.15).toFixed(2).replace('.',',')}</td></tr>`).join('');
+  `<tr data-lo="${a}" data-hi="${b}"><td>${a.toLocaleString('en-GB')} – ${b.toLocaleString('en-GB')} kg</td>
+   <td class="r">${r.toFixed(2)}</td>
+   <td class="r">${(r-0.08).toFixed(2)}</td>
+   <td class="r">${(r-0.15).toFixed(2)}</td></tr>`).join('');
 
 // tally
 const tally=document.getElementById('tally');
@@ -21,20 +21,20 @@ function render(){
   const kg=Math.max(0,Math.min(CAP,Number(vol.value)||0));
   const bags=Math.round(kg/60);
   ticks.forEach((t,i)=>{t.className=i<bags?(i===bags-1?'on edge':'on'):'';});
-  document.getElementById('bagcount').textContent=`${bags} von ${BAGS} Sack`;
+  document.getElementById('bagcount').textContent=`${bags} of ${BAGS} bags`;
 
   const r=rateFor(kg), ro=document.getElementById('ro-rate');
   if(!r){
     document.getElementById('rate').textContent='–';
-    document.getElementById('tier').textContent=kg<600?'Minimum 600 kg':'über 7.000 kg — auf Anfrage';
+    document.getElementById('tier').textContent=kg<600?'Minimum 600 kg':'above 7,000 kg — on request';
     ro.classList.add('alert');
     document.getElementById('total').textContent='–';
     document.getElementById('dep').textContent='–';
     return;
   }
   ro.classList.remove('alert');
-  document.getElementById('rate').textContent=r.toFixed(2).replace('.',',')+' €/kg';
-  document.getElementById('tier').textContent=`${(r-0.15).toFixed(2).replace('.',',')} bei vollem Container`;
+  document.getElementById('rate').textContent=r.toFixed(2)+' €/kg';
+  document.getElementById('tier').textContent=`${(r-0.15).toFixed(2)} at full container`;
   document.getElementById('total').textContent=eur0(kg*r);
   document.getElementById('dep').textContent=eur0(kg*r*0.3);
 
@@ -62,7 +62,7 @@ if(form)form.addEventListener('submit',e=>{
     msg.classList.add('show');return;
   }
   const r=rateFor(kg);
-  document.getElementById('h-rate').value=r.toFixed(2).replace('.',',')+' €/kg (vorläufig)';
+  document.getElementById('h-rate').value=r.toFixed(2)+' €/kg (vorläufig)';
   document.getElementById('h-total').value=eur(kg*r);
   document.getElementById('h-dep').value=eur(kg*r*0.3);
   document.getElementById('h-sack').value=Math.round(kg/60);
@@ -86,8 +86,8 @@ if(form)form.addEventListener('submit',e=>{
       'Anmeldung Sammelcontainer — Run '+form.elements.run.value,'',
       'Rösterei: '+g('firma'),'Ansprechpartner: '+g('name'),
       'E-Mail: '+g('mail'),'Telefon: '+(g('tel')||'—'),'',
-      'Menge: '+kg.toLocaleString('de-DE')+' kg ('+Math.round(kg/60)+' Sack)',
-      'Rate laut Staffel (vorläufig): '+r.toFixed(2).replace('.',',')+' €/kg',
+      'Menge: '+kg.toLocaleString('en-GB')+' kg ('+Math.round(kg/60)+' Sack)',
+      'Rate laut Staffel (vorläufig): '+r.toFixed(2)+' €/kg',
       'Logistik gesamt: '+eur(kg*r),
       'Anzahlung 30%: '+eur(kg*r*0.3),'',
       'Anlieferung: '+g('pack'),'Eigene Jutesäcke: '+g('jute'),
