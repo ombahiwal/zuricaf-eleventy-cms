@@ -45,6 +45,9 @@ function renderExample(lang) {
     var q = function (e) { return Math.round(e * RATE_UGX / 100) * 100 / RATE_UGX; };
     v.diff = Math.abs(q(v.you) - q(v.kmp)); if (v.us > 0) v.cost = q(p) - q(v.you) - q(v.us);
   }
+  v.gain10 = v.diff * EX_KG; // extra for 10 bags against the Kampala price, from the shown per-kg figure
+  var base = cur === 'ugx' ? Math.round(v.kmp * RATE_UGX / 100) * 100 / RATE_UGX : v.reg;
+  document.querySelectorAll('[data-pct]').forEach(function (el) { el.textContent = Math.round(v.diff / base * 100); });
   ex.zones.forEach(function (z) { if (p >= z) zone++; });
   document.querySelectorAll('.m[data-k]').forEach(function (el) { el.setAttribute('data-eur', v[el.getAttribute('data-k')]); });
   document.querySelectorAll('[data-zone]').forEach(function (el) { el.hidden = el.getAttribute('data-zone') !== String(zone); });
