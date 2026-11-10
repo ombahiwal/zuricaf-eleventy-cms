@@ -31,23 +31,26 @@ var exVar = 'arabica', exPrice = document.getElementById('ex-price');
 
 function r2(x) { return Math.round(x * 100) / 100; }
 
-// way B: costs and our base share come off the sale, what is left above the registered value is split 50/50
+// way B: costs and our base share come off the sale, what is left above the registered value is split 50/50; you never receive less than the registered value
 function exCalc(p, ugx) {
-  var reg = r2(ugx / RATE_UGX), n = p - EX_RATE - EX_CESS * reg - EX_STORE - EX_BASE, above = Math.max(n - reg, 0);
-  var you = r2(Math.min(n, reg) + above / 2), us = r2(EX_BASE + above / 2);
-  return { price: p, reg: reg, you: you, us: us, cost: r2(p - you - us), cess: r2(EX_CESS * reg),
-    above: r2(above), total: Math.round(you * EX_KG), diff: r2(Math.abs(you - reg)), wa: r2(Math.max(0.1 * p, EX_BASE)), kmp: ugx / RATE_UGX,
-    be: Math.ceil((reg * (1 + EX_CESS) + EX_RATE + EX_STORE + EX_BASE) * 100) / 100 }; // be: lowest sale price at which you reach the registered value // wa: our way A commission, 10% of the sale, at least the base share
+  var reg = r2(ugx / RATE_UGX), cost = r2(EX_RATE + EX_CESS * reg + EX_STORE), above = Math.max(p - cost - EX_BASE - reg, 0);
+  var you = r2(reg + above / 2), us = r2(Math.max(p - cost - you, 0)); // us below the base share: we carry the shortfall
+  return { price: p, reg: reg, you: you, us: us, cost: cost, cess: r2(EX_CESS * reg),
+    above: r2(above), total: Math.round(you * EX_KG), diff: r2(you - reg), wa: r2(Math.max(0.1 * p, EX_BASE)), kmp: ugx / RATE_UGX }; // wa: our way A commission, 10% of the sale, at least the base share
 }
 
 function renderExample(lang) {
   var ex = EX[exVar], p = parseFloat(exPrice.value), v = exCalc(p, ex.ugx), zone = 1;
+  if (cur === 'ugx') { // UGX is shown rounded to 100: take differences of the rounded figures so they add up on screen
+    var q = function (e) { return Math.round(e * RATE_UGX / 100) * 100 / RATE_UGX; };
+    v.diff = Math.abs(q(v.you) - q(v.kmp)); if (v.us > 0) v.cost = q(p) - q(v.you) - q(v.us);
+  }
   ex.zones.forEach(function (z) { if (p >= z) zone++; });
   document.querySelectorAll('.m[data-k]').forEach(function (el) { el.setAttribute('data-eur', v[el.getAttribute('data-k')]); });
   document.querySelectorAll('[data-zone]').forEach(function (el) { el.hidden = el.getAttribute('data-zone') !== String(zone); });
-  document.querySelectorAll('[data-when]').forEach(function (el) { el.hidden = (el.getAttribute('data-when') === 'above') !== (v.you >= v.reg); });
+  document.querySelectorAll('[data-when]').forEach(function (el) { el.hidden = (el.getAttribute('data-when') === 'above') !== (v.diff > 0.001); }); // diff as shown, so a rounded zero reads as "registered value"
   document.querySelectorAll('[data-set-var]').forEach(function (btn) { btn.setAttribute('aria-pressed', String(btn.getAttribute('data-set-var') === exVar)); });
-  var x = 10, w = 340 / p; // bars span x 10 to 350 of the 360 viewBox
+  var x = 10, w = 340 / Math.max(p, v.you + v.us + v.cost); // bars span x 10 to 350 of the 360 viewBox, wider than the sale when we carry a shortfall
   ['you', 'us', 'cost'].forEach(function (k) {
     var bar = document.getElementById('bar-' + k);
     bar.setAttribute('x', x.toFixed(1)); bar.setAttribute('width', (v[k] * w).toFixed(1)); x += v[k] * w;
