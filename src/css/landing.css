@@ -206,5 +206,6 @@ tr.hl td { background: var(--surface-sunken); }
 .ex-more { margin: 16px 0; }
 .ex-more summary { cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; color: var(--text-link); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
 .ex-more summary:hover { text-decoration-thickness: 2px; }
-.ex-ref { font-size: 15px; color: var(--fg-mid); margin: 12px 0 0; line-height: 1.5; }
-.ex-ref b { font-weight: 500; color: var(--text-primary); }
+.ex-ref { font-size: 15px; color: var(--fg-mid); margin: 8px 0 20px; line-height: 1.5; }
+.ex-ctl .ex-lab { font-size: 15px; font-weight: 400; margin-top: 4px; }
+.ex-lab b { font-weight: 500; color: var(--text-primary); }
