@@ -1,0 +1,81 @@
+{
+ "home": {
+  "nav": {
+   "Services": "Leistungen",
+   "How It Works": "So funktioniert es",
+   "Sustainability": "Nachhaltigkeit",
+   "Uganda 2026": "Uganda 2026",
+   "Contact": "Kontakt",
+   "For farmers": "Für Farmer",
+   "For roasters": "Für Röster"
+  },
+  "hero": {
+   "label": "Direkt aus Uganda",
+   "heading": "Specialty Coffee direkt aus Uganda – klar und transparent.",
+   "subtext": "Ostafrika • Europa",
+   "cta_label": "Kontakt"
+  },
+  "services": [
+   {
+    "title": "Sourcing und Netzwerkzugang",
+    "desc": "Zugang zu exklusiven Lots aus Uganda, zertifizierte Kooperativen, Storytelling-Material."
+   },
+   {
+    "title": "Qualitätsmanagement und Cupping",
+    "desc": "SCA-Cuppings, Q-Grader-Feedback, Musterservice."
+   },
+   {
+    "title": "Logistik und Transportkoordination",
+    "desc": "Von Ostafrika nach Europa."
+   },
+   {
+    "title": "Finanzierung und Administration",
+    "desc": "Vorfinanzierung, Dokumentenservice, Reporting."
+   }
+  ],
+  "sustainability": "## Rohkaffee – warum Zuricaf?\n\nWir liefern nachhaltig angebauten Rohkaffee direkt aus Uganda, ohne Umwege und voll transparent. Unser Netzwerk reicht über Kooperativen in Mount Elgon, Rwenzori, Masaka, Luwero und West Nile.\n\n### Slow Food Coffee und Biodiversität\n\nAls Teil der internationalen *Slow-Food*-Bewegung stehen wir für **gut, sauber, fair**.\n\n#### Ziele\n- Ökologischer, umweltschonender Anbau für gesündere Böden.\n- Vielfalt an Kaffeevarietäten und Begleitpflanzen für widerstandsfähige Agrarökosysteme.\n- Schulungen und faire Handelspraxis für ein besseres Auskommen der Farmer.\n- Höhere Tassenqualität durch besseren Anbau und bessere Aufbereitung.\n- Soziale Projekte und Bildung als Rückgrat einer nachhaltigen Gemeinschaft.\n\n#### Umsetzung und Messung\n- **Schattenmanagement:** Bäume so verteilt, dass sie Hitze mildern und Biodiversität fördern.\n- **Laufende Schulungen** der Farmer zu bewährten Praktiken und Neuerungen.\n- **Monitoring und Evaluation:** Beginn und Ende jedes Projekts dokumentieren M&E-Verantwortliche.\n\n### Golden Diversity – Reichtum an Arten und Varietäten\n\nEin vielfältiges Mosaik aus Flora und Fauna ist für gesunde Agrarökosysteme unverzichtbar. Verschiedene Arten erbringen wichtige Ökosystemleistungen, von der Bestäubung bis zur Schädlingsregulierung. Studien wie *Hooper & Vitousek (1997)* zeigen: Je höher die Vielfalt, desto klimaresilienter wird ein System.\n\nVielfalt zahlt sich auch sozial aus: Der parallele Anbau verschiedener Kulturen erlaubt Kleinbauern, das ganze Jahr zu ernten, ihr Einkommen zu stabilisieren und sich vom Massenmarkt abzuheben.\n\n### Trade for Aid – unsere Werte\n- **Direkthandel:** volle Transparenz.\n- **Slow-Food-Engagement:** Wir unterstützen aktiv das Slow Food Coffee Presidio Uganda und fördern gute, saubere und faire Praxis von der Farm bis zur Tasse.\n- **Ganzheitliche Beratung:** von der Lot-Auswahl bis zur Logistik, alles aus einer Hand.\n- **Tief verwurzeltes Netzwerk:** langfristige Partnerschaften mit Farmerfamilien, Kooperativen und NGO-Projekten in ganz Uganda.\n\n**Was steckt hinter dem Namen „Zuricaf“?** — *zuri* (Swahili für „schön“) + *CAF* (Coffee). Kurz: schöner Kaffee aus Uganda.",
+  "liberica": "## Canephora- und Liberica-Initiativen in Uganda\n\nWir lieben Vielfalt und glauben an ihre Kraft, Ökosysteme und Gemeinschaften zu stärken. Gemeinsam mit Canephora-, Liberica- und Excelsa-Farmern und *Slow Food Uganda* erkunden wir das Potenzial klimaresilienter Kaffeespezialitäten.\n\n#### Projektziele\n- Langfristige Versorgungssicherheit: Liberica und Excelsa als robuste Ergänzung zu Arabica und Robusta.\n- Mehr Wertschöpfung vor Ort: Schulungen, Aufbereitung vor Ort und faire Preise.\n- Premium-Positionierung: einzigartiges Geschmacksprofil (kräftig, fruchtig, sanft süß).\n- Klimaschutz: Agroforst, effiziente Bewässerung und erneuerbare Energie.\n\n**Stand:** Austausch- und Pilotphase, der internationale Handel hat noch nicht begonnen.",
+  "calendar_rows": [
+   [
+    "Mount Elgon (Bugisu)",
+    "Arabica",
+    "Okt. – März",
+    "Mai – Juli"
+   ],
+   [
+    "Rwenzori",
+    "Arabica",
+    "Sept. – Dez.",
+    "März – Mai"
+   ],
+   [
+    "Masaka",
+    "Canephora (Robusta)",
+    "Mai – Aug.",
+    "Okt. – Jan."
+   ],
+   [
+    "Luwero",
+    "Robusta / Liberica",
+    "Okt. – Feb.",
+    "März – Mai"
+   ],
+   [
+    "West Nile",
+    "Arabica",
+    "Okt. – Jan.",
+    "Apr. – Juni"
+   ]
+  ],
+  "cta": {
+   "heading": "Muster bestellen oder 15-Minuten-Call buchen",
+   "text": "Wir melden uns innerhalb von 24 Stunden.",
+   "buttons": {
+    "Contact us": "Kontakt",
+    "Book a call": "Call buchen",
+    "For farmers": "Für Farmer",
+    "For roasters": "Für Röster"
+   }
+  }
+ }
+}

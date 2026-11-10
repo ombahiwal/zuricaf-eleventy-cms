@@ -62,8 +62,10 @@
 
   <script src="/js/lucide.min.js" defer></script>
   <script src="/js/site.js" defer></script>
+  {% if page.url == "/" %}<script src="/js/direct-trade.js" defer></script>{% endif %}
 </head>
 
+{% set home_de = page.url == "/" %}
 <body>
 
   <!-- ── Header ── -->
@@ -79,11 +81,12 @@
         <ul>
           {% for item in header.links or [] %}
             {% if item.button %}
-              <li><a href="{{ item.href }}" class="btn btn-outline">{{ item.label }}</a></li>
+              <li><a href="{{ item.href }}" class="btn btn-outline"{% if home_de and de.home.nav[item.label] %} data-en="{{ item.label }}" data-de="{{ de.home.nav[item.label] }}"{% endif %}>{{ item.label }}</a></li>
             {% else %}
-              <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+              <li><a href="{{ item.href }}"{% if home_de and de.home.nav[item.label] %} data-en="{{ item.label }}" data-de="{{ de.home.nav[item.label] }}"{% endif %}>{{ item.label }}</a></li>
             {% endif %}
           {% endfor %}
+          {% if home_de %}<li><div class="lang" role="group" aria-label="Language / Sprache"><button type="button" data-set-lang="en" aria-pressed="true">EN</button><button type="button" data-set-lang="de" aria-pressed="false">DE</button></div></li>{% endif %}
         </ul>
       </nav>
     </div>
