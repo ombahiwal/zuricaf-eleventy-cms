@@ -156,9 +156,9 @@ tr.hl td { background: var(--surface-sunken); }
 .gfx .g-hub { fill: var(--surface-page); }
 .gfx .g-band { fill: var(--surface-raised); stroke: var(--coral-700); stroke-width: 1; }
 .gfx .g-rule { stroke: var(--border); stroke-width: 1; }
-.gfx .w-cost { fill: var(--border); stroke: var(--border-strong); stroke-width: 1; }
-.gfx .w-you { fill: var(--status-success); }
-.gfx .w-us { fill: var(--action-primary); }
+.gfx .w-cost { fill: var(--surface-page); stroke: var(--border-strong); stroke-width: 1; }
+.gfx .w-you { fill: var(--action-primary); }
+.gfx .w-us { fill: var(--surface-kraft); stroke: var(--border-strong); stroke-width: 1; }
 
 /* ── Centered, graphic-led sections ── */
 .c { text-align: center; }
@@ -189,9 +189,9 @@ tr.hl td { background: var(--surface-sunken); }
 .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-top: 12px; font-size: 17px; color: var(--fg-mid); }
 .legend .leg { display: inline-flex; align-items: center; gap: 8px; }
 .legend i { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
-.legend .w-you { background: var(--status-success); }
-.legend .w-us { background: var(--action-primary); }
-.legend .w-cost { background: var(--border); border: 1px solid var(--border-strong); }
+.legend .w-you { background: var(--action-primary); }
+.legend .w-us { background: var(--surface-kraft); border: 1px solid var(--border-strong); }
+.legend .w-cost { background: var(--surface-page); border: 1px solid var(--border-strong); }
 .m { white-space: nowrap; }
 
 /* Price slider in the way B example */
@@ -203,3 +203,6 @@ tr.hl td { background: var(--surface-sunken); }
 .ex-ctl input[type=range] { width: 100%; min-height: 44px; accent-color: var(--action-primary); cursor: pointer; }
 .ex-zone.low { color: var(--coral-700); font-weight: 500; }
 .c > .ex-note { max-width: 520px; margin: 8px auto 0; }
+.ex-more { margin: 16px 0; }
+.ex-more summary { cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; color: var(--text-link); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+.ex-more summary:hover { text-decoration-thickness: 2px; }

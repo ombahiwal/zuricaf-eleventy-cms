@@ -36,7 +36,7 @@ function exCalc(p, reg) {
   var n = p - EX_RATE - EX_CESS * reg - EX_STORE - EX_BASE, above = Math.max(n - reg, 0);
   var you = r2(Math.min(n, reg) + above / 2), us = r2(EX_BASE + above / 2);
   return { price: p, reg: reg, you: you, us: us, cost: r2(p - you - us), cess: r2(EX_CESS * reg),
-    above: r2(above), total: Math.round(you * EX_KG), diff: r2(Math.abs(you - reg)) };
+    above: r2(above), total: Math.round(you * EX_KG), diff: r2(Math.abs(you - reg)), wa: r2(Math.max(0.1 * p, EX_BASE)) }; // wa: our way A commission, 10% of the sale, at least the base share
 }
 
 function renderExample(lang) {
@@ -52,7 +52,7 @@ function renderExample(lang) {
     bar.setAttribute('x', x.toFixed(1)); bar.setAttribute('width', (v[k] * w).toFixed(1)); x += v[k] * w;
   });
   exPrice.setAttribute('aria-valuetext', money(p, lang));
-  document.getElementById('sp-t').textContent = (lang === 'de' ? 'Von ' + money(p, lang) + ' je kg: ihr ' + money(v.you, lang) + ', wir ' + money(v.us, lang) + ', Kosten ' : 'Of ' + money(p, lang) + ' per kg: you ' + money(v.you, lang) + ', us ' + money(v.us, lang) + ', costs ') + money(v.cost, lang);
+  document.getElementById('sp-t').textContent = (lang === 'de' ? 'Von ' + money(p, lang) + ' je kg: ihr ' + money(v.you, lang) + ', Zuricaf ' + money(v.us, lang) + ', Logistik und Cess ' : 'Of ' + money(p, lang) + ' per kg: you ' + money(v.you, lang) + ', Zuricaf ' + money(v.us, lang) + ', logistics and cess ') + money(v.cost, lang);
 }
 
 function renderMoney() {
