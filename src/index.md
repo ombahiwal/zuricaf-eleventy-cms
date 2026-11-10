@@ -9,7 +9,8 @@ hero:
   subtext: "East Africa • Europe"
   cta_label: "Contact us"
   cta_href: "/#contact"
-  image: "/images/hero.png"     # the CMS will swap this with an uploaded one
+  image: "/images/hero.webp"    # the CMS will swap this with an uploaded one
+  image_alt: "Hands of a coffee farmer picking ripe red cherries from a branch"
   # video: ""                   # optional URL (YouTube/Vimeo/MP4)
 
 services:

@@ -56,7 +56,7 @@ h3 { font-size: 17px; font-weight: 500; margin-bottom: 6px; }
 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px; }
 .cols > div, .inout > div { background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); }
 .inout { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-.inout h2 { color: var(--coral-700); }
+.inout h2 { color: var(--wine-800); }
 .inout ul, .lists ul { list-style: none; font-size: 15px; }
 .inout li, .lists li { padding: 8px 0 8px 24px; position: relative; border-bottom: 1px solid var(--border); }
 .inout li:last-child, .lists li:last-child { border-bottom: 0; }
@@ -69,7 +69,7 @@ h3 { font-size: 17px; font-weight: 500; margin-bottom: 6px; }
 .steps li::before {
   content: counter(s, decimal-leading-zero); display: inline-flex; align-items: center; justify-content: center;
   width: 40px; height: 40px; border-radius: var(--radius-pill); background: var(--surface-sunken);
-  font-size: 15px; font-weight: 500; color: var(--coral-700);
+  font-size: 15px; font-weight: 500; color: var(--text-primary);
 }
 .steps p { font-size: 15px; color: var(--fg-mid); margin: 0; }
 
@@ -83,17 +83,19 @@ form { margin-top: 32px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 24px; }
 .f { display: flex; flex-direction: column; }
 .f.full { grid-column: 1 / -1; }
+.f:has(> :is(input, select, textarea):not([required])) > label:not(.self)::after { content: " (optional)"; font-weight: 400; color: var(--fg-light); } /* CSS only: the label text Netlify and the sheet flow read stays unchanged */
+.req-note { font-size: 15px; color: var(--fg-mid); margin-top: 16px; }
 .f label { font-size: 13px; font-weight: 500; letter-spacing: .04em; color: var(--fg-mid); margin-bottom: 4px; }
 .f input, .f select, .f textarea {
   font-family: inherit; font-size: 15px; padding: 12px 16px; min-height: 48px;
-  background: var(--surface-card); border: 1px solid var(--border); color: var(--text-primary); border-radius: var(--radius);
+  background: var(--surface-card); border: 1px solid var(--border-field); color: var(--text-primary); border-radius: var(--radius);
 }
 .f input:focus, .f select:focus, .f textarea:focus { outline: 2px solid var(--focus-ring); outline-offset: 2px; border-color: var(--border-strong); }
 .f textarea { min-height: 96px; resize: vertical; }
 .check { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--fg-mid); margin-top: 24px; }
 .check input { margin-top: 5px; width: 18px; height: 18px; accent-color: var(--action-primary); flex-shrink: 0; }
 button.send, a.send, form button[type=submit] {
-  display: inline-block; margin-top: 24px; font-family: inherit; font-weight: 500; font-size: 17px;
+  display: inline-block; margin-top: 24px; font-family: inherit; font-weight: 500; font-size: 16px;
   background: var(--action-primary); color: var(--action-on-primary); border: none; border-radius: var(--radius-pill);
   padding: 14px 32px; min-height: 48px; cursor: pointer; text-decoration: none; transition: background 120ms var(--ease);
 }
@@ -118,7 +120,7 @@ footer a { color: var(--fg-mid); }
 .calc-top span { font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--fg-light); }
 .tally { display: flex; gap: 1px; height: 56px; align-items: stretch; margin-bottom: 2px; }
 .tally i { flex: 1 1 auto; background: var(--surface-sunken); border-radius: 1px; transition: background 200ms var(--ease); }
-.tally i.on { background: #C0B34E; }
+.tally i.on { background: var(--status-success); } /* #585231: 6,2:1 on the sunken ground, the old olive had 1,7:1 */
 .tally i.edge { background: var(--action-primary); }
 @media (prefers-reduced-motion: reduce) { .tally i { transition: none; } }
 .marks { position: relative; height: 34px; margin-bottom: 4px; }
@@ -169,11 +171,11 @@ tr.hl td { background: var(--surface-sunken); }
 .c .steps { text-align: left; }
 .c h1 em, .c h1 { text-wrap: balance; }
 .stat { font-size: 17px; color: var(--fg-mid); margin-top: 8px; }
-.stat strong { font-size: clamp(44px, 9vw, 64px); font-weight: 500; line-height: 1; color: var(--coral-700); letter-spacing: -.01em; }
+.stat strong { font-size: clamp(44px, 9vw, 64px); font-weight: 500; line-height: 1; color: var(--text-primary); letter-spacing: -.01em; }
 
 /* ── Plain two-column text and lists (no cards) ── */
 .two, .lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px 64px; max-width: 760px; margin: 40px auto 0; }
-.two h3 { color: var(--coral-700); }
+.two h3 { color: var(--wine-800); }
 .two .lead + .lead { margin-top: 12px; }
 .lists { text-align: left; }
 .c > .lead.sm { margin-top: 16px; }
