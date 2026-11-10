@@ -79,7 +79,7 @@
         <ul>
           {% for item in header.links or [] %}
             {% if item.button %}
-              <li><a href="{{ item.href }}" class="btn" style="font-size:.82rem;padding:.4rem .9rem;">{{ item.label }}</a></li>
+              <li><a href="{{ item.href }}" class="btn btn-outline">{{ item.label }}</a></li>
             {% else %}
               <li><a href="{{ item.href }}">{{ item.label }}</a></li>
             {% endif %}

@@ -137,11 +137,12 @@ eleventyExcludeFromCollections: true
     <input type="hidden" name="form-name" value="next-run">
     <input type="hidden" name="lang" value="en">
     <p class="hp"><label>Leave empty: <input name="bot-field"></label></p>
+    <p class="req-note" data-en="Fields are required unless marked optional." data-de="Alle Felder sind Pflicht, außer sie sind als optional markiert.">Fields are required unless marked optional.</p>
     <div class="grid">
       <div class="f"><label for="roastery" data-en="Roastery" data-de="Rösterei">Roastery</label><input id="roastery" name="roastery" required></div>
       <div class="f"><label for="contact" data-en="Contact name" data-de="Ansprechperson">Contact name</label><input id="contact" name="contact" required></div>
       <div class="f"><label for="email" data-en="Email" data-de="E-Mail">Email</label><input id="email" name="email" type="email" required></div>
-      <div class="f"><label for="phone" data-en="Phone, optional" data-de="Telefon, optional">Phone, optional</label><input id="phone" name="phone" type="tel"></div>
+      <div class="f"><label class="self" for="phone" data-en="Phone, optional" data-de="Telefon, optional">Phone, optional</label><input id="phone" name="phone" type="tel"></div>
       <div class="f"><label for="origin" data-en="Origin" data-de="Herkunft">Origin</label><select id="origin" name="origin" required>
         <option value="Uganda" data-en="Uganda" data-de="Uganda">Uganda</option>
         <option value="Kenya" data-en="Kenya" data-de="Kenia">Kenya</option>
@@ -164,6 +165,7 @@ eleventyExcludeFromCollections: true
 </div>
 
 <script src="/js/direct-trade.js" defer></script>
+<script src="/js/form-errors.js" defer></script>
   {% if site.goatcounter %}<script data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count" async src="/js/count.js"></script>{% endif %}
 </body>
 </html>
