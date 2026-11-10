@@ -98,7 +98,7 @@ document.querySelectorAll('[data-set-cur]').forEach(function (btn) {
   btn.addEventListener('click', function () { cur = btn.getAttribute('data-set-cur'); renderMoney(); });
 });
 if (exPrice) {
-  document.getElementById('ex-ctl').hidden = false;
+  document.querySelectorAll('.ex-ctl').forEach(function (el) { el.hidden = false; });
   exPrice.addEventListener('input', renderMoney);
   document.querySelectorAll('[data-set-var]').forEach(function (btn) {
     btn.addEventListener('click', function () {
