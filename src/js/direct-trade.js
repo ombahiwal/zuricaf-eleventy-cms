@@ -31,27 +31,25 @@ var exVar = 'arabica', exPrice = document.getElementById('ex-price');
 
 function r2(x) { return Math.round(x * 100) / 100; }
 
-// way B: costs and our base share come off the sale, what is left above the registered value is split 50/50; you never receive less than the registered value
+// way B (presale): the roaster has agreed the price p; costs and our share (base + 10% of p) come off it, no minimum price, no 50/50
 function exCalc(p, ugx) {
-  var reg = r2(ugx / RATE_UGX), cost = r2(EX_RATE + EX_CESS * reg + EX_STORE), above = Math.max(p - cost - EX_BASE - reg, 0);
-  var you = r2(reg + above / 2), us = r2(Math.max(p - cost - you, 0)); // us below the base share: we carry the shortfall
+  var reg = r2(ugx / RATE_UGX), cost = r2(EX_RATE + EX_CESS * reg + EX_STORE), us = r2(EX_BASE + 0.10 * p), kmp = ugx / RATE_UGX;
+  var you = r2(Math.max(p - cost - us, 0));
   return { price: p, reg: reg, you: you, us: us, cost: cost, cess: r2(EX_CESS * reg),
-    above: r2(above), total: Math.round(you * EX_KG), diff: r2(you - reg), wa: r2(Math.max(0.1 * p, EX_BASE)), kmp: ugx / RATE_UGX }; // wa: our way A commission, 10% of the sale, at least the base share
+    total: Math.round(you * EX_KG), diff: r2(you - kmp), wa: r2(Math.max(0.1 * p, EX_BASE)), kmp: kmp }; // wa: our way A commission, 10% of the sale, at least the base share
 }
 
 function renderExample(lang) {
   var ex = EX[exVar], p = parseFloat(exPrice.value), v = exCalc(p, ex.ugx), zone = 1;
-  if (cur === 'ugx') { // UGX is shown rounded to 100: take differences of the rounded figures so they add up on screen
+  if (cur === 'ugx') { // UGX is shown rounded to 100: build every row from rounded parts and take you as the rest, so the chain adds up on screen
     var q = function (e) { return Math.round(e * RATE_UGX / 100) * 100 / RATE_UGX; };
-    v.diff = Math.abs(q(v.you) - q(v.kmp)); if (v.us > 0) v.cost = q(p) - q(v.you) - q(v.us);
+    v.cost = q(EX_RATE) + q(v.cess) + q(EX_STORE); v.us = q(EX_BASE) + q(0.10 * p);
+    v.you = Math.max(q(p) - v.cost - v.us, 0); v.diff = v.you - q(v.kmp); v.total = Math.round(v.you * EX_KG);
   }
-  v.gain10 = v.diff * EX_KG; // extra for 10 bags against the Kampala price, from the shown per-kg figure
-  var base = cur === 'ugx' ? Math.round(v.kmp * RATE_UGX / 100) * 100 / RATE_UGX : v.reg;
-  document.querySelectorAll('[data-pct]').forEach(function (el) { el.textContent = Math.round(v.diff / base * 100); });
   ex.zones.forEach(function (z) { if (p >= z) zone++; });
   document.querySelectorAll('.m[data-k]').forEach(function (el) { el.setAttribute('data-eur', v[el.getAttribute('data-k')]); });
   document.querySelectorAll('[data-zone]').forEach(function (el) { el.hidden = el.getAttribute('data-zone') !== String(zone); });
-  document.querySelectorAll('[data-when]').forEach(function (el) { el.hidden = (el.getAttribute('data-when') === 'above') !== (v.diff > 0.001); }); // diff as shown, so a rounded zero reads as "registered value"
+  document.querySelectorAll('[data-when]').forEach(function (el) { el.hidden = (el.getAttribute('data-when') === 'above') !== (v.diff > 0); }); // diff as shown, so a rounded zero reads as "below"
   document.querySelectorAll('[data-set-var]').forEach(function (btn) { btn.setAttribute('aria-pressed', String(btn.getAttribute('data-set-var') === exVar)); });
   var x = 10, w = 340 / Math.max(p, v.you + v.us + v.cost); // bars span x 10 to 350 of the 360 viewBox, wider than the sale when we carry a shortfall
   ['you', 'us', 'cost'].forEach(function (k) {
@@ -68,6 +66,7 @@ function renderMoney() {
   if (exPrice) renderExample(lang);
   document.querySelectorAll('.m[data-eur]').forEach(function (el) {
     el.textContent = money(parseFloat(el.getAttribute('data-eur')), lang);
+    if (el.classList.contains('bare')) el.textContent = el.textContent.replace(/≈\u00a0|UGX\u00a0|EUR\u00a0|\u00a0UGX|\u00a0€/g, ''); // number only, the sentence names the unit
     if (el.classList.contains('ab')) el.textContent = el.textContent.replace('≈\u00a0', ''); // the sentence says about/etwa itself
   });
   document.querySelectorAll('[data-set-cur]').forEach(function (btn) {
