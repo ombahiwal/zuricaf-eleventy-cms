@@ -194,7 +194,7 @@ tr.hl td { background: var(--surface-sunken); }
 .legend .w-cost { background: var(--surface-page); border: 1px solid var(--border-strong); }
 .m { white-space: nowrap; }
 
-/* Price slider in the way B example */
+/* Price slider in the way A example */
 [hidden] { display: none !important; } /* .lang and .ex-ctl set display, which would beat the attribute */
 .ex-ctl { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 520px; margin: 0 auto; }
 .ex-lab { font-size: 15px; font-weight: 500; color: var(--fg-mid); margin-top: 8px; }
