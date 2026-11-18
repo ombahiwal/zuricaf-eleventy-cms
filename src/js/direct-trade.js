@@ -19,7 +19,7 @@ function money(eur, lang) {
   return lang === 'de' ? e + nb + '€' : 'EUR' + nb + e;
 }
 
-// Example way B on /direct-trade/: all figures per kg in EUR, the one place to change them.
+// Example way A on /direct-trade/: all figures per kg in EUR, the one place to change them.
 // ugx = UCDA/MAAIF Daily Coffee Market Report 10 Nov 2026 (Arabica Bugisu AA, Robusta Screen 15); the registered value is that price at RATE_UGX, the label date in direct-trade.njk names the same day.
 // Zone limits are assumptions, under review. Static numbers in direct-trade.njk show Arabica at its start for visitors without JS.
 var EX = {
@@ -31,12 +31,12 @@ var exVar = 'arabica', exPrice = document.getElementById('ex-price');
 
 function r2(x) { return Math.round(x * 100) / 100; }
 
-// way B (presale): the roaster has agreed the price p; costs and our share (base + 10% of p) come off it, no minimum price, no 50/50
+// way A (presale): the roaster has agreed the price p; costs and our share (base + 10% of p) come off it, no minimum price, no 50/50
 function exCalc(p, ugx) {
   var reg = r2(ugx / RATE_UGX), cost = r2(EX_RATE + EX_CESS * reg + EX_STORE), us = r2(EX_BASE + 0.10 * p), kmp = ugx / RATE_UGX;
   var you = r2(Math.max(p - cost - us, 0));
   return { price: p, reg: reg, you: you, us: us, cost: cost, cess: r2(EX_CESS * reg),
-    total: Math.round(you * EX_KG), diff: r2(you - kmp), wa: r2(Math.max(0.1 * p, EX_BASE)), kmp: kmp }; // wa: our way A commission, 10% of the sale, at least the base share
+    total: Math.round(you * EX_KG), diff: r2(you - kmp), wa: r2(Math.max(0.1 * p, EX_BASE)), kmp: kmp }; // wa: our way B commission, 10% of the sale, at least the base share
 }
 
 function renderExample(lang) {
