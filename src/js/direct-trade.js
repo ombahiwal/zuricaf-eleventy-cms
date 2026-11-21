@@ -19,51 +19,8 @@ function money(eur, lang) {
   return lang === 'de' ? e + nb + '€' : 'EUR' + nb + e;
 }
 
-// Example (roaster we introduce) on /direct-trade/: all figures per kg in EUR, the one place to change them.
-// ugx = UCDA/MAAIF Daily Coffee Market Report 10 Nov 2026 (Arabica Bugisu AA, Robusta Screen 15); the registered value is that price at RATE_UGX, the label date in direct-trade.njk names the same day.
-// Zone limits are assumptions, under review. Static numbers in direct-trade.njk show Arabica at its start for visitors without JS.
-var EX = {
-  arabica: { ugx: 24267, grade: 'Bugisu AA', min: 6, max: 14, start: 9, zones: [8, 10, 12] },
-  robusta: { ugx: 14413, grade: 'Screen 15', min: 4, max: 9, start: 6, zones: [5.5, 7] }
-};
-var EX_RATE = 1.60, EX_CESS = 0.02, EX_STORE = 0.083, EX_BASE = 0.40, EX_KG = 600; // rate for 600 kg, cess 2% of the registered value
-var exVar = 'arabica', exPrice = document.getElementById('ex-price');
-
-function r2(x) { return Math.round(x * 100) / 100; }
-
-// presale: the roaster has agreed the price p; costs and our share (base + 10% of p) come off it, no minimum price, no 50/50
-function exCalc(p, ugx) {
-  var reg = r2(ugx / RATE_UGX), cost = r2(EX_RATE + EX_CESS * reg + EX_STORE), us = r2(EX_BASE + 0.10 * p), kmp = ugx / RATE_UGX;
-  var you = r2(Math.max(p - cost - us, 0));
-  return { price: p, reg: reg, you: you, us: us, cost: cost, cess: r2(EX_CESS * reg),
-    total: Math.round(you * EX_KG), diff: r2(you - kmp), wa: r2(Math.max(0.1 * p, EX_BASE)), kmp: kmp }; // wa: our commission with the owner's own buyer, 10% of the sale, at least the base share
-}
-
-function renderExample(lang) {
-  var ex = EX[exVar], p = parseFloat(exPrice.value), v = exCalc(p, ex.ugx), zone = 1;
-  if (cur === 'ugx') { // UGX is shown rounded to 100: build every row from rounded parts and take you as the rest, so the chain adds up on screen
-    var q = function (e) { return Math.round(e * RATE_UGX / 100) * 100 / RATE_UGX; };
-    v.cost = q(EX_RATE) + q(v.cess) + q(EX_STORE); v.us = q(EX_BASE) + q(0.10 * p);
-    v.you = Math.max(q(p) - v.cost - v.us, 0); v.diff = v.you - q(v.kmp); v.total = Math.round(v.you * EX_KG);
-  }
-  ex.zones.forEach(function (z) { if (p >= z) zone++; });
-  document.querySelectorAll('.m[data-k]').forEach(function (el) { el.setAttribute('data-eur', v[el.getAttribute('data-k')]); });
-  document.querySelectorAll('[data-zone]').forEach(function (el) { el.hidden = el.getAttribute('data-zone') !== String(zone); });
-  document.querySelectorAll('[data-when]').forEach(function (el) { el.hidden = (el.getAttribute('data-when') === 'above') !== (v.diff > 0); }); // diff as shown, so a rounded zero reads as "below"
-  document.querySelectorAll('[data-set-var]').forEach(function (btn) { btn.setAttribute('aria-pressed', String(btn.getAttribute('data-set-var') === exVar)); });
-  var x = 10, w = 340 / Math.max(p, v.you + v.us + v.cost); // bars span x 10 to 350 of the 360 viewBox, wider than the sale when we carry a shortfall
-  ['you', 'us', 'cost'].forEach(function (k) {
-    var bar = document.getElementById('bar-' + k);
-    bar.setAttribute('x', x.toFixed(1)); bar.setAttribute('width', (v[k] * w).toFixed(1)); x += v[k] * w;
-  });
-  document.querySelectorAll('[data-grade]').forEach(function (el) { el.textContent = ex.grade; });
-  exPrice.setAttribute('aria-valuetext', money(p, lang));
-  document.getElementById('sp-t').textContent = (lang === 'de' ? 'Von ' + money(p, lang) + ' je kg: ihr ' + money(v.you, lang) + ', Zuricaf ' + money(v.us, lang) + ', Logistik und Cess ' : 'Of ' + money(p, lang) + ' per kg: you ' + money(v.you, lang) + ', Zuricaf ' + money(v.us, lang) + ', logistics and cess ') + money(v.cost, lang);
-}
-
 function renderMoney() {
   var lang = document.documentElement.lang;
-  if (exPrice) renderExample(lang);
   document.querySelectorAll('.m[data-eur]').forEach(function (el) {
     el.textContent = money(parseFloat(el.getAttribute('data-eur')), lang);
     if (el.classList.contains('bare')) el.textContent = el.textContent.replace(/≈\u00a0|UGX\u00a0|EUR\u00a0|\u00a0UGX|\u00a0€/g, ''); // number only, the sentence names the unit
@@ -102,15 +59,4 @@ document.querySelectorAll('[data-set-lang]').forEach(function (btn) {
 document.querySelectorAll('[data-set-cur]').forEach(function (btn) {
   btn.addEventListener('click', function () { cur = btn.getAttribute('data-set-cur'); renderMoney(); });
 });
-if (exPrice) {
-  document.querySelectorAll('.ex-ctl').forEach(function (el) { el.hidden = false; });
-  exPrice.addEventListener('input', renderMoney);
-  document.querySelectorAll('[data-set-var]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var ex = EX[exVar = btn.getAttribute('data-set-var')];
-      exPrice.min = ex.min; exPrice.max = ex.max; exPrice.value = ex.start;
-      renderMoney();
-    });
-  });
-}
 setLang(new URLSearchParams(location.search).get('lang') === 'de' ? 'de' : 'en');
